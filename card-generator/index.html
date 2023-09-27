@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>PinkWalk Card Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <style>
+        *,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #F0F0F0;
+        }
+
+        #container {
+            background-color: #FFFFFF;
+            padding: 10px 15px;
+            min-height: calc(100vh - 20px);
+            border-radius: 5px;
+            margin-top: 10px;
+            box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        #page-title {
+            font-size: 50px;
+            font-weight: 400;
+            margin-top: 10px;
+            border-bottom: 2px solid #EF30A1;
+        }
+
+        #page-title .pink {
+            color: #ED008C;
+            font-weight: 500;
+        }
+
+        #page-title .walk {
+            color: #31006E;
+            font-weight: 500;
+        }
+
+        #fullname-title {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        #canvas-card-container {
+            display: inline-block;
+            padding: 3px 3px;
+            border: 1px solid rgba(0, 0, 0, 0.176);
+            border-radius: 5px;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .txt-center {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container" class="container-xxl">
+        <h1 id="page-title"><span class="pink">Pink</span><span class="walk">Walk</span> - Generate Your Card</h1>
+
+        <div style="height: 10px;"></div>
+
+        <div class="mb-3">
+            <div class="col-6">
+                <label id="fullname-title" for="fullnameInput" class="col-form-label">Enter your fullname</label>
+                <input id="fullname-input" type="text" class="form-control">
+            </div>
+        </div>
+
+        <div style="height: 20px;"></div>
+
+        <div class="d-flex">
+            <div>
+                <div id="canvas-card-container">
+                    <canvas id="cardCanvas"></canvas>
+                </div>
+                <div style="height: 10px;"></div>
+                <div class="txt-center">
+                    <button id="card-download-btn" type="button" class="btn btn-primary">Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cardGenerationSubscriptionId = null;
+        const fullnameInput = document.getElementById('fullname-input');
+        fullnameInput.addEventListener('keyup', () => {
+            const fullnameInput = document.getElementById('fullname-input');
+            const fullname = (fullnameInput.value || '').trim();
+            if (cardGenerationSubscriptionId != null) {
+                clearTimeout(cardGenerationSubscriptionId);
+            }
+            cardGenerationSubscriptionId = setTimeout(() => generateCard(fullname), 500);
+        });
+        generateCard('');
+
+        const cardDownloadBtn = document.getElementById('card-download-btn');
+        cardDownloadBtn.addEventListener('click', () => {
+            const fullnameInput = document.getElementById('fullname-input');
+            const fullname = (fullnameInput.value || '').trim();
+            const canvas = document.getElementById('cardCanvas');
+            const outputCard = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+            const downloadLink = document.createElement('a');
+            downloadLink.href = outputCard;
+            downloadLink.download = fullname + '-PinkWalk-Card.jpg';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+        });
+
+        function generateCard(fullname) {
+            const cardImageWidth = 2160;
+            const cardImageHeight = 3840;
+            const scaleFactor = 6;
+            const canvas = document.getElementById('cardCanvas');
+            canvas.width = cardImageWidth;
+            canvas.height = cardImageHeight;
+            canvas.style.width = cardImageWidth / scaleFactor + 'px';
+            canvas.style.height = cardImageHeight / scaleFactor + 'px';
+            const canvasContext = canvas.getContext('2d');
+            canvasContext.setTransform(scaleFactor, 0, 0, scaleFactor, 0, 0);
+            const cardImage = new Image();
+            cardImage.src = 'card.jpg';
+            cardImage.addEventListener('load', () => {
+                canvasContext.drawImage(cardImage, 0, 0, cardImageWidth / scaleFactor, cardImageHeight / scaleFactor);
+                canvasContext.font = '500 1.2rem "Montserrat", sans-serif';
+                canvasContext.fillStyle = '#31006E';
+                canvasContext.textAlign = 'center';
+                canvasContext.fillText(fullname, 1080 / scaleFactor, 2600 / scaleFactor);
+            });
+        }
+    </script>
+</body>
+
+</html>
