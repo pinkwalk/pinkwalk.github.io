@@ -119,12 +119,13 @@
             const fullnameInput = document.getElementById('fullname-input');
             const fullname = (fullnameInput.value || '').trim();
             const canvas = document.getElementById('cardCanvas');
-            const outputCard = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+            const outputCard = canvas.toDataURL('image/jpeg');
             const downloadLink = document.createElement('a');
             downloadLink.href = outputCard;
             downloadLink.download = fullname + '-PinkWalk-Card.jpg';
             document.body.appendChild(downloadLink);
             downloadLink.click();
+            setTimeout(document.body.removeChild(downloadLink), 2000);
         });
 
         function generateCard(fullname) {
