@@ -23,7 +23,10 @@
             letter-spacing: .125rem;
             text-transform: uppercase;
         }
-        .timer ul { padding: 0; margin: 0}
+        .timer ul {
+            padding: 0;
+            margin: 0
+        }
         .timer li {
             display: inline-block;
             font-size: 1.2em;
@@ -36,6 +39,7 @@
             display: block;
             font-size: 4.5rem;
         }
+
         .timer .emoji span {
             font-size: 4rem;
             padding: 0 .2rem;
@@ -165,6 +169,15 @@
             </ul>
         </div>
     </div>
+    <div class="pb-5 row">
+        <div class="col">
+            <h2 id="photo">Photo</h2>
+            <ul>
+                <li><a href="https://photos.google.com/share/AF1QipMokwAu6GfWNT3wt5yo2kYYi7Amx9HxAkFfM1JRC3e1o89awvGY6yEgL94YmcyzgA?key=bGNjN1VrQ2YtQTZaejBlcG1GNkhwZ3pUaHhiXzRn" target="_blank">Photo 1 Aviskar Basnet</a></li>
+                <li><a href="https://photos.google.com/share/AF1QipP2RrvXb1TgwU8xK30GblcecEhwceNtmtdiDkRkqq_upJnZGrk_zFOvY4pbBK5Gqw?key=ZmtpTXZublIxd1VmZFVDc3BCQWM2TG1tQzNicnl3" target="_blank">Photo 2 Narayan Thapa</a></li>
+            </ul>
+        </div>
+    </div>
     <div class="p-2">
         <h2>Contact</h2>
         <form action="https://getform.io/f/fdaff273-0534-41ad-a03f-9df3742a0019" method="POST"
@@ -204,26 +217,26 @@
     hour = minute * 60,
     day = hour * 24;
 
-    const countDown = new Date("2023-09-30T06:00:00").getTime(),
-        x = setInterval(function () {
+  const countDown = new Date("2023-09-30T06:00:00").getTime(),
+    x = setInterval(function () {
 
-            const now = new Date().getTime(),
-                distance = countDown - now;
+      const now = new Date().getTime(),
+        distance = countDown - now;
 
-            document.getElementById("days").innerText = Math.floor(distance / (day)),
-            document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-            document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-            document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+      document.getElementById("days").innerText = Math.floor(distance / (day)),
+        document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+        document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+        document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
 
-            //do something later when date is reached
-            if (distance < 0) {
-                document.getElementById("headline").innerText = "Walking together!";
-                document.getElementById("countdown").style.display = "none";
-                document.getElementById("content").style.display = "block";
-                clearInterval(x);
-            }
-            //seconds
-        }, 0)
+      //do something later when date is reached
+      if (distance < 0) {
+        document.getElementById("headline").innerText = "Walking together!";
+        document.getElementById("countdown").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        clearInterval(x);
+      }
+      //seconds
+    }, 0)
 }());
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
