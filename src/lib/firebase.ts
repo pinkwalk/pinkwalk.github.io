@@ -1,8 +1,9 @@
 import { initializeApp, getApps, type FirebaseApp } from "firebase/app";
 import {
   getFirestore,
-  collection,
-  addDoc,
+  doc,
+  getDoc,
+  setDoc,
   serverTimestamp,
   type Firestore,
 } from "firebase/firestore";
@@ -59,15 +60,27 @@ export async function initAnalytics(): Promise<Analytics | undefined> {
 }
 
 /**
- * Save notification email to Firestore `notifications` collection
- * and log a Google Analytics event.
+ * Save notification email to Firestore `notifications` collection.
+ * Prevents duplicate emails by checking existing document ID.
  */
-export async function saveNotificationEmail(email: string): Promise<{ success: boolean; error?: string }> {
+export async function saveNotificationEmail(
+  email: string,
+): Promise<{ success: boolean; alreadyRegistered?: boolean; error?: string }> {
   try {
     const firestore = getDb();
+    const cleanEmail = email.trim().toLowerCase();
+    const docId = cleanEmail.replace(/[^a-z0-9@._-]/g, "_");
+
     if (firestore) {
-      await addDoc(collection(firestore, "notifications"), {
-        email: email.trim().toLowerCase(),
+      const docRef = doc(firestore, "notifications", docId);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        return { success: true, alreadyRegistered: true };
+      }
+
+      await setDoc(docRef, {
+        email: cleanEmail,
         createdAt: serverTimestamp(),
         source: "coming_soon_page",
       });
@@ -82,7 +95,7 @@ export async function saveNotificationEmail(email: string): Promise<{ success: b
       });
     }
 
-    return { success: true };
+    return { success: true, alreadyRegistered: false };
   } catch (err) {
     console.error("[Firebase] Error saving notification email:", err);
     return {
@@ -94,6 +107,7 @@ export async function saveNotificationEmail(email: string): Promise<{ success: b
 
 /**
  * Save complete registration data to Firestore `registrations` collection.
+ * Prevents duplicate registrations for the same email address.
  */
 export async function saveRegistration(registrationData: {
   name: string;
@@ -102,13 +116,23 @@ export async function saveRegistration(registrationData: {
   size: string;
   group?: string;
   notes?: string;
-}): Promise<{ success: boolean; error?: string }> {
+}): Promise<{ success: boolean; alreadyRegistered?: boolean; error?: string }> {
   try {
     const firestore = getDb();
+    const cleanEmail = registrationData.email.trim().toLowerCase();
+    const docId = cleanEmail.replace(/[^a-z0-9@._-]/g, "_");
+
     if (firestore) {
-      await addDoc(collection(firestore, "registrations"), {
+      const docRef = doc(firestore, "registrations", docId);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        return { success: true, alreadyRegistered: true };
+      }
+
+      await setDoc(docRef, {
         ...registrationData,
-        email: registrationData.email.trim().toLowerCase(),
+        email: cleanEmail,
         createdAt: serverTimestamp(),
         status: "confirmed",
       });
@@ -123,7 +147,7 @@ export async function saveRegistration(registrationData: {
       });
     }
 
-    return { success: true };
+    return { success: true, alreadyRegistered: false };
   } catch (err) {
     console.error("[Firebase] Error saving registration:", err);
     return {

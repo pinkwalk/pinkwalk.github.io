@@ -36,6 +36,7 @@ function RegisterPage() {
   const [notes, setNotes] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [isDuplicate, setIsDuplicate] = useState(false);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -66,6 +67,8 @@ function RegisterPage() {
       window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
         "PinkWalk 2026 registration — " + (name || "Participant"),
       )}&body=${encodeURIComponent(body)}`;
+    } else {
+      setIsDuplicate(Boolean(res.alreadyRegistered));
     }
 
     setSubmitting(false);
@@ -194,15 +197,11 @@ function RegisterPage() {
 
           {sent && (
             <p className="mt-4 rounded-xl bg-pink-wash px-4 py-3 text-sm text-foreground">
-              Your email app should now open with your registration details —
-              just hit send. If it didn't, email us at{" "}
-              <a
-                href={`mailto:${contactEmail}`}
-                className="font-medium text-primary hover:underline"
-              >
-                {contactEmail}
-              </a>
-              .
+              {isDuplicate ? (
+                <>This email address is already registered for PinkWalk 2026! We look forward to walking with you on October 3rd.</>
+              ) : (
+                <>Thank you! Your registration for PinkWalk 2026 has been successfully confirmed.</>
+              )}
             </p>
           )}
         </form>

@@ -28,6 +28,7 @@ function RegistrationComingSoonPage() {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isDuplicate, setIsDuplicate] = useState(false);
 
   const handleNotifySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,6 +43,8 @@ function RegistrationComingSoonPage() {
       window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
         subject,
       )}&body=${encodeURIComponent(body)}`;
+    } else {
+      setIsDuplicate(Boolean(res.alreadyRegistered));
     }
     setSubmitting(false);
     setSubmitted(true);
@@ -107,8 +110,11 @@ function RegistrationComingSoonPage() {
               <div className="mt-4 flex items-start gap-2.5 rounded-xl bg-pink-wash p-3.5 text-xs text-foreground">
                 <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <span>
-                  Thank you! Your email client opened with a pre-filled request to{" "}
-                  <strong className="font-semibold">{contactEmail}</strong>.
+                  {isDuplicate ? (
+                    <>You are already registered for updates! We'll notify you as soon as registration launches.</>
+                  ) : (
+                    <>Thank you! We've saved your email and will notify you as soon as registration opens.</>
+                  )}
                 </span>
               </div>
             )}
