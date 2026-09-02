@@ -1,0 +1,185 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * PinkWalk — Breast Cancer Awareness Walk design system.
+ * Warm, hopeful, community-led. Pink forward.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-rose: var(--rose);
+  --color-blush: var(--blush);
+  --color-cream: var(--cream);
+  --color-plum: var(--plum);
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Warm pink-cream canvas */
+  --background: oklch(0.992 0.008 385);
+  --foreground: oklch(0.28 0.05 385);
+
+  --card: oklch(1 0.006 385);
+  --card-foreground: oklch(0.28 0.05 385);
+  --popover: oklch(1 0.006 385);
+  --popover-foreground: oklch(0.28 0.05 385);
+
+  /* Vivid awareness pink */
+  --primary: oklch(0.63 0.235 0);
+  --primary-foreground: oklch(0.99 0.004 385);
+
+  --secondary: oklch(0.95 0.03 5);
+  --secondary-foreground: oklch(0.4 0.12 5);
+
+  --muted: oklch(0.96 0.022 385);
+  --muted-foreground: oklch(0.52 0.05 385);
+
+  --accent: oklch(0.92 0.05 8);
+  --accent-foreground: oklch(0.4 0.14 5);
+
+  --destructive: oklch(0.58 0.24 25);
+  --destructive-foreground: oklch(0.99 0.004 385);
+
+  --border: oklch(0.9 0.03 385);
+  --input: oklch(0.9 0.03 385);
+  --ring: oklch(0.63 0.235 0);
+
+  /* Custom pinks */
+  --rose: oklch(0.55 0.2 5);
+  --blush: oklch(0.85 0.06 8);
+  --cream: oklch(0.992 0.008 385);
+  --plum: oklch(0.34 0.09 350);
+
+  --chart-1: oklch(0.63 0.235 0);
+  --chart-2: oklch(0.55 0.2 350);
+  --chart-3: oklch(0.72 0.13 15);
+  --chart-4: oklch(0.6 0.18 330);
+  --chart-5: oklch(0.8 0.1 25);
+}
+
+.dark {
+  --background: oklch(0.21 0.04 350);
+  --foreground: oklch(0.96 0.01 385);
+  --card: oklch(0.26 0.05 350);
+  --card-foreground: oklch(0.96 0.01 385);
+  --popover: oklch(0.26 0.05 350);
+  --popover-foreground: oklch(0.96 0.01 385);
+  --primary: oklch(0.72 0.2 5);
+  --primary-foreground: oklch(0.21 0.04 350);
+  --secondary: oklch(0.32 0.05 350);
+  --secondary-foreground: oklch(0.96 0.01 385);
+  --muted: oklch(0.32 0.05 350);
+  --muted-foreground: oklch(0.74 0.04 385);
+  --accent: oklch(0.36 0.07 350);
+  --accent-foreground: oklch(0.96 0.01 385);
+  --destructive: oklch(0.7 0.19 22);
+  --destructive-foreground: oklch(0.96 0.01 385);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.72 0.2 5);
+  --rose: oklch(0.68 0.18 5);
+  --blush: oklch(0.45 0.08 350);
+  --cream: oklch(0.21 0.04 350);
+  --plum: oklch(0.85 0.06 385);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Soft pink gradient wash used behind hero / sections */
+  .bg-pink-wash {
+    background:
+      radial-gradient(120% 90% at 12% 0%, oklch(0.95 0.06 5 / 0.9), transparent 55%),
+      radial-gradient(100% 80% at 100% 10%, oklch(0.92 0.05 15 / 0.85), transparent 50%),
+      var(--background);
+  }
+
+  .bg-pink-gradient {
+    background: linear-gradient(135deg, oklch(0.66 0.235 0), oklch(0.58 0.2 350));
+  }
+
+  .text-gradient-pink {
+    background: linear-gradient(120deg, oklch(0.55 0.2 5), oklch(0.62 0.22 350));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .shadow-pink {
+    box-shadow: 0 20px 45px -18px oklch(0.6 0.22 5 / 0.45);
+  }
+
+  .shadow-soft {
+    box-shadow: 0 12px 40px -22px oklch(0.4 0.1 350 / 0.5);
+  }
+}
+
+@keyframes ribbon-sway {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+.animate-ribbon-sway {
+  animation: ribbon-sway 6s ease-in-out infinite;
+}
