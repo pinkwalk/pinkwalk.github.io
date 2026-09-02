@@ -39,7 +39,11 @@ const htmlContent = `<!DOCTYPE html>
         router: {
           manifest: {},
           dehydratedData: {},
-          matches: []
+          matches: [
+            { i: '__root__', s: 'success', ssr: false },
+            { i: '/', s: 'success', ssr: false }
+          ],
+          lastMatchId: '/'
         }
       };
     </script>
