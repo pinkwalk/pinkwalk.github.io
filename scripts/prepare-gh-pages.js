@@ -29,8 +29,20 @@ const htmlContent = `<!DOCTYPE html>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     ${cssFile ? `<link rel="stylesheet" href="/assets/${cssFile}" />` : ""}
   </head>
-  <body>
-    <div id="root"></div>
+    <script>
+      window.$_TSR = {
+        h: function() { this.hydrated = true; },
+        e: function() { this.streamEnded = true; },
+        c: function() {},
+        p: function(script) { script(); },
+        buffer: [],
+        router: {
+          manifest: {},
+          dehydratedData: {},
+          matches: []
+        }
+      };
+    </script>
     ${jsFile ? `<script type="module" src="/assets/${jsFile}"></script>` : ""}
   </body>
 </html>
