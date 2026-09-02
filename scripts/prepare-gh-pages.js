@@ -1,7 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 const publicDir = path.resolve(process.cwd(), ".output/public");
+const serverDir = path.resolve(process.cwd(), ".output/server");
 const assetsDir = path.join(publicDir, "assets");
 
 if (!fs.existsSync(publicDir)) {
@@ -12,35 +14,56 @@ if (!fs.existsSync(publicDir)) {
 const files = fs.readdirSync(assetsDir);
 const cssFile = files.find((f) => f.startsWith("styles-") && f.endsWith(".css"));
 const indexJsFile = files.find((f) => f.startsWith("index-") && f.endsWith(".js"));
-const routesJsFile = files.find((f) => f.startsWith("routes-") && f.endsWith(".js"));
-const pastEventJsFile = files.find((f) => f.startsWith("past-event-") && f.endsWith(".js"));
-const registerJsFile = files.find((f) => f.startsWith("register-") && f.endsWith(".js"));
 
 console.log("Found CSS asset:", cssFile);
 console.log("Found Index JS asset:", indexJsFile);
 
-const manifest = {
-  routes: {
-    __root__: {
-      filePath: "src/routes/__root.tsx",
-      children: ["/", "/past-event", "/register"],
-      preloads: indexJsFile ? [`/assets/${indexJsFile}`] : [],
-      scripts: indexJsFile ? [{ attrs: { type: "module", async: true, src: `/assets/${indexJsFile}` } }] : []
-    },
-    "/": {
-      filePath: "src/routes/index.tsx",
-      preloads: routesJsFile ? [`/assets/${routesJsFile}`] : []
-    },
-    "/past-event": {
-      filePath: "src/routes/past-event.tsx",
-      preloads: pastEventJsFile ? [`/assets/${pastEventJsFile}`] : []
-    },
-    "/register": {
-      filePath: "src/routes/register.tsx",
-      preloads: registerJsFile ? [`/assets/${registerJsFile}`] : []
+let manifest = { routes: {} };
+
+const serverFiles = fs.existsSync(serverDir) ? fs.readdirSync(serverDir) : [];
+const manifestFileName = serverFiles.find((f) => f.includes("tanstack-start-manifest") && f.endsWith(".mjs"));
+
+if (manifestFileName) {
+  const manifestPath = path.join(serverDir, manifestFileName);
+  try {
+    const mod = await import(pathToFileURL(manifestPath).href);
+    if (typeof mod.tsrStartManifest === "function") {
+      manifest = mod.tsrStartManifest();
+      console.log("Loaded build manifest from", manifestFileName);
     }
+  } catch (err) {
+    console.warn("Could not import manifest, using fallback:", err);
   }
-};
+}
+
+if (!manifest.routes || Object.keys(manifest.routes).length === 0) {
+  const routesJsFile = files.find((f) => f.startsWith("routes-") && f.endsWith(".js"));
+  const pastEventJsFile = files.find((f) => f.startsWith("past-event-") && f.endsWith(".js"));
+  const registerJsFile = files.find((f) => f.startsWith("register-") && f.endsWith(".js"));
+
+  manifest = {
+    routes: {
+      __root__: {
+        filePath: "src/routes/__root.tsx",
+        children: ["/", "/past-event", "/register"],
+        preloads: indexJsFile ? [`/assets/${indexJsFile}`] : [],
+        scripts: indexJsFile ? [{ attrs: { type: "module", async: true, src: `/assets/${indexJsFile}` } }] : []
+      },
+      "/": {
+        filePath: "src/routes/index.tsx",
+        preloads: routesJsFile ? [`/assets/${routesJsFile}`] : []
+      },
+      "/past-event": {
+        filePath: "src/routes/past-event.tsx",
+        preloads: pastEventJsFile ? [`/assets/${pastEventJsFile}`] : []
+      },
+      "/register": {
+        filePath: "src/routes/register.tsx",
+        preloads: registerJsFile ? [`/assets/${registerJsFile}`] : []
+      }
+    }
+  };
+}
 
 const htmlContent = `<!DOCTYPE html>
 <html lang="en">
@@ -82,4 +105,4 @@ const htmlContent = `<!DOCTYPE html>
 
 fs.writeFileSync(path.join(publicDir, "index.html"), htmlContent);
 fs.writeFileSync(path.join(publicDir, "404.html"), htmlContent);
-console.log("Successfully generated index.html and 404.html in .output/public with manifest!");
+console.log("Successfully generated index.html and 404.html in .output/public!");
