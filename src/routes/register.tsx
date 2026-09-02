@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { contactEmail, thisYearEvent } from "@/lib/event-data";
 import { Bell, Mail, Calendar, MapPin, CheckCircle2 } from "lucide-react";
+import { saveNotificationEmail } from "@/lib/firebase";
 
 export const Route = createFileRoute("/register")({
   head: () => ({
@@ -25,16 +26,24 @@ export const Route = createFileRoute("/register")({
 
 function RegistrationComingSoonPage() {
   const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleNotifySubmit = (e: React.FormEvent) => {
+  const handleNotifySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
-    const subject = "Please notify me when PinkWalk 2026 registration opens";
-    const body = `Hi PinkWalk Team,\n\nPlease notify me at ${email} as soon as registration for PinkWalk 2026 opens!\n\nThank you!`;
-    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
+    if (!email || submitting) return;
+    setSubmitting(true);
+
+    const res = await saveNotificationEmail(email);
+    if (!res.success) {
+      // Fallback mailto if firebase config is not yet added
+      const subject = "Please notify me when PinkWalk 2026 registration opens";
+      const body = `Hi PinkWalk Team,\n\nPlease notify me at ${email} as soon as registration for PinkWalk 2026 opens!\n\nThank you!`;
+      window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
+        subject,
+      )}&body=${encodeURIComponent(body)}`;
+    }
+    setSubmitting(false);
     setSubmitted(true);
   };
 

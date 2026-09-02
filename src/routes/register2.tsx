@@ -5,6 +5,7 @@ import {
   thisYearEvent,
   tshirtSizes,
 } from "@/lib/event-data";
+import { saveRegistration } from "@/lib/firebase";
 
 export const Route = createFileRoute("/register2")({
   head: () => ({
@@ -33,23 +34,41 @@ function RegisterPage() {
   const [size, setSize] = useState<string>("M");
   const [group, setGroup] = useState("");
   const [notes, setNotes] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Phone: ${phone}`,
-      `T-shirt size: ${size}`,
-      `Organisation / group: ${group || "—"}`,
-      `Notes: ${notes || "—"}`,
-      "",
-      `Event: ${thisYearEvent.title} — ${thisYearEvent.date}`,
-    ].join("\n");
-    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
-      "PinkWalk 2026 registration — " + (name || "Participant"),
-    )}&body=${encodeURIComponent(body)}`;
+    if (submitting) return;
+    setSubmitting(true);
+
+    const res = await saveRegistration({
+      name,
+      email,
+      phone,
+      size,
+      group,
+      notes,
+    });
+
+    if (!res.success) {
+      // Fallback mailto if firebase credentials not yet set
+      const body = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Phone: ${phone}`,
+        `T-shirt size: ${size}`,
+        `Organisation / group: ${group || "—"}`,
+        `Notes: ${notes || "—"}`,
+        "",
+        `Event: ${thisYearEvent.title} — ${thisYearEvent.date}`,
+      ].join("\n");
+      window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
+        "PinkWalk 2026 registration — " + (name || "Participant"),
+      )}&body=${encodeURIComponent(body)}`;
+    }
+
+    setSubmitting(false);
     setSent(true);
   };
 
