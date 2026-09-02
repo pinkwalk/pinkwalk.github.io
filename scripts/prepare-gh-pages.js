@@ -11,10 +11,36 @@ if (!fs.existsSync(publicDir)) {
 
 const files = fs.readdirSync(assetsDir);
 const cssFile = files.find((f) => f.startsWith("styles-") && f.endsWith(".css"));
-const jsFile = files.find((f) => f.startsWith("index-") && f.endsWith(".js"));
+const indexJsFile = files.find((f) => f.startsWith("index-") && f.endsWith(".js"));
+const routesJsFile = files.find((f) => f.startsWith("routes-") && f.endsWith(".js"));
+const pastEventJsFile = files.find((f) => f.startsWith("past-event-") && f.endsWith(".js"));
+const registerJsFile = files.find((f) => f.startsWith("register-") && f.endsWith(".js"));
 
 console.log("Found CSS asset:", cssFile);
-console.log("Found JS asset:", jsFile);
+console.log("Found Index JS asset:", indexJsFile);
+
+const manifest = {
+  routes: {
+    __root__: {
+      filePath: "src/routes/__root.tsx",
+      children: ["/", "/past-event", "/register"],
+      preloads: indexJsFile ? [`/assets/${indexJsFile}`] : [],
+      scripts: indexJsFile ? [{ attrs: { type: "module", async: true, src: `/assets/${indexJsFile}` } }] : []
+    },
+    "/": {
+      filePath: "src/routes/index.tsx",
+      preloads: routesJsFile ? [`/assets/${routesJsFile}`] : []
+    },
+    "/past-event": {
+      filePath: "src/routes/past-event.tsx",
+      preloads: pastEventJsFile ? [`/assets/${pastEventJsFile}`] : []
+    },
+    "/register": {
+      filePath: "src/routes/register.tsx",
+      preloads: registerJsFile ? [`/assets/${registerJsFile}`] : []
+    }
+  }
+};
 
 const htmlContent = `<!DOCTYPE html>
 <html lang="en">
@@ -29,6 +55,8 @@ const htmlContent = `<!DOCTYPE html>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     ${cssFile ? `<link rel="stylesheet" href="/assets/${cssFile}" />` : ""}
   </head>
+  <body>
+    <div id="root"></div>
     <script>
       window.$_TSR = {
         h: function() { this.hydrated = true; },
@@ -37,7 +65,7 @@ const htmlContent = `<!DOCTYPE html>
         p: function(script) { script(); },
         buffer: [],
         router: {
-          manifest: {},
+          manifest: ${JSON.stringify(manifest)},
           dehydratedData: {},
           matches: [
             { i: '__root__', s: 'success', ssr: false },
@@ -47,11 +75,11 @@ const htmlContent = `<!DOCTYPE html>
         }
       };
     </script>
-    ${jsFile ? `<script type="module" src="/assets/${jsFile}"></script>` : ""}
+    ${indexJsFile ? `<script type="module" src="/assets/${indexJsFile}"></script>` : ""}
   </body>
 </html>
 `;
 
 fs.writeFileSync(path.join(publicDir, "index.html"), htmlContent);
 fs.writeFileSync(path.join(publicDir, "404.html"), htmlContent);
-console.log("Successfully generated index.html and 404.html in .output/public");
+console.log("Successfully generated index.html and 404.html in .output/public with manifest!");
