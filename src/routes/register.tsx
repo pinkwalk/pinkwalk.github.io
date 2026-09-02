@@ -1,238 +1,178 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import {
-  contactEmail,
-  thisYearEvent,
-  tshirtSizes,
-} from "@/lib/event-data";
+import { contactEmail, thisYearEvent } from "@/lib/event-data";
+import { Bell, Mail, Calendar, MapPin, CheckCircle2 } from "lucide-react";
 
 export const Route = createFileRoute("/register")({
   head: () => ({
     meta: [
-      { title: "Register for PinkWalk 2026 — October 3rd, Kathmandu" },
+      { title: "Registration Opening Soon — PinkWalk 2026" },
       {
         name: "description",
         content:
-          "Register for PinkWalk 2026 on October 3rd: walk from Basantapur to Mangalbazar for breast cancer awareness. Pick your t-shirt size and join the walk.",
+          "Registration for PinkWalk 2026 is opening soon. Join us on October 3rd, 2026 for the breast cancer awareness walk in Kathmandu Valley.",
       },
-      { property: "og:title", content: "Register for PinkWalk 2026" },
+      { property: "og:title", content: "Registration Opening Soon — PinkWalk 2026" },
       {
         property: "og:description",
         content:
-          "Sign up for the PinkWalk 2026 breast cancer awareness walk in Kathmandu — October 3rd, 2026. Choose your t-shirt size.",
+          "Registration for PinkWalk 2026 will open soon. Get notified when sign-ups launch for the October 3rd walk.",
       },
     ],
   }),
-  component: RegisterPage,
+  component: RegistrationComingSoonPage,
 });
 
-function RegisterPage() {
-  const [name, setName] = useState("");
+function RegistrationComingSoonPage() {
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [size, setSize] = useState<string>("M");
-  const [group, setGroup] = useState("");
-  const [notes, setNotes] = useState("");
-  const [sent, setSent] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const submit = (e: React.FormEvent) => {
+  const handleNotifySubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Phone: ${phone}`,
-      `T-shirt size: ${size}`,
-      `Organisation / group: ${group || "—"}`,
-      `Notes: ${notes || "—"}`,
-      "",
-      `Event: ${thisYearEvent.title} — ${thisYearEvent.date}`,
-    ].join("\n");
+    if (!email) return;
+    const subject = "Please notify me when PinkWalk 2026 registration opens";
+    const body = `Hi PinkWalk Team,\n\nPlease notify me at ${email} as soon as registration for PinkWalk 2026 opens!\n\nThank you!`;
     window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
-      "PinkWalk 2026 registration — " + (name || "Participant"),
+      subject,
     )}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    setSubmitted(true);
   };
-
-  const inputCls =
-    "mt-1.5 w-full rounded-xl border border-border bg-card px-4 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary";
 
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
-      <section className="py-14 sm:py-20">
-        <span className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
-          Registration · {thisYearEvent.year}
-        </span>
-        <h1 className="mt-3 text-balance font-display text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
-          Join <span className="text-gradient-pink">PinkWalk 2026</span>
+      <section className="py-14 text-center sm:py-20">
+        <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-pink-wash px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
+          <Bell className="h-3.5 w-3.5" />
+          <span>Registration · {thisYearEvent.year}</span>
+        </div>
+
+        <h1 className="mt-5 text-balance font-display text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
+          Registration <span className="text-gradient-pink">Opening Soon</span>
         </h1>
-        <p className="mt-5 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
-          {thisYearEvent.date} — Basantapur to Mangalbazar, about an hour of
-          walking together for breast cancer awareness. Register below and pick
-          your t-shirt size.
+
+        <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+          Online registration for {thisYearEvent.title} will open soon. Join us on{" "}
+          <strong className="font-semibold text-foreground">{thisYearEvent.dateNote}</strong>{" "}
+          as we walk together from {thisYearEvent.route.startLabel} to {thisYearEvent.route.endLabel}{" "}
+          for breast cancer awareness.
         </p>
       </section>
 
-      <div className="grid gap-8 pb-20 md:grid-cols-[1.2fr_1fr]">
-        <form
-          onSubmit={submit}
-          className="rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8"
-        >
-          <div className="grid gap-5 sm:grid-cols-2">
-            <label className="block sm:col-span-2">
-              <span className="text-sm font-medium text-foreground">
-                Full name
-              </span>
-              <input
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Your name"
-                className={inputCls}
-              />
-            </label>
-
-            <label className="block">
-              <span className="text-sm font-medium text-foreground">Email</span>
-              <input
-                required
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
-                className={inputCls}
-              />
-            </label>
-
-            <label className="block">
-              <span className="text-sm font-medium text-foreground">Phone</span>
-              <input
-                required
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="98XXXXXXXX"
-                className={inputCls}
-              />
-            </label>
-
-            <label className="block sm:col-span-2">
-              <span className="text-sm font-medium text-foreground">
-                Organisation or group (optional)
-              </span>
-              <input
-                value={group}
-                onChange={(e) => setGroup(e.target.value)}
-                placeholder="Company, college, family, friends…"
-                className={inputCls}
-              />
-            </label>
-          </div>
-
-          <fieldset className="mt-7">
-            <legend className="text-sm font-medium text-foreground">
-              T-shirt size
-            </legend>
-            <div className="mt-3 flex flex-wrap gap-2.5">
-              {tshirtSizes.map((s) => (
-                <label key={s} className="cursor-pointer">
-                  <input
-                    type="radio"
-                    name="tshirt"
-                    value={s}
-                    checked={size === s}
-                    onChange={() => setSize(s)}
-                    className="peer sr-only"
-                  />
-                  <span className="inline-flex min-w-14 items-center justify-center rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground transition-colors peer-checked:border-primary peer-checked:bg-primary peer-checked:text-primary-foreground peer-focus-visible:ring-2 peer-focus-visible:ring-primary">
-                    {s}
-                  </span>
-                </label>
-              ))}
+      <div className="mx-auto grid max-w-4xl gap-8 pb-20 md:grid-cols-2">
+        <div className="flex flex-col justify-between rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
+          <div>
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-wash text-primary">
+              <Mail className="h-6 w-6" />
             </div>
-            <p className="mt-2 text-xs text-muted-foreground">
-              Unisex fit. Sizes are subject to availability on event day.
+            <h2 className="mt-4 font-display text-2xl font-semibold text-foreground">
+              Get Notified
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Be the first to know when registrations launch and reserve your official PinkWalk t-shirt.
             </p>
-          </fieldset>
 
-          <label className="mt-7 block">
-            <span className="text-sm font-medium text-foreground">
-              Anything we should know? (optional)
-            </span>
-            <textarea
-              rows={3}
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              placeholder="Walking in memory of…, accessibility needs, number of friends joining…"
-              className={inputCls}
-            />
-          </label>
-
-          <button
-            type="submit"
-            className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-primary px-7 py-3 text-base font-semibold text-primary-foreground shadow-pink transition-transform hover:-translate-y-0.5 sm:w-auto"
-          >
-            Submit registration
-          </button>
-
-          {sent && (
-            <p className="mt-4 rounded-xl bg-pink-wash px-4 py-3 text-sm text-foreground">
-              Your email app should now open with your registration details —
-              just hit send. If it didn't, email us at{" "}
-              <a
-                href={`mailto:${contactEmail}`}
-                className="font-medium text-primary hover:underline"
+            <form onSubmit={handleNotifySubmit} className="mt-6 space-y-3">
+              <div>
+                <label htmlFor="email" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email address"
+                  className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-pink transition-transform hover:-translate-y-0.5"
               >
-                {contactEmail}
-              </a>
-              .
-            </p>
-          )}
-        </form>
+                Notify Me When Open
+              </button>
+            </form>
 
-        <aside className="space-y-4">
-          <div className="rounded-2xl border border-border bg-card p-6 shadow-soft">
-            <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-              Date
-            </p>
-            <p className="mt-1.5 font-display text-xl font-semibold text-foreground">
-              {thisYearEvent.date}
-            </p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {thisYearEvent.startTime}
-            </p>
+            {submitted && (
+              <div className="mt-4 flex items-start gap-2.5 rounded-xl bg-pink-wash p-3.5 text-xs text-foreground">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <span>
+                  Thank you! Your email client opened with a pre-filled request to{" "}
+                  <strong className="font-semibold">{contactEmail}</strong>.
+                </span>
+              </div>
+            )}
           </div>
 
-          <div className="rounded-2xl border border-border bg-card p-6 shadow-soft">
-            <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-              Route
-            </p>
-            <ol className="mt-3 space-y-2 text-sm text-foreground">
-              {thisYearEvent.routeStops.map((s, i) => (
-                <li key={s} className="flex items-start gap-2.5">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-[11px] font-semibold text-primary-foreground">
-                    {i + 1}
-                  </span>
-                  <span>{s}</span>
-                </li>
-              ))}
-            </ol>
-            <p className="mt-3 text-sm text-muted-foreground">
-              {thisYearEvent.distance} · {thisYearEvent.duration}
-            </p>
+          <div className="mt-6 border-t border-border/60 pt-4 text-xs text-muted-foreground">
+            Have group or sponsorship inquiries? Email us directly at{" "}
+            <a href={`mailto:${contactEmail}`} className="font-medium text-primary hover:underline">
+              {contactEmail}
+            </a>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <div className="rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
+            <h3 className="font-display text-lg font-semibold text-foreground">
+              Event Details
+            </h3>
+
+            <div className="mt-5 space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-pink-wash text-primary">
+                  <Calendar className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Date & Time
+                  </p>
+                  <p className="mt-0.5 font-medium text-foreground">{thisYearEvent.date}</p>
+                  <p className="text-xs text-muted-foreground">{thisYearEvent.startTime}</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-pink-wash text-primary">
+                  <MapPin className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Route
+                  </p>
+                  <p className="mt-0.5 font-medium text-foreground">{thisYearEvent.route.startFull}</p>
+                  <p className="text-xs text-muted-foreground">→ {thisYearEvent.route.endFull}</p>
+                  <p className="mt-1 text-xs font-medium text-primary">
+                    {thisYearEvent.distance} · {thisYearEvent.duration}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-2xl bg-pink-wash p-4 text-xs text-foreground">
+              <p className="font-semibold text-primary">What's included upon registration?</p>
+              <ul className="mt-1.5 list-inside list-disc space-y-1 text-muted-foreground">
+                <li>Official PinkWalk 2026 awareness t-shirt</li>
+                <li>Hydration & refreshment support along the route</li>
+                <li>Community unity & solidarity for breast cancer awareness</li>
+              </ul>
+            </div>
           </div>
 
-          <div className="rounded-3xl bg-pink-gradient p-6 text-primary-foreground shadow-pink">
-            <p className="font-display text-xl font-semibold">Questions?</p>
-            <p className="mt-2 text-sm text-white/90">
-              Reach out to {thisYearEvent.contactPersons.join(" or ")} at{" "}
-              <a
-                href={`mailto:${contactEmail}`}
-                className="font-semibold underline"
-              >
-                {contactEmail}
-              </a>
-            </p>
+          <div className="flex items-center justify-between rounded-2xl bg-pink-gradient p-5 text-primary-foreground shadow-pink">
+            <div>
+              <p className="font-display text-sm font-semibold">Explore 2023 Walk</p>
+              <p className="text-xs text-white/80">See highlights & photos from our last walk</p>
+            </div>
+            <Link
+              to="/past-event"
+              className="inline-flex items-center rounded-full bg-white/20 px-3.5 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/30"
+            >
+              View 2023 →
+            </Link>
           </div>
-        </aside>
+        </div>
       </div>
     </div>
   );
