@@ -73,9 +73,18 @@ export async function saveNotificationEmail(
 
     if (firestore) {
       const docRef = doc(firestore, "notifications", docId);
-      const docSnap = await getDoc(docRef);
+      let alreadyExists = false;
 
-      if (docSnap.exists()) {
+      try {
+        const docSnap = await getDoc(docRef);
+        if (docSnap && docSnap.exists()) {
+          alreadyExists = true;
+        }
+      } catch (readErr) {
+        console.warn("[Firebase] Could not check existing notification document:", readErr);
+      }
+
+      if (alreadyExists) {
         return { success: true, alreadyRegistered: true };
       }
 
@@ -124,9 +133,18 @@ export async function saveRegistration(registrationData: {
 
     if (firestore) {
       const docRef = doc(firestore, "registrations", docId);
-      const docSnap = await getDoc(docRef);
+      let alreadyExists = false;
 
-      if (docSnap.exists()) {
+      try {
+        const docSnap = await getDoc(docRef);
+        if (docSnap && docSnap.exists()) {
+          alreadyExists = true;
+        }
+      } catch (readErr) {
+        console.warn("[Firebase] Could not check existing registration document:", readErr);
+      }
+
+      if (alreadyExists) {
         return { success: true, alreadyRegistered: true };
       }
 
