@@ -111,8 +111,91 @@ function Hero() {
             See the 2023 walk →
           </Link>
         </div>
+
+        <CountdownTimer />
       </div>
     </section>
+  );
+}
+
+function CountdownTimer() {
+  const targetDate = new Date("2026-10-03T06:00:00+05:45").getTime();
+
+  const [timeLeft, setTimeLeft] = useState<{
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+    isFinished: boolean;
+  }>({ days: 0, hours: 0, minutes: 0, seconds: 0, isFinished: false });
+
+  useEffect(() => {
+    const calculateTime = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        setTimeLeft({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+          isFinished: true,
+        });
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / 1000 / 60) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+
+      setTimeLeft({ days, hours, minutes, seconds, isFinished: false });
+    };
+
+    calculateTime();
+    const timer = setInterval(calculateTime, 1000);
+    return () => clearInterval(timer);
+  }, [targetDate]);
+
+  if (timeLeft.isFinished) {
+    return (
+      <div className="mt-10 mx-auto max-w-xl rounded-2xl bg-white/15 px-6 py-4 text-center text-white backdrop-blur-md ring-1 ring-white/25">
+        <p className="font-display text-xl font-bold">
+          PinkWalk 2026 is Here! 🎉
+        </p>
+      </div>
+    );
+  }
+
+  const units = [
+    { label: "Days", value: timeLeft.days },
+    { label: "Hours", value: timeLeft.hours },
+    { label: "Minutes", value: timeLeft.minutes },
+    { label: "Seconds", value: timeLeft.seconds },
+  ];
+
+  return (
+    <div className="mt-12 mx-auto w-full max-w-xl">
+      <p className="text-xs font-semibold uppercase tracking-widest text-white/80 mb-3.5 text-center">
+        Countdown to October 3rd · 6:00 AM
+      </p>
+      <div className="grid grid-cols-4 gap-2.5 sm:gap-4">
+        {units.map((u) => (
+          <div
+            key={u.label}
+            className="flex flex-col items-center justify-center rounded-2xl bg-white/10 px-3 py-3.5 sm:py-4 backdrop-blur-md ring-1 ring-white/20 shadow-soft transition-transform hover:scale-[1.02]"
+          >
+            <span className="font-display text-2xl font-bold tracking-tight text-white sm:text-4xl">
+              {String(u.value).padStart(2, "0")}
+            </span>
+            <span className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-white/75 sm:text-xs">
+              {u.label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
