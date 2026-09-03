@@ -195,6 +195,12 @@ export const newsCoverage: LinkItem[] = [
     href: "https://www.youtube.com/watch?v=kE_rFTSKRQ0",
     note: "Kantipur TV",
   },
+  {
+    label:
+      "PINK WALK किन र के का लागि ? के Breast cancer पुरुषलाई पनि हुन सक्छ् त ?",
+    href: "https://www.youtube.com/watch?v=jljr1gbr2v0",
+    note: "Prime TV",
+  },
 ];
 
 export const photos: LinkItem[] = [

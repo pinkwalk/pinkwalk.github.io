@@ -37,6 +37,7 @@ function PastEvent() {
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
       <Hero />
       <Details />
+      <EventVideo />
       <Guests />
       <Objectives />
       <RouteStops />
@@ -99,6 +100,39 @@ function Details() {
           </p>
         </div>
       ))}
+    </section>
+  );
+}
+
+function EventVideo() {
+  return (
+    <section className="pb-16">
+      <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-end">
+        <div>
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            Event Video
+          </span>
+          <h2 className="mt-1 font-display text-2xl font-semibold text-foreground sm:text-3xl">
+            Watch PinkWalk 2023 Highlights
+          </h2>
+        </div>
+        <p className="max-w-md text-sm text-muted-foreground">
+          Highlights and moments from our inaugural walkathon for breast cancer
+          awareness.
+        </p>
+      </div>
+
+      <div className="mt-8 overflow-hidden rounded-3xl border border-border bg-card p-2 shadow-soft">
+        <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-black/90">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/Y0ILcpvJG-k"
+            title="PinkWalk 2023 Video Highlights"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full border-0"
+          />
+        </div>
+      </div>
     </section>
   );
 }
