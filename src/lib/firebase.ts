@@ -7,7 +7,12 @@ import {
   serverTimestamp,
   type Firestore,
 } from "firebase/firestore";
-import { getAnalytics, isSupported, logEvent, type Analytics } from "firebase/analytics";
+import {
+  getAnalytics,
+  isSupported,
+  logEvent,
+  type Analytics,
+} from "firebase/analytics";
 
 // Reads credentials from Vite environment variables (VITE_FIREBASE_*)
 const firebaseConfig = {
@@ -81,7 +86,10 @@ export async function saveNotificationEmail(
           alreadyExists = true;
         }
       } catch (readErr) {
-        console.warn("[Firebase] Could not check existing notification document:", readErr);
+        console.warn(
+          "[Firebase] Could not check existing notification document:",
+          readErr,
+        );
       }
 
       if (alreadyExists) {
@@ -141,7 +149,10 @@ export async function saveRegistration(registrationData: {
           alreadyExists = true;
         }
       } catch (readErr) {
-        console.warn("[Firebase] Could not check existing registration document:", readErr);
+        console.warn(
+          "[Firebase] Could not check existing registration document:",
+          readErr,
+        );
       }
 
       if (alreadyExists) {
@@ -170,7 +181,8 @@ export async function saveRegistration(registrationData: {
     console.error("[Firebase] Error saving registration:", err);
     return {
       success: false,
-      error: err instanceof Error ? err.message : "Failed to submit registration",
+      error:
+        err instanceof Error ? err.message : "Failed to submit registration",
     };
   }
 }

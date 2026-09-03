@@ -89,7 +89,8 @@ function Hero() {
 
         <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-white/85">
           PinkWalk is a community breast cancer awareness walk. This year we
-          walk from <strong className="font-semibold text-white">Basantapur</strong>{" "}
+          walk from{" "}
+          <strong className="font-semibold text-white">Basantapur</strong>{" "}
           (Kathmandu Durbar Square) to{" "}
           <strong className="font-semibold text-white">Mangal Bazar</strong>{" "}
           (Lalitpur Durbar Square) — about an hour through the heart of the
@@ -299,7 +300,6 @@ function RouteSection() {
           >
             Register now
           </Link>
-
         </div>
       </div>
     </section>

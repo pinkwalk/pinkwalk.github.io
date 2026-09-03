@@ -1,10 +1,17 @@
 import { Link } from "@tanstack/react-router";
-import { lastEventSiteUrl, contactEmail, thisYearEvent } from "@/lib/event-data";
+import {
+  lastEventSiteUrl,
+  contactEmail,
+  thisYearEvent,
+} from "@/lib/event-data";
 import logo from "@/assets/pinkwalk-logo.png";
 
 export function SiteFooter() {
   return (
-    <footer id="contact" className="mt-24 border-t border-border/60 bg-pink-wash">
+    <footer
+      id="contact"
+      className="mt-24 border-t border-border/60 bg-pink-wash"
+    >
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <img
@@ -66,12 +73,20 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="https://www.infinite.com" hash="partner" className="hover:text-primary">
+              <Link
+                to="https://www.infinite.com"
+                hash="partner"
+                className="hover:text-primary"
+              >
                 Infinite Nepal ↗
               </Link>
             </li>
             <li>
-              <Link to="https://cancercarenepal.org.np" hash="partner" className="hover:text-primary">
+              <Link
+                to="https://cancercarenepal.org.np"
+                hash="partner"
+                className="hover:text-primary"
+              >
                 Cancer Care Nepal ↗
               </Link>
             </li>

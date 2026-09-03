@@ -1,10 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import {
-  contactEmail,
-  thisYearEvent,
-  tshirtSizes,
-} from "@/lib/event-data";
+import { contactEmail, thisYearEvent, tshirtSizes } from "@/lib/event-data";
 import { saveRegistration } from "@/lib/firebase";
 
 export const Route = createFileRoute("/register2")({
@@ -198,9 +194,15 @@ function RegisterPage() {
           {sent && (
             <p className="mt-4 rounded-xl bg-pink-wash px-4 py-3 text-sm text-foreground">
               {isDuplicate ? (
-                <>This email address is already registered for PinkWalk 2026! We look forward to walking with you on October 3rd.</>
+                <>
+                  This email address is already registered for PinkWalk 2026! We
+                  look forward to walking with you on October 3rd.
+                </>
               ) : (
-                <>Thank you! Your registration for PinkWalk 2026 has been successfully confirmed.</>
+                <>
+                  Thank you! Your registration for PinkWalk 2026 has been
+                  successfully confirmed.
+                </>
               )}
             </p>
           )}

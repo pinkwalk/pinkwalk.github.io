@@ -13,7 +13,10 @@ export const Route = createFileRoute("/register")({
         content:
           "Registration for PinkWalk 2026 is opening soon. Join us on October 3rd, 2026 for the breast cancer awareness walk in Kathmandu Valley.",
       },
-      { property: "og:title", content: "Registration Opening Soon — PinkWalk 2026" },
+      {
+        property: "og:title",
+        content: "Registration Opening Soon — PinkWalk 2026",
+      },
       {
         property: "og:description",
         content:
@@ -63,10 +66,13 @@ function RegistrationComingSoonPage() {
         </h1>
 
         <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Online registration for {thisYearEvent.title} will open soon. Join us on{" "}
-          <strong className="font-semibold text-foreground">{thisYearEvent.dateNote}</strong>{" "}
-          as we walk together from {thisYearEvent.route.startLabel} to {thisYearEvent.route.endLabel}{" "}
-          for breast cancer awareness.
+          Online registration for {thisYearEvent.title} will open soon. Join us
+          on{" "}
+          <strong className="font-semibold text-foreground">
+            {thisYearEvent.dateNote}
+          </strong>{" "}
+          as we walk together from {thisYearEvent.route.startLabel} to{" "}
+          {thisYearEvent.route.endLabel} for breast cancer awareness.
         </p>
       </section>
 
@@ -80,7 +86,8 @@ function RegistrationComingSoonPage() {
               Get Notified
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Be the first to know when registrations launch and reserve your official PinkWalk t-shirt.
+              Be the first to know when registrations launch and reserve your
+              official PinkWalk t-shirt.
             </p>
 
             <form onSubmit={handleNotifySubmit} className="mt-6 space-y-3">
@@ -111,9 +118,15 @@ function RegistrationComingSoonPage() {
                 <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <span>
                   {isDuplicate ? (
-                    <>You are already registered for updates! We'll notify you as soon as registration launches.</>
+                    <>
+                      You are already registered for updates! We'll notify you
+                      as soon as registration launches.
+                    </>
                   ) : (
-                    <>Thank you! We've saved your email and will notify you as soon as registration opens.</>
+                    <>
+                      Thank you! We've saved your email and will notify you as
+                      soon as registration opens.
+                    </>
                   )}
                 </span>
               </div>
@@ -122,7 +135,10 @@ function RegistrationComingSoonPage() {
 
           <div className="mt-6 border-t border-border/60 pt-4 text-xs text-muted-foreground">
             Have group or sponsorship inquiries? Email us directly at{" "}
-            <a href={`mailto:${contactEmail}`} className="font-medium text-primary hover:underline">
+            <a
+              href={`mailto:${contactEmail}`}
+              className="font-medium text-primary hover:underline"
+            >
               {contactEmail}
             </a>
           </div>
@@ -143,8 +159,12 @@ function RegistrationComingSoonPage() {
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     Date & Time
                   </p>
-                  <p className="mt-0.5 font-medium text-foreground">{thisYearEvent.date}</p>
-                  <p className="text-xs text-muted-foreground">{thisYearEvent.startTime}</p>
+                  <p className="mt-0.5 font-medium text-foreground">
+                    {thisYearEvent.date}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {thisYearEvent.startTime}
+                  </p>
                 </div>
               </div>
 
@@ -156,8 +176,12 @@ function RegistrationComingSoonPage() {
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     Route
                   </p>
-                  <p className="mt-0.5 font-medium text-foreground">{thisYearEvent.route.startFull}</p>
-                  <p className="text-xs text-muted-foreground">→ {thisYearEvent.route.endFull}</p>
+                  <p className="mt-0.5 font-medium text-foreground">
+                    {thisYearEvent.route.startFull}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    → {thisYearEvent.route.endFull}
+                  </p>
                   <p className="mt-1 text-xs font-medium text-primary">
                     {thisYearEvent.distance} · {thisYearEvent.duration}
                   </p>
@@ -166,19 +190,27 @@ function RegistrationComingSoonPage() {
             </div>
 
             <div className="mt-6 rounded-2xl bg-pink-wash p-4 text-xs text-foreground">
-              <p className="font-semibold text-primary">What's included upon registration?</p>
+              <p className="font-semibold text-primary">
+                What's included upon registration?
+              </p>
               <ul className="mt-1.5 list-inside list-disc space-y-1 text-muted-foreground">
                 <li>Official PinkWalk 2026 awareness t-shirt</li>
                 <li>Hydration & refreshment support along the route</li>
-                <li>Community unity & solidarity for breast cancer awareness</li>
+                <li>
+                  Community unity & solidarity for breast cancer awareness
+                </li>
               </ul>
             </div>
           </div>
 
           <div className="flex items-center justify-between rounded-2xl bg-pink-gradient p-5 text-primary-foreground shadow-pink">
             <div>
-              <p className="font-display text-sm font-semibold">Explore 2023 Walk</p>
-              <p className="text-xs text-white/80">See highlights & photos from our last walk</p>
+              <p className="font-display text-sm font-semibold">
+                Explore 2023 Walk
+              </p>
+              <p className="text-xs text-white/80">
+                See highlights & photos from our last walk
+              </p>
             </div>
             <Link
               to="/past-event"

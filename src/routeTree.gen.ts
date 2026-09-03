@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PastEventRouteImport } from './routes/past-event'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as Register2RouteImport } from './routes/register2'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,44 @@ const RegisterRoute = RegisterRouteImport.update({
   path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Register2Route = Register2RouteImport.update({
+  id: '/register2',
+  path: '/register2',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/past-event': typeof PastEventRoute
   '/register': typeof RegisterRoute
+  '/register2': typeof Register2Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/past-event': typeof PastEventRoute
   '/register': typeof RegisterRoute
+  '/register2': typeof Register2Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/past-event': typeof PastEventRoute
   '/register': typeof RegisterRoute
+  '/register2': typeof Register2Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/past-event' | '/register'
+  fullPaths: '/' | '/past-event' | '/register' | '/register2'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/past-event' | '/register'
-  id: '__root__' | '/' | '/past-event' | '/register'
+  to: '/' | '/past-event' | '/register' | '/register2'
+  id: '__root__' | '/' | '/past-event' | '/register' | '/register2'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PastEventRoute: typeof PastEventRoute
   RegisterRoute: typeof RegisterRoute
+  Register2Route: typeof Register2Route
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/register2': {
+      id: '/register2'
+      path: '/register2'
+      fullPath: '/register2'
+      preLoaderRoute: typeof Register2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PastEventRoute: PastEventRoute,
   RegisterRoute: RegisterRoute,
+  Register2Route: Register2Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -132,7 +132,11 @@
     text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4, h5 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     font-family: var(--font-display);
     font-weight: 600;
     letter-spacing: -0.02em;
@@ -150,17 +154,33 @@
   /* Soft pink gradient wash used behind hero / sections */
   .bg-pink-wash {
     background:
-      radial-gradient(120% 90% at 12% 0%, oklch(0.95 0.06 5 / 0.9), transparent 55%),
-      radial-gradient(100% 80% at 100% 10%, oklch(0.92 0.05 15 / 0.85), transparent 50%),
+      radial-gradient(
+        120% 90% at 12% 0%,
+        oklch(0.95 0.06 5 / 0.9),
+        transparent 55%
+      ),
+      radial-gradient(
+        100% 80% at 100% 10%,
+        oklch(0.92 0.05 15 / 0.85),
+        transparent 50%
+      ),
       var(--background);
   }
 
   .bg-pink-gradient {
-    background: linear-gradient(135deg, oklch(0.66 0.235 0), oklch(0.58 0.2 350));
+    background: linear-gradient(
+      135deg,
+      oklch(0.66 0.235 0),
+      oklch(0.58 0.2 350)
+    );
   }
 
   .text-gradient-pink {
-    background: linear-gradient(120deg, oklch(0.55 0.2 5), oklch(0.62 0.22 350));
+    background: linear-gradient(
+      120deg,
+      oklch(0.55 0.2 5),
+      oklch(0.62 0.22 350)
+    );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -176,8 +196,13 @@
 }
 
 @keyframes ribbon-sway {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-8px) rotate(2deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
 }
 
 .animate-ribbon-sway {

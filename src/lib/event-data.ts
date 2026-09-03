@@ -7,7 +7,17 @@ import realLogo from "@/assets/real-logo.png";
 import wowLogo from "@/assets/wow-logo.png";
 import necassLogo from "@/assets/necass-logo.png";
 
-export type LinkItem = { label: string; href?: string; note?: string; logo?: string };
+import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
+import manishaImg from "@/assets/guests/manisha-koirala.jpg";
+import sumanaImg from "@/assets/guests/sumana-shrestha.jpg";
+import sugarikaImg from "@/assets/guests/sugarika-kc.jpg";
+
+export type LinkItem = {
+  label: string;
+  href?: string;
+  note?: string;
+  logo?: string;
+};
 
 export const contactEmail = "pinkwalknepal@gmail.com";
 
@@ -48,6 +58,39 @@ export const thisYearEvent = {
   contactPersons: ["Dijup Tuladhar", "Lijala Shrestha"],
 };
 
+export type GuestItem = {
+  name: string;
+  role?: string;
+  bio: string;
+  image?: string;
+};
+
+export const lastEventGuests: GuestItem[] = [
+  {
+    name: "Anuradha Koirala",
+    role: "Founder & Director, Maiti Nepal",
+    bio: "Anuradha Koirala is the founder and director of the non-profit organization, Maiti Nepal, which advocates against human trafficking and protecting women in Nepal. In 2006, Koirala received the Courage of Conscience Award from The Peace Abbey in Massachusetts. In addition, in 2010, she was awarded CNN Hero of the Year.",
+    image: anuradhaImg,
+  },
+  {
+    name: "Manisha Koirala",
+    role: "Nepalese Actress & Social Advocate",
+    bio: "Nepalese actress who works in Indian films, predominantly in Hindi films and has also worked in Nepali and English films. In 2001, the Government of Nepal awarded her with the Order of Gorkha Dakshina Bahu.",
+    image: manishaImg,
+  },
+  {
+    name: "Sumana Shrestha",
+    role: "Member of Parliament",
+    bio: "Nepalese politician, belonging to the Rastriya Swatantra Party. She is currently serving as a member of the House of Representatives in the 2nd Federal Parliament of Nepal.",
+    image: sumanaImg,
+  },
+  {
+    name: "Sugarika KC",
+    role: "Miss Nepal 2005 & Media Personality",
+    bio: "Was crowned as Miss Nepal in 2005 and represented Nepal in Miss World that was held in China. She has worked with NCRS, WWF, Rotary Nepal, CGNN, BDJ and various other organizations.",
+    image: sugarikaImg,
+  },
+];
 
 export const lastEvent = {
   year: 2023,
@@ -68,6 +111,7 @@ export const lastEvent = {
   ],
   about:
     "PinkWalk 2023 was a breast cancer awareness and fundraising walk organised by Cotiviti Nepal's CSR team in collaboration with Cancer Care Nepal. The walk moved through the heart of Kathmandu, raising awareness about breast cancer, promoting early detection, and raising funds to support individuals facing economic hardships in accessing treatment.",
+  guests: lastEventGuests,
   objectives: [
     {
       title: "Raise Awareness",
@@ -154,11 +198,26 @@ export const newsCoverage: LinkItem[] = [
 ];
 
 export const photos: LinkItem[] = [
-  { label: "Photo 1 — Aviskar Basnet", href: "https://photos.app.goo.gl/U1hSNcBomkwVsUpW6" },
-  { label: "Photo 2 — Narayan Thapa", href: "https://photos.app.goo.gl/iDMb431132WNLSZN9" },
-  { label: "Photo 3 — Jitendra Bajracharya", href: "https://pinkwalk.github.io/photo/2023/photo3/" },
-  { label: "Photo 4 — Sameer Tuladhar", href: "https://photos.app.goo.gl/tFQYHotPRqB42Yfd6" },
-  { label: "Photo 5 — Sagar Chudali", href: "https://photos.app.goo.gl/hCAuUWh8d5sEX1f69" },
+  {
+    label: "Photo 1 — Aviskar Basnet",
+    href: "https://photos.app.goo.gl/U1hSNcBomkwVsUpW6",
+  },
+  {
+    label: "Photo 2 — Narayan Thapa",
+    href: "https://photos.app.goo.gl/iDMb431132WNLSZN9",
+  },
+  {
+    label: "Photo 3 — Jitendra Bajracharya",
+    href: "https://pinkwalk.github.io/photo/2023/photo3/",
+  },
+  {
+    label: "Photo 4 — Sameer Tuladhar",
+    href: "https://photos.app.goo.gl/tFQYHotPRqB42Yfd6",
+  },
+  {
+    label: "Photo 5 — Sagar Chudali",
+    href: "https://photos.app.goo.gl/hCAuUWh8d5sEX1f69",
+  },
 ];
 
 export const lastEventSiteUrl = "https://pinkwalk.github.io/";

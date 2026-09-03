@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   lastEvent,
+  lastEventGuests,
   lastEventSiteUrl,
   newsCoverage,
   photos,
@@ -15,7 +16,7 @@ export const Route = createFileRoute("/past-event")({
       {
         name: "description",
         content:
-          "PinkWalk 2023: a 4 km breast cancer awareness walk from Narayanchaur to Swayambhu, Kathmandu. Route, objectives, partners, news coverage, and photos from the first walk.",
+          "PinkWalk 2023: a 4 km breast cancer awareness walk from Narayanchaur to Swayambhu, Kathmandu. Route, objectives, distinguished guests, partners, news coverage, and photos from the first walk.",
       },
       {
         property: "og:title",
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/past-event")({
       {
         property: "og:description",
         content:
-          "The first PinkWalk: 4 km through Kathmandu, September 30th 2023, organised by Cotiviti Nepal with Cancer Care Nepal.",
+          "The first PinkWalk: 4 km through Kathmandu, September 30th 2023, featuring guests Anuradha Koirala, Manisha Koirala, Sumana Shrestha, and Sugarika KC.",
       },
     ],
   }),
@@ -36,6 +37,7 @@ function PastEvent() {
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
       <Hero />
       <Details />
+      <Guests />
       <Objectives />
       <RouteStops />
       <Coverage />
@@ -97,6 +99,68 @@ function Details() {
           </p>
         </div>
       ))}
+    </section>
+  );
+}
+
+function Guests() {
+  return (
+    <section className="pb-16">
+      <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-end">
+        <div>
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            Distinguished Attendees
+          </span>
+          <h2 className="mt-1 font-display text-2xl font-semibold text-foreground sm:text-3xl">
+            Special Guests
+          </h2>
+        </div>
+        <p className="max-w-md text-sm text-muted-foreground">
+          Prominent personalities who joined and supported PinkWalk 2023 for
+          breast cancer awareness.
+        </p>
+      </div>
+
+      <div className="mt-8 grid gap-6 sm:grid-cols-2">
+        {lastEventGuests.map((guest) => (
+          <div
+            key={guest.name}
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-soft transition-all duration-200 hover:border-primary/50 hover:shadow-md"
+          >
+            <div>
+              <div className="flex items-start gap-4">
+                {guest.image ? (
+                  <img
+                    src={guest.image}
+                    alt={guest.name}
+                    className="h-16 w-16 shrink-0 rounded-full object-cover ring-2 ring-primary/20 shadow-sm transition-transform duration-200 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-primary/10 font-display text-lg font-bold text-primary">
+                    {guest.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
+                  </div>
+                )}
+                <div className="pt-1">
+                  <h3 className="font-display text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+                    {guest.name}
+                  </h3>
+                  {guest.role && (
+                    <p className="mt-0.5 text-xs font-medium text-primary">
+                      {guest.role}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                {guest.bio}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
@@ -209,9 +273,7 @@ function Gallery() {
             <p className="mt-2 text-sm font-medium text-foreground group-hover:text-primary">
               {p.label}
             </p>
-            <p className="mt-1 text-xs text-muted-foreground">
-              View album ↗
-            </p>
+            <p className="mt-1 text-xs text-muted-foreground">View album ↗</p>
           </a>
         ))}
       </div>
