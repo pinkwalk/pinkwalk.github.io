@@ -72,22 +72,25 @@ function Hero() {
             }`}
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-b from-plum/70 via-plum/45 to-plum/85 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-plum/85 via-plum/70 to-plum/95 z-10" />
+        <div className="absolute inset-0 bg-black/20 z-10" />
       </div>
 
       <div className="mx-auto flex min-h-[78vh] max-w-6xl flex-col justify-center px-4 py-24 text-center sm:px-6">
-        <span className="mx-auto inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm ring-1 ring-white/25">
+        <span className="mx-auto inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm ring-1 ring-white/25 shadow-sm">
           <span className="h-2 w-2 rounded-full bg-primary" />
           {thisYearEvent.date} · Kathmandu Valley
         </span>
 
-        <h1 className="mt-6 text-balance font-display text-5xl font-semibold leading-[1.05] text-white sm:text-6xl md:text-7xl">
+        <h1 className="mt-6 text-balance font-display text-5xl font-semibold leading-[1.05] text-white [text-shadow:_0_3px_16px_rgba(0,0,0,0.7)] sm:text-6xl md:text-7xl">
           Walk together.
           <br />
-          <span className="text-gradient-pink">Raise awareness.</span>
+          <span className="bg-gradient-to-r from-pink-200 via-rose-200 to-pink-300 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(190,24,93,0.9)]">
+            Raise awareness.
+          </span>
         </h1>
 
-        <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-white/85">
+        <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-white/95 [text-shadow:_0_1px_8px_rgba(0,0,0,0.6)]">
           PinkWalk is a community breast cancer awareness walk. This year we
           walk from{" "}
           <strong className="font-semibold text-white">Basantapur</strong>{" "}
