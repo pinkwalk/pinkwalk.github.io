@@ -6,6 +6,7 @@ import h2oLogo from "@/assets/h2o-logo.png";
 import realLogo from "@/assets/real-logo.png";
 import wowLogo from "@/assets/wow-logo.png";
 import necassLogo from "@/assets/necass-logo.png";
+import novalaLogo from "@/assets/novala-logo.svg";
 
 import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
 import manishaImg from "@/assets/guests/manisha-koirala.jpg";
@@ -141,6 +142,10 @@ export const partners: LinkItem[] = [
     label: "ISS Pvt. Ltd.",
     logo: issLogo,
   },
+  {
+    label: "Novala Biotech",
+    logo: novalaLogo,
+  },
   // { label: "The Kathmandu Post" },
   // {
   //   label: "Dabur Real",
@@ -150,10 +155,10 @@ export const partners: LinkItem[] = [
   //   label: "Pathao Nepal",
   //   logo: pathaoLogo,
   // },
-  // {
-  //   label: "World of Women Magazine",
-  //   logo: wowLogo,
-  // },
+  {
+    label: "World of Women Magazine",
+    logo: wowLogo,
+  },
   // {
   //   label: "H2O Drinking Water",
   //   logo: h2oLogo,
