@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PartnerRouteImport } from './routes/partner'
 import { Route as PastEventRouteImport } from './routes/past-event'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as Register2RouteImport } from './routes/register2'
@@ -17,6 +18,11 @@ import { Route as Register2RouteImport } from './routes/register2'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnerRoute = PartnerRouteImport.update({
+  id: '/partner',
+  path: '/partner',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PastEventRoute = PastEventRouteImport.update({
@@ -37,12 +43,14 @@ const Register2Route = Register2RouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/partner': typeof PartnerRoute
   '/past-event': typeof PastEventRoute
   '/register': typeof RegisterRoute
   '/register2': typeof Register2Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/partner': typeof PartnerRoute
   '/past-event': typeof PastEventRoute
   '/register': typeof RegisterRoute
   '/register2': typeof Register2Route
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/partner': typeof PartnerRoute
   '/past-event': typeof PastEventRoute
   '/register': typeof RegisterRoute
   '/register2': typeof Register2Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/past-event' | '/register' | '/register2'
+  fullPaths: '/' | '/partner' | '/past-event' | '/register' | '/register2'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/past-event' | '/register' | '/register2'
-  id: '__root__' | '/' | '/past-event' | '/register' | '/register2'
+  to: '/' | '/partner' | '/past-event' | '/register' | '/register2'
+  id: '__root__' | '/' | '/partner' | '/past-event' | '/register' | '/register2'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PartnerRoute: typeof PartnerRoute
   PastEventRoute: typeof PastEventRoute
   RegisterRoute: typeof RegisterRoute
   Register2Route: typeof Register2Route
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partner': {
+      id: '/partner'
+      path: '/partner'
+      fullPath: '/partner'
+      preLoaderRoute: typeof PartnerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/past-event': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PartnerRoute: PartnerRoute,
   PastEventRoute: PastEventRoute,
   RegisterRoute: RegisterRoute,
   Register2Route: Register2Route,

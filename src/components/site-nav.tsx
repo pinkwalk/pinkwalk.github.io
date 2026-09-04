@@ -5,6 +5,7 @@ const navLinks = [
   { label: "This Year", to: "/" as const, hash: "this-year" as const },
   { label: "The Cause", to: "/" as const, hash: "cause" as const },
   { label: "Route", to: "/" as const, hash: "route" as const },
+  { label: "Partner", to: "/partner" as const },
   { label: "Past Event", to: "/past-event" as const },
   { label: "Contact", to: "/" as const, hash: "contact" as const },
 ];

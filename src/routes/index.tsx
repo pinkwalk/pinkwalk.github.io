@@ -5,6 +5,7 @@ import heroImg2 from "@/assets/hero-walk2.jpg";
 import heroImg3 from "@/assets/hero-walk3.jpg";
 import heroImg4 from "@/assets/hero-walk4.jpg";
 import { thisYearEvent, partners, supporters } from "@/lib/event-data";
+import { PartnerCallout } from "@/components/PartnerCallout";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -123,6 +124,7 @@ function Hero() {
 
 function CountdownTimer() {
   const targetDate = new Date("2026-10-03T06:00:00+05:45").getTime();
+  const [mounted, setMounted] = useState(false);
 
   const [timeLeft, setTimeLeft] = useState<{
     days: number;
@@ -133,6 +135,7 @@ function CountdownTimer() {
   }>({ days: 0, hours: 0, minutes: 0, seconds: 0, isFinished: false });
 
   useEffect(() => {
+    setMounted(true);
     const calculateTime = () => {
       const now = new Date().getTime();
       const difference = targetDate - now;
@@ -172,10 +175,10 @@ function CountdownTimer() {
   }
 
   const units = [
-    { label: "Days", value: timeLeft.days },
-    { label: "Hours", value: timeLeft.hours },
-    { label: "Minutes", value: timeLeft.minutes },
-    { label: "Seconds", value: timeLeft.seconds },
+    { label: "Days", value: mounted ? timeLeft.days : 0 },
+    { label: "Hours", value: mounted ? timeLeft.hours : 0 },
+    { label: "Minutes", value: mounted ? timeLeft.minutes : 0 },
+    { label: "Seconds", value: mounted ? timeLeft.seconds : 0 },
   ];
 
   return (
@@ -429,6 +432,8 @@ function Partners() {
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <PartnerCallout className="mb-14" />
+
       <SectionHeading
         eyebrow="Together"
         title="Partners & supporters"

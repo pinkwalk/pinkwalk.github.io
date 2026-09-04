@@ -4,6 +4,8 @@ import {
   doc,
   getDoc,
   setDoc,
+  collection,
+  addDoc,
   serverTimestamp,
   type Firestore,
 } from "firebase/firestore";
@@ -13,6 +15,7 @@ import {
   logEvent,
   type Analytics,
 } from "firebase/analytics";
+import { sendPartnerNotificationEmail } from "./email-service";
 
 // Reads credentials from Vite environment variables (VITE_FIREBASE_*)
 const firebaseConfig = {
@@ -188,6 +191,81 @@ export async function saveRegistration(registrationData: {
 }
 
 /**
+ * Save partner inquiry application to Firestore `partner_inquiries` collection.
+ */
+export async function savePartnerInquiry(data: {
+  organizationName: string;
+  contactPerson: string;
+  designation?: string;
+  contactNumber: string;
+  email: string;
+  partnershipType: string;
+  contributionText: string;
+  website?: string;
+  source?: string;
+}): Promise<{ success: boolean; id?: string; error?: string }> {
+  try {
+    const firestore = getDb();
+    const cleanEmail = data.email.trim().toLowerCase();
+
+    if (firestore) {
+      const colRef = collection(firestore, "partner_inquiries");
+      const docRef = await addDoc(colRef, {
+        organizationName: data.organizationName.trim(),
+        contactPerson: data.contactPerson.trim(),
+        designation: data.designation?.trim() || "",
+        contactNumber: data.contactNumber.trim(),
+        email: cleanEmail,
+        partnershipType: data.partnershipType,
+        contributionText: data.contributionText.trim(),
+        website: data.website?.trim() || "",
+        status: "pending",
+        source: data.source || "website_partner_form",
+        createdAt: serverTimestamp(),
+      });
+
+      // Log Analytics Event
+      const ga = await initAnalytics();
+      if (ga) {
+        logEvent(ga, "partner_inquiry_submit", {
+          event_category: "lead",
+          partnership_type: data.partnershipType,
+        });
+      }
+
+      // Trigger Resend Email Notification (non-blocking for UI)
+      sendPartnerNotificationEmail({
+        organizationName: data.organizationName.trim(),
+        contactPerson: data.contactPerson.trim(),
+        designation: data.designation?.trim(),
+        contactNumber: data.contactNumber.trim(),
+        email: cleanEmail,
+        partnershipType: data.partnershipType,
+        contributionText: data.contributionText.trim(),
+        website: data.website?.trim(),
+        inquiryId: docRef.id,
+      }).catch((emailErr) => {
+        console.warn("[Firebase] Email notification trigger failed:", emailErr);
+      });
+
+      return { success: true, id: docRef.id };
+    }
+
+    return {
+      success: false,
+      error: "Firebase Firestore is not initialized",
+    };
+  } catch (err) {
+    console.error("[Firebase] Error saving partner inquiry:", err);
+    return {
+      success: false,
+      error:
+        err instanceof Error ? err.message : "Failed to submit partner inquiry",
+    };
+  }
+}
+
+/**
  * Track custom pageview in Google Analytics.
  */
 export async function trackPageView(pageName: string): Promise<void> {
@@ -204,3 +282,4 @@ export async function trackPageView(pageName: string): Promise<void> {
     console.warn("[Analytics] Pageview tracking warning:", err);
   }
 }
+

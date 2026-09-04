@@ -63,6 +63,11 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/partner" className="hover:text-primary">
+                Partner With Us
+              </Link>
+            </li>
+            <li>
               <Link to="/past-event" className="hover:text-primary">
                 PinkWalk 2023
               </Link>
@@ -73,22 +78,24 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link
-                to="https://www.infinite.com"
-                hash="partner"
+              <a
+                href="https://www.infinite.com"
+                target="_blank"
+                rel="noreferrer"
                 className="hover:text-primary"
               >
                 Infinite Nepal ↗
-              </Link>
+              </a>
             </li>
             <li>
-              <Link
-                to="https://cancercarenepal.org.np"
-                hash="partner"
+              <a
+                href="https://cancercarenepal.org.np"
+                target="_blank"
+                rel="noreferrer"
                 className="hover:text-primary"
               >
                 Cancer Care Nepal ↗
-              </Link>
+              </a>
             </li>
             {/* <li>
               <a
