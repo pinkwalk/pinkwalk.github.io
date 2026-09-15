@@ -7,6 +7,9 @@ import realLogo from "@/assets/real-logo.png";
 import wowLogo from "@/assets/wow-logo.png";
 import necassLogo from "@/assets/necass-logo.png";
 import novalaLogo from "@/assets/novala-logo.svg";
+import esewaLogo from "@/assets/esewa-logo.png";
+import kathmanduLogo from "@/assets/kmc-logo.png";
+import lalitpurLogo from "@/assets/lalitpur-logo.jpg";
 
 import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
 import manishaImg from "@/assets/guests/manisha-koirala.jpg";
@@ -28,7 +31,7 @@ export const thisYearEvent = {
   year: 2026,
   month: "October 2026",
   date: "October 3rd, 2026",
-  dateNote: "Saturday, October 3rd 2026",
+  dateNote: "शनिवार, आश्विन १९, २०८३",
   title: "PinkWalk 2026",
   tagline: "Basantapur → Mangal Bazar",
   route: {
@@ -134,6 +137,14 @@ export const lastEvent = {
 };
 
 export const partners: LinkItem[] = [
+  //{
+  //  label: "Kathmandu Metropolitan City",
+  //  logo: kathmanduLogo,
+  //},
+  //{
+  //  label: "Lalitpur Metropolitan City",
+  //  logo: lalitpurLogo,
+  //},
   {
     label: "National Hospital & Cancer Research Center",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuuhOx10oq8gPP0T7cRzQZsnS0z_XrPXkJdu6T-ayDkTWDhn2o7pFGomXe&s=10",
@@ -151,14 +162,18 @@ export const partners: LinkItem[] = [
   //   label: "Dabur Real",
   //   logo: realLogo,
   // },
-  // {
-  //   label: "Pathao Nepal",
-  //   logo: pathaoLogo,
-  // },
+  {
+    label: "Pathao Nepal",
+    logo: pathaoLogo,
+  },
   {
     label: "World of Women Magazine",
     logo: wowLogo,
   },
+  //{
+  //  label: "Esewa",
+  //  logo: esewaLogo,
+  //},
   // {
   //   label: "H2O Drinking Water",
   //   logo: h2oLogo,
