@@ -10,6 +10,7 @@ import novalaLogo from "@/assets/novala-logo.svg";
 import esewaLogo from "@/assets/esewa-logo.png";
 import kathmanduLogo from "@/assets/kmc-logo.png";
 import lalitpurLogo from "@/assets/lalitpur-logo.jpg";
+import tkpLogo from "@/assets/tkp-logo.png";
 
 import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
 import manishaImg from "@/assets/guests/manisha-koirala.jpg";
@@ -137,14 +138,7 @@ export const lastEvent = {
 };
 
 export const partners: LinkItem[] = [
-  //{
-  //  label: "Kathmandu Metropolitan City",
-  //  logo: kathmanduLogo,
-  //},
-  //{
-  //  label: "Lalitpur Metropolitan City",
-  //  logo: lalitpurLogo,
-  //},
+
   {
     label: "National Hospital & Cancer Research Center",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuuhOx10oq8gPP0T7cRzQZsnS0z_XrPXkJdu6T-ayDkTWDhn2o7pFGomXe&s=10",
@@ -157,7 +151,10 @@ export const partners: LinkItem[] = [
     label: "Novala Biotech",
     logo: novalaLogo,
   },
-  // { label: "The Kathmandu Post" },
+  {
+    label: "The Kathmandu Post",
+    logo: tkpLogo,
+  },
   // {
   //   label: "Dabur Real",
   //   logo: realLogo,
@@ -170,10 +167,10 @@ export const partners: LinkItem[] = [
     label: "World of Women Magazine",
     logo: wowLogo,
   },
-  //{
-  //  label: "Esewa",
-  //  logo: esewaLogo,
-  //},
+  {
+    label: "Esewa",
+    logo: esewaLogo,
+  },
   // {
   //   label: "H2O Drinking Water",
   //   logo: h2oLogo,
@@ -188,6 +185,14 @@ export const supporters: LinkItem[] = [
   // { label: "Miss Universe Nepal 2023" },
   // { label: "Center for American Medical Specialists" },
   // { label: "Ask Foundation" },
+  // {
+  //   label: "Lalitpur Metropolitan City",
+  //   logo: lalitpurLogo,
+  // },
+  // {
+  //   label: "Kathmandu Metropolitan City",
+  //   logo: kathmanduLogo,
+  // },
   {
     label: "Nepal Cancer Survivor's Society",
     logo: necassLogo,
