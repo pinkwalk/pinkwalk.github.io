@@ -10,14 +10,33 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AwarenessRouteImport } from './routes/awareness'
+import { Route as BrandingRouteImport } from './routes/branding'
 import { Route as PartnerRouteImport } from './routes/partner'
 import { Route as PastEventRouteImport } from './routes/past-event'
+import { Route as PressReleaseRouteImport } from './routes/press-release'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as Register2RouteImport } from './routes/register2'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AwarenessRoute = AwarenessRouteImport.update({
+  id: '/awareness',
+  path: '/awareness',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrandingRoute = BrandingRouteImport.update({
+  id: '/branding',
+  path: '/branding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PartnerRoute = PartnerRouteImport.update({
@@ -28,6 +47,11 @@ const PartnerRoute = PartnerRouteImport.update({
 const PastEventRoute = PastEventRouteImport.update({
   id: '/past-event',
   path: '/past-event',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PressReleaseRoute = PressReleaseRouteImport.update({
+  id: '/press-release',
+  path: '/press-release',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -43,38 +67,82 @@ const Register2Route = Register2RouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/awareness': typeof AwarenessRoute
+  '/branding': typeof BrandingRoute
   '/partner': typeof PartnerRoute
   '/past-event': typeof PastEventRoute
+  '/press-release': typeof PressReleaseRoute
   '/register': typeof RegisterRoute
   '/register2': typeof Register2Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/awareness': typeof AwarenessRoute
+  '/branding': typeof BrandingRoute
   '/partner': typeof PartnerRoute
   '/past-event': typeof PastEventRoute
+  '/press-release': typeof PressReleaseRoute
   '/register': typeof RegisterRoute
   '/register2': typeof Register2Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/awareness': typeof AwarenessRoute
+  '/branding': typeof BrandingRoute
   '/partner': typeof PartnerRoute
   '/past-event': typeof PastEventRoute
+  '/press-release': typeof PressReleaseRoute
   '/register': typeof RegisterRoute
   '/register2': typeof Register2Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/partner' | '/past-event' | '/register' | '/register2'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/awareness'
+    | '/branding'
+    | '/partner'
+    | '/past-event'
+    | '/press-release'
+    | '/register'
+    | '/register2'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/partner' | '/past-event' | '/register' | '/register2'
-  id: '__root__' | '/' | '/partner' | '/past-event' | '/register' | '/register2'
+  to:
+    | '/'
+    | '/about'
+    | '/awareness'
+    | '/branding'
+    | '/partner'
+    | '/past-event'
+    | '/press-release'
+    | '/register'
+    | '/register2'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/awareness'
+    | '/branding'
+    | '/partner'
+    | '/past-event'
+    | '/press-release'
+    | '/register'
+    | '/register2'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AwarenessRoute: typeof AwarenessRoute
+  BrandingRoute: typeof BrandingRoute
   PartnerRoute: typeof PartnerRoute
   PastEventRoute: typeof PastEventRoute
+  PressReleaseRoute: typeof PressReleaseRoute
   RegisterRoute: typeof RegisterRoute
   Register2Route: typeof Register2Route
 }
@@ -86,6 +154,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/awareness': {
+      id: '/awareness'
+      path: '/awareness'
+      fullPath: '/awareness'
+      preLoaderRoute: typeof AwarenessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/branding': {
+      id: '/branding'
+      path: '/branding'
+      fullPath: '/branding'
+      preLoaderRoute: typeof BrandingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/partner': {
@@ -100,6 +189,13 @@ declare module '@tanstack/react-router' {
       path: '/past-event'
       fullPath: '/past-event'
       preLoaderRoute: typeof PastEventRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/press-release': {
+      id: '/press-release'
+      path: '/press-release'
+      fullPath: '/press-release'
+      preLoaderRoute: typeof PressReleaseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -121,8 +217,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AwarenessRoute: AwarenessRoute,
+  BrandingRoute: BrandingRoute,
   PartnerRoute: PartnerRoute,
   PastEventRoute: PastEventRoute,
+  PressReleaseRoute: PressReleaseRoute,
   RegisterRoute: RegisterRoute,
   Register2Route: Register2Route,
 }

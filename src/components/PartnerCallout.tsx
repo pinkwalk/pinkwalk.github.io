@@ -42,15 +42,20 @@ export function PartnerCallout({ className = "" }: PartnerCalloutProps) {
             </h2>
 
             <p className="mt-4 max-w-xl text-pretty text-sm sm:text-base leading-relaxed text-white/85">
-              We invite media houses, healthcare institutions, corporate organizations, logistics providers, and community networks to join hands with us. Help us expand our reach and impact across the Kathmandu Valley.
+              We invite media houses, healthcare institutions, corporate
+              organizations, logistics providers, and community networks to join
+              hands with us. Help us expand our reach and impact across the
+              Kathmandu Valley.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2 text-xs font-medium text-white/90">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15">
-                <Megaphone className="h-3.5 w-3.5 text-primary" /> Media & Coverage
+                <Megaphone className="h-3.5 w-3.5 text-primary" /> Media &
+                Coverage
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15">
-                <Stethoscope className="h-3.5 w-3.5 text-primary" /> Health & Screening
+                <Stethoscope className="h-3.5 w-3.5 text-primary" /> Health &
+                Screening
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15">
                 <Truck className="h-3.5 w-3.5 text-primary" /> Logistics & Water
@@ -89,7 +94,9 @@ export function PartnerCallout({ className = "" }: PartnerCalloutProps) {
             <ul className="mt-3 space-y-2 text-xs text-white/80 text-left">
               <li className="flex items-start gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
-                <span>Direct engagement with thousands of event participants</span>
+                <span>
+                  Direct engagement with thousands of event participants
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
@@ -97,7 +104,9 @@ export function PartnerCallout({ className = "" }: PartnerCalloutProps) {
               </li>
               <li className="flex items-start gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
-                <span>Demonstrate health awareness & social impact leadership</span>
+                <span>
+                  Demonstrate health awareness & social impact leadership
+                </span>
               </li>
             </ul>
           </div>

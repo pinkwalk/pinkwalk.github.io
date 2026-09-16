@@ -1,5 +1,7 @@
 // Shared PinkWalk event data — used across routes.
 import issLogo from "@/assets/iss-logo.png";
+import infiniteLogo from "@/assets/infinite-logo.jpg";
+import cancercareLogo from "@/assets/cancercare-logo.jpg";
 import pathaoLogo from "@/assets/pathao-logo.png";
 import jeeveeLogo from "@/assets/jeevee-logo.svg";
 import h2oLogo from "@/assets/h2o-logo.png";
@@ -138,6 +140,17 @@ export const lastEvent = {
   ],
 };
 
+export const organizersList: LinkItem[] = [
+  {
+    label: "Infinite Software Services Nepal Pvt. Ltd.",
+    logo: infiniteLogo,
+  },
+  {
+    label: "Cancer Care Nepal",
+    logo: cancercareLogo,
+  },
+];
+
 export const partners: LinkItem[] = [
 
   {
@@ -204,7 +217,300 @@ export const supporters: LinkItem[] = [
   },
 ];
 
-export const newsCoverage: LinkItem[] = [
+export const newsCoverage2026: LinkItem[] = [
+  {
+    label: "PinkWalk 2026 being organized for breast cancer awareness",
+    href: "https://www.onlinekhabar.com/2026/09/2018207/pink-walk-2026-being-organized-for-breast-cancer-awareness",
+    note: "Online Khabar",
+  },
+  {
+    label: "PinkWalk 2026 to bring community together for breast cancer awareness & support",
+    href: "https://english.makalukhabar.com/pinkwalk-2026-to-bring-community-together-for-breast-cancer-awareness-support/",
+    note: "Makalu Khabar",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://kendrabindu.com/health/555687/",
+    note: "Kendrabindu",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक-२०२६’ आयोजना हुँदै",
+    href: "https://www.kathmandupati.com/news/brest-cancer-2/429280/",
+    note: "Kathmandu Pati",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://biznessnews.com/posts/56365",
+    note: "Bizness News",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://equitynepal.com/2026/09/16/101871/",
+    note: "Equity Nepal",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://newsinnepal.com/2026/09/16/12/33912/",
+    note: "News In Nepal",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://corporatesamachar.com/2026/09/85363/",
+    note: "Corporate Samachar",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.corporatenepal.com/story/286678",
+    note: "Corporate Nepal",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.prabhabonline.com/detail/106269",
+    note: "Prabhab Online",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://corporatekhabar.com/breast-cancer-awareness/",
+    note: "Corporate Khabar",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.souryaonline.com/2026/09/732618.html",
+    note: "Sourya Online",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://aarthiknews.com/news/127406/-pinkwalk-2026--is-being-organized-on-october/",
+    note: "Aarthik News",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://kharibot.com/news-details/200994/2026-09-16",
+    note: "Kharibot",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.deshkonews.com/archives/275301",
+    note: "Deshko News",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.ktmvoice.com/news/118240.html/",
+    note: "KTM Voice",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.arthatantra.com/2026/09/16/231849/",
+    note: "Arthatantra",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://nayasadak.com/details/70567",
+    note: "Naya Sadak",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://kalikakhabar.com/s-tn-k-yan-sr-schetnaka-lagi-pinkwak-2026-aayojna-hundai/",
+    note: "Kalika Khabar",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.hulaksanchar.com/2026/09/16/11/121012/",
+    note: "Hulak Sanchar",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://bizpati.com/2026/09/219338/",
+    note: "Bizpati",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.madhyantar.com/samachar/165350",
+    note: "Madhyantar",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.news24nepal.com/detail/13734",
+    note: "News24 Nepal",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://np.ictframe.com/pink-walk-breast-cancer-awareness/",
+    note: "ICT Frame",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.diyopost.com/09/167221/",
+    note: "Diyo Post",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://arthakagaj.com/news/52512638",
+    note: "Artha Kagaj",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://nagariknews.nagariknetwork.com/health/pink-walk-2026-being-organized-for-breast-cancer-awareness-28-24.html",
+    note: "Nagarik News",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://annapurnapost.com/story/507679/",
+    note: "Annapurna Post",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://deshsanchar.com/2026/09/16/1228539/",
+    note: "Desh Sanchar",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://arthasanjal.com/192762",
+    note: "Artha Sanjal",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.nayapatrikadaily.com/news-details/204784/2026-09-16",
+    note: "Nayapatrika Daily",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://aarthikvoice.com/health/pink-walk",
+    note: "Aarthik Voice",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://dainiki.com/421077/",
+    note: "Dainiki",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.samadhannews.com/2026/09/16/151504/",
+    note: "Samadhan News",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://notebazar.com/news/2026/09/16/167805/",
+    note: "NoteBazar",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.eaarthik.com/2026/09/161418/",
+    note: "Eaarthik",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://nepalraibar.com/posts/298882",
+    note: "Nepal Raibar",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://arthabazar.com/133738",
+    note: "Arthabazar",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.thahakhabar.com/detail/308788",
+    note: "Thaha Khabar",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://insurancekhabar.com/pinkwalk-2026-to-raise-awareness-about-breast-cancer/",
+    note: "Insurance Khabar",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://clickmandu.com/2026/09/491857.html",
+    note: "Clickmandu",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.reportersnepal.com/2026/09/1248060/",
+    note: "Reporters Nepal",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://instakhabar.com/news/73215/",
+    note: "Insta Khabar",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://bizkhabar.com/263633",
+    note: "Bizkhabar",
+  },
+  {
+    label: "PinkWalk 2026 to Bring the Community Together for Breast Cancer Awareness and Support",
+    href: "https://arthapranali.com/2026/09/35224/",
+    note: "Artha Pranali",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://baahrakhari.com/detail/501546",
+    note: "Baahrakhari",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://aarthikplus.com/2026/09/16/138054/",
+    note: "Aarthik Plus",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.samajikweekly.com/health/74921/",
+    note: "Samajik Weekly",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://healthbani.com/2026/09/13224/news/",
+    note: "Health Bani",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.samacharpati.com/samaj/487334.html",
+    note: "Samacharpati",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://lokaantar.com/story/328975/2026/9/16/market/pinkwalk-",
+    note: "Lokaantar",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://abcnews.com.np/%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A4%A8-%E0%A4%95%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%A8%E0%A5%8D%E0%A4%B8%E0%A4%B0-%E0%A4%B8%E0%A4%9A%E0%A5%87%E0%A4%A4%E0%A4%A8%E0%A4%BE%E0%A4%95%E0%A4%BE-%E0%A4%B2/",
+    note: "ABC News",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://hamroartha.com/news/135799",
+    note: "Hamro Artha",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.lokpath.com/story/906142/",
+    note: "Lokpath",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://www.capitalnepal.com/detail/85595",
+    note: "Capital Nepal",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://sunaulonepal.com/content/420052",
+    note: "Sunaulo Nepal",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://khabarhub.com/2026/16/1025012/",
+    note: "Khabarhub",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
+    href: "https://shilapatra.com/detail/194974",
+    note: "Shilapatra",
+  },
+];
+
+export const newsCoverage2023: LinkItem[] = [
   {
     label: "A walkathon for breast cancer awareness",
     href: "https://kathmandupost.com/art-culture/2023/09/28/a-walkathon-for-breast-cancer-awareness",
@@ -232,6 +538,8 @@ export const newsCoverage: LinkItem[] = [
     note: "Prime TV",
   },
 ];
+
+export const newsCoverage: LinkItem[] = newsCoverage2026;
 
 export const photos: LinkItem[] = [
   {

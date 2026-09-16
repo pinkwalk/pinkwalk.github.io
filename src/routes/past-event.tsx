@@ -3,7 +3,7 @@ import {
   lastEvent,
   lastEventGuests,
   lastEventSiteUrl,
-  newsCoverage,
+  newsCoverage2023,
   photos,
 } from "@/lib/event-data";
 
@@ -259,7 +259,7 @@ function Coverage() {
         News coverage
       </h2>
       <ul className="mt-8 divide-y divide-border">
-        {newsCoverage.map((n) => (
+        {newsCoverage2023.map((n) => (
           <li key={n.label}>
             <a
               href={n.href}

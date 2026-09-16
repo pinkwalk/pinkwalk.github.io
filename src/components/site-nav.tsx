@@ -3,6 +3,8 @@ import logo from "@/assets/pinkwalk-logo.png";
 
 const navLinks = [
   { label: "This Year", to: "/" as const, hash: "this-year" as const },
+  { label: "BSE Guide", to: "/awareness" as const },
+  { label: "About Us", to: "/about" as const },
   { label: "The Cause", to: "/" as const, hash: "cause" as const },
   { label: "Route", to: "/" as const, hash: "route" as const },
   { label: "Partner", to: "/partner" as const },
@@ -12,7 +14,7 @@ const navLinks = [
 
 export function SiteNav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md print:hidden">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link to="/" className="flex items-center">
           <img

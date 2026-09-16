@@ -30,7 +30,8 @@ export function PartnerFormModal({
             Partner with PinkWalk 2026
           </DialogTitle>
           <DialogDescription className="text-sm text-muted-foreground">
-            Join us as an event partner to amplify breast cancer awareness across Nepal. Fill out your organization details below.
+            Join us as an event partner to amplify breast cancer awareness
+            across Nepal. Fill out your organization details below.
           </DialogDescription>
         </DialogHeader>
 

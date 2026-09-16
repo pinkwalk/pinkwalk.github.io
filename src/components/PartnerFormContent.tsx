@@ -69,7 +69,10 @@ export function PartnerFormContent({
     });
 
     if (!res.success) {
-      console.warn("[Partner Form] Firestore save failed, attempting direct Resend dispatch:", res.error);
+      console.warn(
+        "[Partner Form] Firestore save failed, attempting direct Resend dispatch:",
+        res.error,
+      );
       const emailRes = await sendPartnerNotificationEmail({
         organizationName,
         contactPerson,
@@ -122,8 +125,11 @@ export function PartnerFormContent({
           Partnership Application Submitted!
         </h3>
         <p className="mt-2 max-w-md text-sm text-muted-foreground leading-relaxed">
-          Thank you, <strong className="text-foreground">{contactPerson}</strong> from{" "}
-          <strong className="text-foreground">{organizationName}</strong>. Our partnership team will review your proposal and get in touch with you shortly.
+          Thank you,{" "}
+          <strong className="text-foreground">{contactPerson}</strong> from{" "}
+          <strong className="text-foreground">{organizationName}</strong>. Our
+          partnership team will review your proposal and get in touch with you
+          shortly.
         </p>
         <div className="mt-6 rounded-2xl bg-card border border-border p-4 text-xs text-muted-foreground w-full max-w-sm">
           <div className="flex items-center justify-center gap-2 font-medium text-foreground mb-1">
@@ -178,7 +184,9 @@ export function PartnerFormContent({
           </label>
           <select
             value={partnershipType}
-            onChange={(e) => setPartnershipType(e.target.value as PartnershipCategory)}
+            onChange={(e) =>
+              setPartnershipType(e.target.value as PartnershipCategory)
+            }
             className={`${inputCls} cursor-pointer`}
           >
             {partnershipCategories.map((cat) => (
@@ -264,7 +272,8 @@ export function PartnerFormContent({
 
       <div>
         <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          How can your organization contribute to PinkWalk? <span className="text-primary">*</span>
+          How can your organization contribute to PinkWalk?{" "}
+          <span className="text-primary">*</span>
         </label>
         <textarea
           required
@@ -299,7 +308,8 @@ export function PartnerFormContent({
       </button>
 
       <p className="text-center text-[11px] text-muted-foreground">
-        By submitting, you agree to allow the PinkWalk organizing committee to contact you regarding event partnership.
+        By submitting, you agree to allow the PinkWalk organizing committee to
+        contact you regarding event partnership.
       </p>
     </form>
   );

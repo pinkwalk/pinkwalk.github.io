@@ -2,7 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { thisYearEvent, contactEmail } from "@/lib/event-data";
 import { partnershipCategories } from "@/lib/partner-data";
 import { PartnerFormContent } from "@/components/PartnerFormContent";
-import { Handshake, Megaphone, Heart, Users, Mail, CheckCircle2 } from "lucide-react";
+import {
+  Handshake,
+  Megaphone,
+  Heart,
+  Users,
+  Mail,
+  CheckCircle2,
+} from "lucide-react";
 
 export const Route = createFileRoute("/partner")({
   head: () => ({
@@ -42,7 +49,9 @@ function PartnerPage() {
         </h1>
 
         <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-          PinkWalk brings together thousands of citizens across the Kathmandu Valley to walk for breast cancer awareness, early detection, and solidarity. Join us as an official partner to amplify this cause.
+          PinkWalk brings together thousands of citizens across the Kathmandu
+          Valley to walk for breast cancer awareness, early detection, and
+          solidarity. Join us as an official partner to amplify this cause.
         </p>
       </section>
 
@@ -56,7 +65,8 @@ function PartnerPage() {
               <span>Partnership Application Form</span>
             </h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              Please share your organization details and proposal. Our organizing committee will connect with you within 24–48 hours.
+              Please share your organization details and proposal. Our
+              organizing committee will connect with you within 24–48 hours.
             </p>
           </div>
 
@@ -93,7 +103,8 @@ function PartnerPage() {
               Direct Inquiries
             </h4>
             <p className="mt-1 text-xs text-muted-foreground">
-              Prefer to email us directly or request an official proposal document?
+              Prefer to email us directly or request an official proposal
+              document?
             </p>
             <a
               href={`mailto:${contactEmail}`}

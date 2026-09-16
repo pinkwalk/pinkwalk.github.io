@@ -44,7 +44,7 @@
   --color-cream: var(--cream);
   --color-plum: var(--plum);
 
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-display: "Sen", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -61,7 +61,7 @@
   --popover-foreground: oklch(0.28 0.05 385);
 
   /* Vivid awareness pink */
-  --primary: oklch(0.63 0.235 0);
+  --primary: #EC008C;
   --primary-foreground: oklch(0.99 0.004 385);
 
   --secondary: oklch(0.95 0.03 5);
@@ -78,7 +78,7 @@
 
   --border: oklch(0.9 0.03 385);
   --input: oklch(0.9 0.03 385);
-  --ring: oklch(0.63 0.235 0);
+  --ring: #EC008C;
 
   /* Custom pinks */
   --rose: oklch(0.55 0.2 5);
@@ -86,7 +86,7 @@
   --cream: oklch(0.992 0.008 385);
   --plum: oklch(0.34 0.09 350);
 
-  --chart-1: oklch(0.63 0.235 0);
+  --chart-1: #EC008C;
   --chart-2: oklch(0.55 0.2 350);
   --chart-3: oklch(0.72 0.13 15);
   --chart-4: oklch(0.6 0.18 330);
@@ -147,6 +147,7 @@
   .text-balance {
     text-wrap: balance;
   }
+
   .text-pretty {
     text-wrap: pretty;
   }
@@ -154,33 +155,25 @@
   /* Soft pink gradient wash used behind hero / sections */
   .bg-pink-wash {
     background:
-      radial-gradient(
-        120% 90% at 12% 0%,
+      radial-gradient(120% 90% at 12% 0%,
         oklch(0.95 0.06 5 / 0.9),
-        transparent 55%
-      ),
-      radial-gradient(
-        100% 80% at 100% 10%,
+        transparent 55%),
+      radial-gradient(100% 80% at 100% 10%,
         oklch(0.92 0.05 15 / 0.85),
-        transparent 50%
-      ),
+        transparent 50%),
       var(--background);
   }
 
   .bg-pink-gradient {
-    background: linear-gradient(
-      135deg,
-      oklch(0.66 0.235 0),
-      oklch(0.58 0.2 350)
-    );
+    background: linear-gradient(135deg,
+        oklch(0.66 0.235 0),
+        oklch(0.58 0.2 350));
   }
 
   .text-gradient-pink {
-    background: linear-gradient(
-      120deg,
-      oklch(0.55 0.2 5),
-      oklch(0.62 0.22 350)
-    );
+    background: linear-gradient(120deg,
+        oklch(0.55 0.2 5),
+        oklch(0.62 0.22 350));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -196,10 +189,12 @@
 }
 
 @keyframes ribbon-sway {
+
   0%,
   100% {
     transform: translateY(0) rotate(-2deg);
   }
+
   50% {
     transform: translateY(-8px) rotate(2deg);
   }
@@ -207,4 +202,76 @@
 
 .animate-ribbon-sway {
   animation: ribbon-sway 6s ease-in-out infinite;
+}
+
+/* Print Stylesheet for Press Releases & Documents */
+@media print {
+  @page {
+    margin: 15mm 15mm 15mm 15mm;
+    size: A4 portrait;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #111111 !important;
+    font-size: 11pt !important;
+    line-height: 1.6 !important;
+    font-family: Georgia, ui-serif, serif !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  header,
+  footer,
+  nav,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  .print\:block {
+    display: block !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: #000000 !important;
+  }
+
+  article {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: transparent !important;
+  }
+
+  .bg-pink-wash,
+  .bg-muted,
+  .bg-accent,
+  .bg-card,
+  .bg-background {
+    background: transparent !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: #000000 !important;
+    page-break-after: avoid;
+  }
+
+  p,
+  li {
+    color: #111111 !important;
+  }
+
+  blockquote,
+  .border-l-4 {
+    border-left-color: #000000 !important;
+    background-color: #f9f9f9 !important;
+    page-break-inside: avoid;
+  }
 }

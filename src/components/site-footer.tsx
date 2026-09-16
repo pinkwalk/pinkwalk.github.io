@@ -10,7 +10,7 @@ export function SiteFooter() {
   return (
     <footer
       id="contact"
-      className="mt-24 border-t border-border/60 bg-pink-wash"
+      className="mt-24 border-t border-border/60 bg-pink-wash print:hidden"
     >
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
@@ -58,6 +58,16 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/about" className="hover:text-primary">
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link to="/awareness" className="hover:text-primary">
+                Breast Self-Exam Guide
+              </Link>
+            </li>
+            <li>
               <Link to="/register" className="hover:text-primary">
                 Register
               </Link>
@@ -73,7 +83,7 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="/past-event" hash="news" className="hover:text-primary">
+              <Link to="/press-release" hash="news" className="hover:text-primary">
                 News Coverage
               </Link>
             </li>
@@ -97,24 +107,35 @@ export function SiteFooter() {
                 Cancer Care Nepal ↗
               </a>
             </li>
-            {/* <li>
-              <a
-                href={lastEventSiteUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-primary"
-              >
-                2023 event site ↗
-              </a>
-            </li> */}
+            <li>
+              <Link to="/branding" className="hover:text-primary">
+                Branding & Media Kit
+              </Link>
+            </li>
+            <li>
+              <Link to="/press-release" className="hover:text-primary">
+                Press Releases
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
 
       <div className="border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-4 py-5 text-xs text-muted-foreground sm:px-6">
-          © {new Date().getFullYear()} PinkWalk — Infinite Care. Made with care
-          for breast cancer awareness.
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-muted-foreground sm:flex-row sm:px-6">
+          <p>
+            © {new Date().getFullYear()} PinkWalk — Infinite Care. Made with care
+            for breast cancer awareness.
+          </p>
+          <div className="flex items-center gap-4 font-medium">
+            <Link to="/branding" className="hover:text-primary">
+              Branding & Media Kit
+            </Link>
+            <span>·</span>
+            <Link to="/press-release" className="hover:text-primary">
+              Press Releases
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

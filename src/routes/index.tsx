@@ -4,7 +4,7 @@ import heroImg from "@/assets/hero-walk.jpg";
 import heroImg2 from "@/assets/hero-walk2.jpg";
 import heroImg3 from "@/assets/hero-walk3.jpg";
 import heroImg4 from "@/assets/hero-walk4.jpg";
-import { thisYearEvent, partners, supporters } from "@/lib/event-data";
+import { thisYearEvent, organizersList, partners, supporters, newsCoverage2026 } from "@/lib/event-data";
 import { PartnerCallout } from "@/components/PartnerCallout";
 
 export const Route = createFileRoute("/")({
@@ -39,6 +39,7 @@ function Index() {
       <ThisYear />
       <Cause />
       <RouteSection />
+      <NewsCoverageSection />
       <PastEventTeaser />
       <Partners />
     </>
@@ -66,11 +67,10 @@ function Hero() {
             alt={`Crowd walking together in pink for breast cancer awareness - slide ${idx + 1}`}
             width={1920}
             height={1280}
-            className={`absolute inset-0 h-full w-full object-cover transition-all duration-[2500ms] ease-in-out ${
-              idx === currentIdx
+            className={`absolute inset-0 h-full w-full object-cover transition-all duration-[2500ms] ease-in-out ${idx === currentIdx
                 ? "opacity-100 scale-105"
                 : "opacity-0 scale-100"
-            }`}
+              }`}
           />
         ))}
         <div className="absolute inset-0 bg-gradient-to-b from-plum/85 via-plum/70 to-plum/95 z-10" />
@@ -395,6 +395,56 @@ function RouteSection() {
   );
 }
 
+function NewsCoverageSection() {
+  const featuredCoverage = newsCoverage2026.slice(0, 4);
+
+  return (
+    <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <SectionHeading
+        eyebrow="In The News"
+        title="PinkWalk 2026 media coverage"
+        subtitle={`Featured coverage from leading media outlets. Over ${newsCoverage2026.length} national news platforms have highlighted PinkWalk 2026.`}
+      />
+
+      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {featuredCoverage.map((n) => (
+          <a
+            key={n.href}
+            href={n.href}
+            target="_blank"
+            rel="noreferrer"
+            className="group flex flex-col justify-between rounded-2xl border border-border bg-card p-6 shadow-soft transition-all hover:border-primary/40 hover:-translate-y-1 hover:shadow-md"
+          >
+            <div>
+              <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                {n.note}
+              </span>
+              <h3 className="mt-3 font-display text-sm font-semibold leading-snug text-foreground group-hover:text-primary transition-colors">
+                {n.label}
+              </h3>
+            </div>
+            <div className="mt-6 flex items-center justify-between border-t border-border/60 pt-4 text-xs font-semibold text-primary">
+              <span>Read article</span>
+              <span className="transition-transform group-hover:translate-x-1">↗</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div className="mt-10 text-center">
+        <Link
+          to="/press-release"
+          hash="news"
+          className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-6 py-3 text-sm font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground hover:shadow-sm"
+        >
+          <span>Explore all {newsCoverage2026.length}+ media articles in our Press Room</span>
+          <span className="text-base">→</span>
+        </Link>
+      </div>
+    </section>
+  );
+}
+
 function PastEventTeaser() {
   return (
     <section className="bg-pink-wash">
@@ -440,7 +490,28 @@ function Partners() {
         subtitle="PinkWalk is made possible by the organisations that walk, fund, and amplify the cause."
       />
 
-      <div className="mt-8">
+      {/* <div className="mt-8">
+        <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+          Organized by
+        </p>
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-2xl">
+          {organizersList.map((o) => (
+            <div
+              key={o.label}
+              className="flex items-center justify-center rounded-2xl border border-primary/30 bg-card p-6 shadow-soft hover:border-primary transition-all"
+            >
+              <img
+                src={o.logo}
+                alt={o.label}
+                className="max-h-16 w-full max-w-[200px] object-contain"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div> */}
+
+      <div className="mt-12">
         <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           Partners
         </p>

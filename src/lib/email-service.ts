@@ -40,20 +40,26 @@ export const sendPartnerNotificationEmailServer = createServerFn({
     }
     return data;
   })
-  .handler(async ({ data }): Promise<{ success: boolean; id?: string; error?: string }> => {
-    // Server-side environment key resolution (Server process.env prioritized over VITE_ bundle)
-    const apiKey =
-      process.env.RESEND_API_KEY ||
-      process.env.VITE_RESEND_EMAIL_API ||
-      import.meta.env.VITE_RESEND_EMAIL_API ||
-      "";
+  .handler(
+    async ({
+      data,
+    }): Promise<{ success: boolean; id?: string; error?: string }> => {
+      // Server-side environment key resolution (Server process.env prioritized over VITE_ bundle)
+      const apiKey =
+        process.env.RESEND_API_KEY ||
+        process.env.VITE_RESEND_EMAIL_API ||
+        import.meta.env.VITE_RESEND_EMAIL_API ||
+        "";
 
-    if (!apiKey || apiKey.includes("your_") || apiKey.trim() === "") {
-      console.warn("[Server Email] RESEND_API_KEY is missing on server.");
-      return { success: false, error: "Resend API key not configured on server" };
-    }
+      if (!apiKey || apiKey.includes("your_") || apiKey.trim() === "") {
+        console.warn("[Server Email] RESEND_API_KEY is missing on server.");
+        return {
+          success: false,
+          error: "Resend API key not configured on server",
+        };
+      }
 
-    const htmlBody = `
+      const htmlBody = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e5e7eb; border-radius: 16px;">
         <div style="background-color: #4A154B; padding: 20px; text-align: center; border-radius: 12px; margin-bottom: 20px;">
           <h2 style="color: #ffffff; margin: 0; font-size: 22px;">PinkWalk 2026 — New Partner Application</h2>
@@ -103,42 +109,46 @@ export const sendPartnerNotificationEmailServer = createServerFn({
       </div>
     `;
 
-    try {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey.trim()}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: "PinkWalk Partnership <onboarding@resend.dev>",
-          to: [contactEmail],
-          subject: `[PinkWalk Partner] New Application: ${data.organizationName}`,
-          html: htmlBody,
-          reply_to: data.email,
-        }),
-      });
+      try {
+        const res = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${apiKey.trim()}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "PinkWalk Partnership <onboarding@resend.dev>",
+            to: [contactEmail],
+            subject: `[PinkWalk Partner] New Application: ${data.organizationName}`,
+            html: htmlBody,
+            reply_to: data.email,
+          }),
+        });
 
-      const resData = await res.json();
+        const resData = await res.json();
 
-      if (!res.ok) {
-        console.error("[Server Email] Resend API error:", resData);
+        if (!res.ok) {
+          console.error("[Server Email] Resend API error:", resData);
+          return {
+            success: false,
+            error: resData.message || `HTTP error ${res.status}`,
+          };
+        }
+
+        console.log(
+          "[Server Email] Resend notification dispatched successfully:",
+          resData.id,
+        );
+        return { success: true, id: resData.id };
+      } catch (err) {
+        console.error("[Server Email] Failed to send email via Resend:", err);
         return {
           success: false,
-          error: resData.message || `HTTP error ${res.status}`,
+          error: err instanceof Error ? err.message : "Network error",
         };
       }
-
-      console.log("[Server Email] Resend notification dispatched successfully:", resData.id);
-      return { success: true, id: resData.id };
-    } catch (err) {
-      console.error("[Server Email] Failed to send email via Resend:", err);
-      return {
-        success: false,
-        error: err instanceof Error ? err.message : "Network error",
-      };
-    }
-  });
+    },
+  );
 
 /**
  * Public dispatch wrapper called by application code.
