@@ -155,63 +155,63 @@ export const pressReleases: PressRelease[] = [
       },
     },
     mediaContact: {
-      name: "Dijup Tuladhar (Infinite Cares Lead)",
-      organization: "Infinite Software Services Nepal / PinkWalk Media Desk",
+      name: "Organizing Committee",
+      organization: "PinkWalk Media Desk",
       email: "pinkwalknepal@gmail.com",
       location: "Kathmandu, Nepal",
     },
   },
-  {
-    id: "cotiviti-pinkwalk-2023-press-release",
-    title:
-      "Cotiviti Takes Steps Towards a Healthier Tomorrow: Join the Walkathon for Breast Cancer Awareness",
-    subtitle:
-      "Cotiviti Cares (Cotiviti Nepal's CSR Team) announces its inaugural PINKWalk, a walkathon to raise breast cancer awareness and gather funds for Cancer Care Nepal Society.",
-    date: "September 26, 2023",
-    isoDate: "2023-09-26",
-    location: "Kathmandu, Nepal",
-    author: "Cotiviti Cares (Cotiviti Nepal CSR Team)",
-    category: "Announcement",
-    summary:
-      "Cotiviti Cares announces its inaugural PINKWalk to raise breast cancer awareness and collect funds for Cancer Care Nepal Society. The walkathon takes place on September 30, 2023, from Narayan Chaur to Swayambhu.",
-    content: {
-      lead: "KATHMANDU, NEPAL — September 26, 2023 — Cotiviti Cares (Cotiviti Nepal's CSR Team) announces its inaugural PINKWalk, a walkathon to raise breast cancer awareness and gather funds for this significant cause.",
-      sections: [
-        {
-          heading: "Global Context & Urgent Need for Awareness",
-          paragraphs: [
-            "Breast cancer is a pressing health concern. 1 out of 8 cancer diagnoses worldwide is breast cancer. As per 2020 data, there were about 2.3 million new cases of breast cancer globally and has resulted in 685,000 deaths. A study by International Agency for Research on Cancer (IARC) has indicated that by 2040 this number will increase by 40% and the death number shall rise up to 50%.",
-            "Cotiviti Nepal Pvt. Ltd. is a prominent player in the healthcare informatics sector headquartered in the USA and a leading IT company in Nepal. The company's CSR initiatives primarily focus on supporting the community in areas such as health, education, and the environment. Cotiviti is therefore pleased to announce its first-ever walkathon event to promote awareness on breast cancer, a serious health concern.",
-          ],
-        },
-        {
-          heading: "Community Objectives & Partner Support",
-          paragraphs: [
-            "The primary objective of this walkathon, is to enhance awareness of the disease, encourage early detection, provide solidarity to those affected, and raise funds for research, treatment, and support. The donations collected during the walkathon will be directed to the Cancer Care Nepal Society, an associated partner of this event, furthering its efforts to combat this disease and support affected individuals and their families.",
-            "Participants can register for the event via IMEPay, making it convenient for all to join. Additionally, on-the-spot registration will also be available on the day of the event.",
-          ],
-        },
-        {
-          heading: "Walkathon Route & Concluding Event",
-          paragraphs: [
-            "PinkWalk is set to take place on September 30, 2023, starting at 6:00 AM, and will wind through some of Kathmandu's major landmarks, including Narayan Chaur, Nagpokhari, Kantipath, Sohrakhutte, Shovabhagwati, and Swayambhu. Swayambhu is where the concluding event will take place, featuring several activities planned by Cotiviti Nepal.",
-            "Cotiviti is committed to making a positive impact on the communities it serves. We are happy to organize this PinkWalk with many partners and sponsors and feel proud to come together as a community for a novel cause. This walkathon welcomes participants from all age groups and walks of life.",
-          ],
-        },
-      ],
-      highlights: [
-        "Event Date: September 30, 2023",
-        "Time: 6:00 a.m. – 10:00 a.m.",
-        "Location: Starting at Narayan Chaur, Kathmandu",
-        "Associated Partner: Cancer Care Nepal Society",
-        "Official Site: https://pinkwalk.github.io/",
-      ],
-    },
-    mediaContact: {
-      name: "Cotiviti Cares CSR Team & Media Desk",
-      organization: "Cotiviti Nepal / PinkWalk 2023",
-      email: "pinkwalknepal@gmail.com",
-      location: "Kathmandu, Nepal",
-    },
-  },
+  // {
+  //   id: "cotiviti-pinkwalk-2023-press-release",
+  //   title:
+  //     "Cotiviti Takes Steps Towards a Healthier Tomorrow: Join the Walkathon for Breast Cancer Awareness",
+  //   subtitle:
+  //     "Cotiviti Cares (Cotiviti Nepal's CSR Team) announces its inaugural PINKWalk, a walkathon to raise breast cancer awareness and gather funds for Cancer Care Nepal Society.",
+  //   date: "September 26, 2023",
+  //   isoDate: "2023-09-26",
+  //   location: "Kathmandu, Nepal",
+  //   author: "Cotiviti Cares (Cotiviti Nepal CSR Team)",
+  //   category: "Announcement",
+  //   summary:
+  //     "Cotiviti Cares announces its inaugural PINKWalk to raise breast cancer awareness and collect funds for Cancer Care Nepal Society. The walkathon takes place on September 30, 2023, from Narayan Chaur to Swayambhu.",
+  //   content: {
+  //     lead: "KATHMANDU, NEPAL — September 26, 2023 — Cotiviti Cares (Cotiviti Nepal's CSR Team) announces its inaugural PINKWalk, a walkathon to raise breast cancer awareness and gather funds for this significant cause.",
+  //     sections: [
+  //       {
+  //         heading: "Global Context & Urgent Need for Awareness",
+  //         paragraphs: [
+  //           "Breast cancer is a pressing health concern. 1 out of 8 cancer diagnoses worldwide is breast cancer. As per 2020 data, there were about 2.3 million new cases of breast cancer globally and has resulted in 685,000 deaths. A study by International Agency for Research on Cancer (IARC) has indicated that by 2040 this number will increase by 40% and the death number shall rise up to 50%.",
+  //           "Cotiviti Nepal Pvt. Ltd. is a prominent player in the healthcare informatics sector headquartered in the USA and a leading IT company in Nepal. The company's CSR initiatives primarily focus on supporting the community in areas such as health, education, and the environment. Cotiviti is therefore pleased to announce its first-ever walkathon event to promote awareness on breast cancer, a serious health concern.",
+  //         ],
+  //       },
+  //       {
+  //         heading: "Community Objectives & Partner Support",
+  //         paragraphs: [
+  //           "The primary objective of this walkathon, is to enhance awareness of the disease, encourage early detection, provide solidarity to those affected, and raise funds for research, treatment, and support. The donations collected during the walkathon will be directed to the Cancer Care Nepal Society, an associated partner of this event, furthering its efforts to combat this disease and support affected individuals and their families.",
+  //           "Participants can register for the event via IMEPay, making it convenient for all to join. Additionally, on-the-spot registration will also be available on the day of the event.",
+  //         ],
+  //       },
+  //       {
+  //         heading: "Walkathon Route & Concluding Event",
+  //         paragraphs: [
+  //           "PinkWalk is set to take place on September 30, 2023, starting at 6:00 AM, and will wind through some of Kathmandu's major landmarks, including Narayan Chaur, Nagpokhari, Kantipath, Sohrakhutte, Shovabhagwati, and Swayambhu. Swayambhu is where the concluding event will take place, featuring several activities planned by Cotiviti Nepal.",
+  //           "Cotiviti is committed to making a positive impact on the communities it serves. We are happy to organize this PinkWalk with many partners and sponsors and feel proud to come together as a community for a novel cause. This walkathon welcomes participants from all age groups and walks of life.",
+  //         ],
+  //       },
+  //     ],
+  //     highlights: [
+  //       "Event Date: September 30, 2023",
+  //       "Time: 6:00 a.m. – 10:00 a.m.",
+  //       "Location: Starting at Narayan Chaur, Kathmandu",
+  //       "Associated Partner: Cancer Care Nepal Society",
+  //       "Official Site: https://pinkwalk.github.io/",
+  //     ],
+  //   },
+  //   mediaContact: {
+  //     name: "Organizing Committee",
+  //     organization: "PinkWalk Media Desk",
+  //     email: "pinkwalknepal@gmail.com",
+  //     location: "Kathmandu, Nepal",
+  //   },
+  // },
 ];
