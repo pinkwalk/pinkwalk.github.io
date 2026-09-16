@@ -34,8 +34,7 @@ export function SiteFooter() {
             Contact
           </h3>
           <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
-            <li>Dijup Tuladhar</li>
-            <li>Lijala Shrestha</li>
+            <li>Organizing Committee</li>
             <li>
               <a
                 href={`mailto:${contactEmail}`}
