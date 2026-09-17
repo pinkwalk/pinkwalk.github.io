@@ -203,13 +203,13 @@ export const supporters: LinkItem[] = [
   // { label: "Miss Universe Nepal 2023" },
   // { label: "Center for American Medical Specialists" },
   // { label: "Ask Foundation" },
-  // {
-  //   label: "Lalitpur Metropolitan City",
-  //   logo: lalitpurLogo,
-  // },
   {
     label: "Kathmandu Metropolitan City",
     logo: kathmanduLogo,
+  },
+  {
+    label: "Lalitpur Metropolitan City",
+    logo: lalitpurLogo,
   },
   {
     label: "Nepal Cancer Survivor's Society",
@@ -507,6 +507,21 @@ export const newsCoverage2026: LinkItem[] = [
     label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक २०२६’ आयोजना हुँदै",
     href: "https://shilapatra.com/detail/194974",
     note: "Shilapatra",
+  },
+  {
+    label: "PinkWalk 2026 to Bring the Community Together for Breast Cancer Awareness and Support",
+    href: "https://english.himalayapost.com/archives/12619",
+    note: "Himalaya Post",
+  },
+  {
+    label: "PinkWalk 2026 to Bring the Community Together for Breast Cancer Awareness and Support",
+    href: "https://bizmandu.com/content/20260917161745.html",
+    note: "Bizmandu",
+  },
+  {
+    label: "PinkWalk 2026 to Bring the Community Together for Breast Cancer Awareness and Support",
+    href: "https://www.ukeraa.com/news/detail/179984/",
+    note: "Ukeraa",
   },
 ];
 
