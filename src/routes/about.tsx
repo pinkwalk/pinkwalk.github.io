@@ -269,10 +269,10 @@ function AboutPage() {
             </div>
 
             <p className="text-sm text-muted-foreground leading-relaxed">
-              <strong className="text-foreground">Infinite Software Services Nepal Pvt. Ltd.</strong> is the Nepal-based software development and IT service center of <strong className="text-foreground">Infinite Computer Solutions</strong>, a multinational technology services and digital engineering corporation.
+              <strong className="text-foreground">Infinite</strong> is a global technology services company helping enterprises harness emerging technologies to create measurable business outcomes and enduring advantage.
             </p>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              With over <strong className="text-foreground">600 professionals in Nepal</strong>, Infinite delivers cutting-edge software solutions, healthcare informatics, and enterprise digital engineering services to global clients.
+              With more than <strong className="text-foreground">600 professionals in Nepal</strong>, Infinite helps organizations modernize core platforms, operationalize enterprise AI and deliver measurable outcomes through deep healthcare expertise.
             </p>
 
             <div className="mt-6 pt-5 border-t border-border/70 flex items-center justify-between text-xs">
