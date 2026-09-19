@@ -13,6 +13,7 @@ import {
 
 const navLinks = [
   { label: "This Year", to: "/" as const, hash: "this-year" as const },
+  // { label: "Invite Friends", to: "/invite" as const },
   { label: "BSE Guide", to: "/awareness" as const },
   { label: "About Us", to: "/about" as const },
   { label: "The Cause", to: "/" as const, hash: "cause" as const },

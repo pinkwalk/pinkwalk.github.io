@@ -66,6 +66,11 @@ export function SiteFooter() {
                 Breast Self-Exam Guide
               </Link>
             </li>
+            {/* <li>
+              <Link to="/invite" className="hover:text-primary">
+                Invite Friends (Card Generator)
+              </Link>
+            </li> */}
             <li>
               <Link to="/register" className="hover:text-primary">
                 Register

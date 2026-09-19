@@ -35,7 +35,7 @@ export const thisYearEvent = {
   year: 2026,
   month: "October 2026",
   date: "October 3rd, 2026",
-  dateNote: "शनिवार, आश्विन १९, २०८३",
+  dateNote: "शनिवार, आश्विन १७, २०८३",
   title: "PinkWalk 2026",
   tagline: "Basantapur → Mangal Bazar",
   route: {
@@ -189,10 +189,10 @@ export const partners: LinkItem[] = [
     label: "Happy Minds",
     logo: happymindsLogo,
   },
-  // {
-  //   label: "H2O Drinking Water",
-  //   logo: h2oLogo,
-  // },
+  {
+    label: "H2O Drinking Water",
+    logo: h2oLogo,
+  },
   // {
   //   label: "Jeevee Health Pvt. Ltd.",
   //   logo: jeeveeLogo,
@@ -522,6 +522,11 @@ export const newsCoverage2026: LinkItem[] = [
     label: "PinkWalk 2026 to Bring the Community Together for Breast Cancer Awareness and Support",
     href: "https://www.ukeraa.com/news/detail/179984/",
     note: "Ukeraa",
+  },
+  {
+    label: "स्तन क्यान्सर सचेतनाका लागि ‘पिंकवाक’ आयोजना हुँदै",
+    href: "https://nepalkhabar.com/economy/corporate/287361-2026-9-18-16-30-35",
+    note: "Nepalkhabar",
   },
 ];
 

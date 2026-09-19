@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AwarenessRouteImport } from './routes/awareness'
 import { Route as BrandingRouteImport } from './routes/branding'
+import { Route as InviteRouteImport } from './routes/invite'
 import { Route as PartnerRouteImport } from './routes/partner'
 import { Route as PastEventRouteImport } from './routes/past-event'
 import { Route as PressReleaseRouteImport } from './routes/press-release'
@@ -37,6 +38,11 @@ const AwarenessRoute = AwarenessRouteImport.update({
 const BrandingRoute = BrandingRouteImport.update({
   id: '/branding',
   path: '/branding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InviteRoute = InviteRouteImport.update({
+  id: '/invite',
+  path: '/invite',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PartnerRoute = PartnerRouteImport.update({
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/awareness': typeof AwarenessRoute
   '/branding': typeof BrandingRoute
+  '/invite': typeof InviteRoute
   '/partner': typeof PartnerRoute
   '/past-event': typeof PastEventRoute
   '/press-release': typeof PressReleaseRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/awareness': typeof AwarenessRoute
   '/branding': typeof BrandingRoute
+  '/invite': typeof InviteRoute
   '/partner': typeof PartnerRoute
   '/past-event': typeof PastEventRoute
   '/press-release': typeof PressReleaseRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/awareness': typeof AwarenessRoute
   '/branding': typeof BrandingRoute
+  '/invite': typeof InviteRoute
   '/partner': typeof PartnerRoute
   '/past-event': typeof PastEventRoute
   '/press-release': typeof PressReleaseRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/awareness'
     | '/branding'
+    | '/invite'
     | '/partner'
     | '/past-event'
     | '/press-release'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/awareness'
     | '/branding'
+    | '/invite'
     | '/partner'
     | '/past-event'
     | '/press-release'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/awareness'
     | '/branding'
+    | '/invite'
     | '/partner'
     | '/past-event'
     | '/press-release'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AwarenessRoute: typeof AwarenessRoute
   BrandingRoute: typeof BrandingRoute
+  InviteRoute: typeof InviteRoute
   PartnerRoute: typeof PartnerRoute
   PastEventRoute: typeof PastEventRoute
   PressReleaseRoute: typeof PressReleaseRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/branding'
       fullPath: '/branding'
       preLoaderRoute: typeof BrandingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/invite': {
+      id: '/invite'
+      path: '/invite'
+      fullPath: '/invite'
+      preLoaderRoute: typeof InviteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/partner': {
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AwarenessRoute: AwarenessRoute,
   BrandingRoute: BrandingRoute,
+  InviteRoute: InviteRoute,
   PartnerRoute: PartnerRoute,
   PastEventRoute: PastEventRoute,
   PressReleaseRoute: PressReleaseRoute,
