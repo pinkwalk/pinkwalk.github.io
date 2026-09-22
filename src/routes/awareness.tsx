@@ -17,6 +17,12 @@ import {
   Play,
 } from "lucide-react";
 import { contactEmail } from "@/lib/event-data";
+import bseHeroImg from "@/assets/bse-hero-screening.jpg";
+import bseStep1Img from "@/assets/bse-step1.jpg";
+import bseStep2Img from "@/assets/bse-step2.jpg";
+import bseStep3Img from "@/assets/bse-step3.jpg";
+import bseStep4Img from "@/assets/bse-step4.jpg";
+import bseStep5Img from "@/assets/bse-step5.jpg";
 
 export const Route = createFileRoute("/awareness")({
   head: () => ({
@@ -42,226 +48,6 @@ export const Route = createFileRoute("/awareness")({
 });
 
 /* ==========================================================================
-   CUSTOM SVG GRAPHIC COMPONENTS FOR EACH STEP
-   ========================================================================== */
-
-function BseStep1Graphic() {
-  return (
-    <div className="relative flex h-60 w-full items-center justify-center rounded-3xl bg-gradient-to-br from-pink-wash via-white to-pink-wash/40 p-4 border border-primary/20 shadow-soft">
-      <svg
-        viewBox="0 0 200 200"
-        className="h-full w-auto max-w-full drop-shadow-md"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Outer Pink Circle Frame */}
-        <circle cx="100" cy="92" r="75" fill="#FFF5F8" stroke="#EC008C" strokeWidth="3" />
-        <circle cx="100" cy="92" r="71" fill="none" stroke="#F472B6" strokeWidth="1" strokeDasharray="4 3" opacity="0.6" />
-
-        {/* Head & Neck */}
-        <circle cx="100" cy="48" r="14" fill="#F43F5E" opacity="0.8" />
-        <path d="M96 62 L96 70 L104 70 L104 62 Z" fill="#E11D48" />
-
-        {/* Torso & Breasts Contour */}
-        <path d="M72 82 C72 74 128 74 128 82 L124 135 L76 135 Z" fill="#FFE4E6" stroke="#EC008C" strokeWidth="2" />
-        <path d="M72 82 C75 95 98 112 100 112 C102 112 125 95 128 82" stroke="#EC008C" strokeWidth="2" />
-
-        {/* Breast Tissue Contours */}
-        <path d="M76 96 C76 86 96 86 96 96 C96 106 76 106 76 96 Z" fill="#FFF" stroke="#EC008C" strokeWidth="1.5" />
-        <path d="M104 96 C104 86 124 86 124 96 C124 106 104 106 104 96 Z" fill="#FFF" stroke="#EC008C" strokeWidth="1.5" />
-        <circle cx="86" cy="96" r="3" fill="#EC008C" />
-        <circle cx="114" cy="96" r="3" fill="#EC008C" />
-
-        {/* Hands Resting on Hips */}
-        <path d="M72 82 C65 92 65 105 76 112" stroke="#EC008C" strokeWidth="3.5" strokeLinecap="round" />
-        <path d="M128 82 C135 92 135 105 124 112" stroke="#EC008C" strokeWidth="3.5" strokeLinecap="round" />
-
-        {/* Mirror Reflection Ray Icon */}
-        <g transform="translate(138, 38)">
-          <circle cx="10" cy="10" r="14" fill="#FFF" stroke="#EC008C" strokeWidth="1.5" />
-          <path d="M5 10 C5 7 15 7 15 10 C15 13 5 13 5 10 Z" stroke="#EC008C" strokeWidth="1.5" />
-          <circle cx="10" cy="10" r="2.5" fill="#EC008C" />
-        </g>
-
-        {/* Bottom Label Badge Pill */}
-        <rect x="25" y="148" width="150" height="24" rx="12" fill="#EC008C" />
-        <text x="100" y="164" textAnchor="middle" fill="#FFFFFF" fontSize="10" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.5">
-          STEP 1: MIRROR CHECK
-        </text>
-      </svg>
-    </div>
-  );
-}
-
-function BseStep2Graphic() {
-  return (
-    <div className="relative flex h-60 w-full items-center justify-center rounded-3xl bg-gradient-to-br from-pink-wash via-white to-pink-wash/40 p-4 border border-primary/20 shadow-soft">
-      <svg
-        viewBox="0 0 200 200"
-        className="h-full w-auto max-w-full drop-shadow-md"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Outer Pink Circle Frame */}
-        <circle cx="100" cy="92" r="75" fill="#FFF5F8" stroke="#EC008C" strokeWidth="3" />
-        <circle cx="100" cy="92" r="71" fill="none" stroke="#F472B6" strokeWidth="1" strokeDasharray="4 3" opacity="0.6" />
-
-        {/* Head & Neck */}
-        <circle cx="100" cy="52" r="14" fill="#F43F5E" opacity="0.8" />
-        <path d="M96 66 L96 74 L104 74 L104 66 Z" fill="#E11D48" />
-
-        {/* Arms Raised High */}
-        <path d="M72 85 L60 48 L72 32" stroke="#EC008C" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M128 85 L140 48 L128 32" stroke="#EC008C" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-
-        {/* Torso & Lifted Breasts */}
-        <path d="M72 85 C72 78 128 78 128 85 L124 135 L76 135 Z" fill="#FFE4E6" stroke="#EC008C" strokeWidth="2" />
-        <path d="M76 96 C76 86 96 86 96 96 C96 106 76 106 76 96 Z" fill="#FFF" stroke="#EC008C" strokeWidth="1.5" />
-        <path d="M104 96 C104 86 124 86 124 96 C124 106 104 106 104 96 Z" fill="#FFF" stroke="#EC008C" strokeWidth="1.5" />
-        <circle cx="86" cy="95" r="3" fill="#EC008C" />
-        <circle cx="114" cy="95" r="3" fill="#EC008C" />
-
-        {/* Upward Movement Motion Arrows */}
-        <path d="M54 75 L54 58 M54 58 L50 63 M54 58 L58 63" stroke="#EC008C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M146 75 L146 58 M146 58 L142 63 M146 58 L150 63" stroke="#EC008C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-
-        {/* Bottom Label Badge Pill */}
-        <rect x="25" y="148" width="150" height="24" rx="12" fill="#EC008C" />
-        <text x="100" y="164" textAnchor="middle" fill="#FFFFFF" fontSize="10" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.5">
-          STEP 2: ARMS OVERHEAD
-        </text>
-      </svg>
-    </div>
-  );
-}
-
-function BseStep3Graphic() {
-  return (
-    <div className="relative flex h-60 w-full items-center justify-center rounded-3xl bg-gradient-to-br from-pink-wash via-white to-pink-wash/40 p-4 border border-primary/20 shadow-soft">
-      <svg
-        viewBox="0 0 200 200"
-        className="h-full w-auto max-w-full drop-shadow-md"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Outer Pink Circle Frame */}
-        <circle cx="100" cy="92" r="75" fill="#FFF5F8" stroke="#EC008C" strokeWidth="3" />
-        <circle cx="100" cy="92" r="71" fill="none" stroke="#F472B6" strokeWidth="1" strokeDasharray="4 3" opacity="0.6" />
-
-        {/* Close-Up Breast Contour */}
-        <path d="M45 130 C45 68 155 68 155 130 Z" fill="#FFE4E6" stroke="#EC008C" strokeWidth="2" />
-        <circle cx="100" cy="92" r="22" fill="#FFF" stroke="#EC008C" strokeWidth="1.5" strokeDasharray="3 2" />
-        <circle cx="100" cy="92" r="5" fill="#EC008C" />
-
-        {/* Finger Pinch Indicators */}
-        <path d="M74 92 L88 92" stroke="#EC008C" strokeWidth="3" strokeLinecap="round" />
-        <path d="M83 87 L88 92 L83 97" stroke="#EC008C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M126 92 L112 92" stroke="#EC008C" strokeWidth="3" strokeLinecap="round" />
-        <path d="M117 87 L112 92 L117 97" stroke="#EC008C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-
-        {/* Fluid Discharge Droplet */}
-        <path d="M100 102 C100 102 95 113 100 117 C105 117 100 102 100 102 Z" fill="#EC008C" />
-
-        {/* Bottom Label Badge Pill */}
-        <rect x="25" y="148" width="150" height="24" rx="12" fill="#EC008C" />
-        <text x="100" y="164" textAnchor="middle" fill="#FFFFFF" fontSize="10" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.5">
-          STEP 3: NIPPLE CHECK
-        </text>
-      </svg>
-    </div>
-  );
-}
-
-function BseStep4Graphic() {
-  return (
-    <div className="relative flex h-60 w-full items-center justify-center rounded-3xl bg-gradient-to-br from-pink-wash via-white to-pink-wash/40 p-4 border border-primary/20 shadow-soft">
-      <svg
-        viewBox="0 0 200 200"
-        className="h-full w-auto max-w-full drop-shadow-md"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Outer Pink Circle Frame */}
-        <circle cx="100" cy="92" r="75" fill="#FFF5F8" stroke="#EC008C" strokeWidth="3" />
-        <circle cx="100" cy="92" r="71" fill="none" stroke="#F472B6" strokeWidth="1" strokeDasharray="4 3" opacity="0.6" />
-
-        {/* Pillow & Reclining Angle */}
-        <path d="M40 115 L160 115 L160 132 C160 132 40 132 40 132 Z" fill="#E5E7EB" />
-        <path d="M40 108 C40 108 65 92 90 108 Z" fill="#CBD5E1" />
-
-        {/* Lying Torso & Breast Tissue */}
-        <path d="M50 105 C70 92 145 92 160 105 L160 115 L50 115 Z" fill="#FFE4E6" stroke="#EC008C" strokeWidth="1.5" />
-        <path d="M85 105 C85 84 125 84 125 105 Z" fill="#FFF" stroke="#EC008C" strokeWidth="2" />
-        <circle cx="105" cy="93" r="3" fill="#EC008C" />
-
-        {/* 3 Circular Motion Rings (Light, Medium, Firm Pressure) */}
-        <circle cx="105" cy="93" r="14" stroke="#F472B6" strokeWidth="1.5" strokeDasharray="3 2" />
-        <circle cx="105" cy="93" r="22" stroke="#EC008C" strokeWidth="1.5" strokeDasharray="4 3" />
-
-        {/* 3 Finger Pads Indicator Icon */}
-        <g transform="translate(118, 62)">
-          <rect x="0" y="0" width="6" height="16" rx="3" fill="#EC008C" />
-          <rect x="8" y="-3" width="6" height="19" rx="3" fill="#EC008C" />
-          <rect x="16" y="0" width="6" height="16" rx="3" fill="#EC008C" />
-        </g>
-
-        {/* Bottom Label Badge Pill */}
-        <rect x="25" y="148" width="150" height="24" rx="12" fill="#EC008C" />
-        <text x="100" y="164" textAnchor="middle" fill="#FFFFFF" fontSize="10" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.5">
-          STEP 4: LYING DOWN PALPATION
-        </text>
-      </svg>
-    </div>
-  );
-}
-
-function BseStep5Graphic() {
-  return (
-    <div className="relative flex h-60 w-full items-center justify-center rounded-3xl bg-gradient-to-br from-pink-wash via-white to-pink-wash/40 p-4 border border-primary/20 shadow-soft">
-      <svg
-        viewBox="0 0 200 200"
-        className="h-full w-auto max-w-full drop-shadow-md"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Outer Pink Circle Frame */}
-        <circle cx="100" cy="92" r="75" fill="#FFF5F8" stroke="#EC008C" strokeWidth="3" />
-        <circle cx="100" cy="92" r="71" fill="none" stroke="#F472B6" strokeWidth="1" strokeDasharray="4 3" opacity="0.6" />
-
-        {/* Shower Water Droplets */}
-        <path d="M45 35 L45 50 M65 28 L65 43 M135 28 L135 43 M155 35 L155 50" stroke="#38BDF8" strokeWidth="2" strokeLinecap="round" strokeDasharray="2 3" />
-
-        {/* Head & Neck */}
-        <circle cx="100" cy="48" r="14" fill="#F43F5E" opacity="0.8" />
-        <path d="M96 62 L96 70 L104 70 L104 62 Z" fill="#E11D48" />
-
-        {/* Arm Behind Head */}
-        <path d="M78 78 L62 62 L82 48" stroke="#EC008C" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-        {/* Opposite Arm Reaching Across */}
-        <path d="M122 78 L138 95 L108 95" stroke="#EC008C" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-
-        {/* Torso & Breasts */}
-        <path d="M78 78 C78 72 122 72 122 78 L118 132 L82 132 Z" fill="#FFE4E6" stroke="#EC008C" strokeWidth="2" />
-        <path d="M82 94 C82 85 98 85 98 94 C98 103 82 103 82 94 Z" fill="#FFF" stroke="#EC008C" strokeWidth="1.5" />
-        <path d="M102 94 C102 85 118 85 118 94 C118 103 102 103 102 94 Z" fill="#FFF" stroke="#EC008C" strokeWidth="1.5" />
-
-        <circle cx="90" cy="94" r="2.5" fill="#EC008C" />
-        <circle cx="110" cy="94" r="2.5" fill="#EC008C" />
-
-        {/* Soap Friction Slide Circular Arrow */}
-        <path d="M85 94 C85 80 115 80 115 94 C115 108 85 108 85 94 Z" stroke="#38BDF8" strokeWidth="1.5" strokeDasharray="3 2" />
-
-        {/* Bottom Label Badge Pill */}
-        <rect x="25" y="148" width="150" height="24" rx="12" fill="#EC008C" />
-        <text x="100" y="164" textAnchor="middle" fill="#FFFFFF" fontSize="10" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.5">
-          STEP 5: IN-SHOWER EXAM
-        </text>
-      </svg>
-    </div>
-  );
-}
-
-/* ==========================================================================
    MAIN AWARENESS PAGE COMPONENT
    ========================================================================== */
 
@@ -273,7 +59,7 @@ function AwarenessPage() {
       step: 1,
       title: "Visual Inspection in Front of a Mirror (Arms at Sides)",
       tagline: "Look closely at your breasts in front of a mirror with your shoulders straight and arms on your hips.",
-      graphic: BseStep1Graphic,
+      image: bseStep1Img,
       instructions: [
         "Check that your breasts are their usual size, shape, and color.",
         "Look for any visible dimpling, puckering, or bulging of the skin.",
@@ -286,7 +72,7 @@ function AwarenessPage() {
       step: 2,
       title: "Visual Inspection (Arms Raised Overhead)",
       tagline: "Raise your arms high overhead and look for the same visual changes as tissue lifts.",
-      graphic: BseStep2Graphic,
+      image: bseStep2Img,
       instructions: [
         "Raise both arms high overhead and inspect both breasts from the front and sides.",
         "Look for any skin dimpling, tightness, or tethering as the breast tissue shifts upward.",
@@ -298,7 +84,7 @@ function AwarenessPage() {
       step: 3,
       title: "Check Nipple Fluid & Discharge",
       tagline: "Look for any unusual fluid coming out of one or both nipples.",
-      graphic: BseStep3Graphic,
+      image: bseStep3Img,
       instructions: [
         "Gently squeeze the nipple of each breast between your thumb and forefinger.",
         "Check if any fluid comes out — milky, yellow, clear, or bloody fluid.",
@@ -310,7 +96,7 @@ function AwarenessPage() {
       step: 4,
       title: "Feel Breasts Lying Down (Palpation with 3 Pressure Levels)",
       tagline: "Lie flat on your back with a pillow under your shoulder and use finger pads to examine tissue.",
-      graphic: BseStep4Graphic,
+      image: bseStep4Img,
       instructions: [
         "Lie flat on your back with a pillow under your right shoulder and place your right arm behind your head.",
         "Use the flat pads (not fingertips) of your 3 middle fingers pressed together.",
@@ -325,7 +111,7 @@ function AwarenessPage() {
       step: 5,
       title: "Feel Breasts Standing or in the Shower",
       tagline: "Feel your breasts while standing or sitting, especially when skin is wet and slippery in the shower.",
-      graphic: BseStep5Graphic,
+      image: bseStep5Img,
       instructions: [
         "Soapy skin in the shower helps your fingers glide smoothly over your breasts.",
         "Raise one arm behind your head and use the opposite hand to feel the entire breast and collarbone area.",
@@ -461,6 +247,26 @@ function AwarenessPage() {
         <p className="mx-auto mt-5 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
           Early detection is the strongest tool against breast cancer. Performing a monthly Breast Self-Examination (BSE) takes only 5 minutes and helps you know your normal body so you can notice any changes early.
         </p>
+
+        {/* Hero Screening Photograph Banner */}
+        <div className="mt-8 relative overflow-hidden rounded-3xl border border-primary/20 shadow-soft">
+          <img
+            src={bseHeroImg}
+            alt="Breast Cancer Awareness & Medical Screening Consultation"
+            className="w-full h-auto max-h-[440px] object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6 text-left">
+            <div>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/90 backdrop-blur-md px-3 py-1 text-xs font-semibold text-white">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                Cancer Care Nepal Approved Guide
+              </span>
+              <p className="text-white font-display text-lg sm:text-xl font-bold mt-2">
+                Knowledge Saves Lives: Understand Your Normal & Detect Changes Early
+              </p>
+            </div>
+          </div>
+        </div>
 
         {/* Quick Toolbar */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-xs">
@@ -598,17 +404,19 @@ function AwarenessPage() {
         {/* List of All 5 Steps */}
         <div className="space-y-12">
           {steps.map((s) => {
-            const GraphicComponent = s.graphic;
-
             return (
               <div
                 key={s.step}
                 className="rounded-3xl border border-border bg-card p-6 sm:p-10 shadow-soft transition-all hover:border-primary/30 print:border-none print:shadow-none print:p-0 print:mb-8"
               >
-                <div className="grid gap-8 lg:grid-cols-[300px_1fr] items-center">
-                  {/* Left Column: Visual Illustration Graphic Card */}
-                  <div>
-                    <GraphicComponent />
+                <div className="grid gap-8 lg:grid-cols-[320px_1fr] items-center">
+                  {/* Left Column: Visual Healthcare Graphic Card */}
+                  <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-white shadow-soft">
+                    <img
+                      src={s.image}
+                      alt={`Step ${s.step}: ${s.title}`}
+                      className="h-full w-full object-cover aspect-[4/3]"
+                    />
                   </div>
 
                   {/* Right Column: Step Content */}
@@ -648,9 +456,7 @@ function AwarenessPage() {
                         <Sparkles className="h-4 w-4" />
                         <span>Key Examination Tip:</span>
                       </p>
-                      <p className="mt-1 text-muted-foreground leading-relaxed">
-                        {s.tip}
-                      </p>
+                      <p className="mt-1 leading-relaxed text-muted-foreground">{s.tip}</p>
                     </div>
                   </div>
                 </div>
@@ -660,34 +466,34 @@ function AwarenessPage() {
         </div>
       </section>
 
-      {/* SECTION: WARNING SIGNS CHECKLIST */}
-      <section className="py-12 border-t border-border">
-        <div className="mb-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-destructive/20 bg-destructive/10 px-3 py-1 text-xs font-semibold text-destructive mb-2">
+      {/* WARNING SIGNS GRID */}
+      <section className="my-16 rounded-3xl border border-border bg-card p-6 sm:p-10 shadow-soft">
+        <div className="max-w-2xl">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-destructive/10 px-3 py-1 text-xs font-semibold text-destructive border border-destructive/20 mb-3">
             <AlertTriangle className="h-3.5 w-3.5" />
-            <span>Symptoms & Warning Signs</span>
-          </div>
+            <span>Critical Awareness</span>
+          </span>
           <h2 className="font-display text-3xl font-bold text-foreground">
-            What Warning Signs to Look For
+            7 Warning Signs to Watch Out For
           </h2>
-          <p className="text-sm text-muted-foreground mt-1">
-            If you notice any of the following changes during your self-examination, schedule an appointment with a doctor for professional evaluation.
+          <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+            While most breast lumps are benign (non-cancerous), you should contact a doctor or visit Cancer Care Nepal immediately if you notice any of these key symptoms during your monthly exam:
           </p>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {warningSigns.map((sign, idx) => (
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {warningSigns.map((w, i) => (
             <div
-              key={idx}
-              className="flex items-start gap-4 rounded-3xl border border-border bg-card p-5 shadow-soft hover:border-primary/40 hover:shadow-md transition-all"
+              key={i}
+              className="flex items-start gap-3.5 rounded-2xl border border-border/80 bg-background p-4 shadow-xs transition-colors hover:border-primary/40"
             >
-              {sign.icon}
+              {w.icon}
               <div>
-                <h3 className="font-display text-base font-bold text-foreground">
-                  {sign.title}
+                <h3 className="font-display text-sm font-bold text-foreground">
+                  {w.title}
                 </h3>
-                <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-                  {sign.description}
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  {w.description}
                 </p>
               </div>
             </div>
@@ -695,60 +501,64 @@ function AwarenessPage() {
         </div>
       </section>
 
-      {/* SECTION: WHAT TO DO IF YOU FIND A LUMP */}
-      <section className="py-12 border-t border-border">
-        <div className="rounded-3xl border border-border bg-card p-6 sm:p-10 shadow-soft">
-          <div className="max-w-3xl">
-            <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-3">
-              <Stethoscope className="h-7 w-7 text-primary" />
-              <span>What To Do If You Notice a Change or Lump</span>
+      {/* CLINICAL SCREENING & MAMMOGRAM ADVICE CARD */}
+      <section className="my-16 rounded-3xl border border-primary/30 bg-gradient-to-br from-pink-wash via-white to-pink-wash/40 p-6 sm:p-10 shadow-soft">
+        <div className="grid gap-8 lg:grid-cols-[1fr_300px] items-center">
+          <div className="space-y-4">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3.5 py-1 text-xs font-semibold text-primary">
+              <Stethoscope className="h-3.5 w-3.5" />
+              <span>Medical Screening Guidelines</span>
+            </span>
+
+            <h2 className="font-display text-3xl font-bold text-foreground">
+              Clinical Breast Exams & Mammograms
             </h2>
 
-            <div className="mt-6 space-y-4 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              <div className="rounded-2xl bg-muted/40 p-4 border border-border/80">
-                <p className="font-semibold text-foreground text-sm">
-                  1. Don't Panic — Most Lumps Are Non-Cancerous
-                </p>
-                <p className="mt-1">
-                  8 out of 10 breast lumps are non-cancerous (benign) conditions such as fluid-filled cysts, fibroadenomas, or hormonal tissue changes.
-                </p>
-              </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              A monthly Breast Self-Exam (BSE) is an essential self-awareness tool, but it does <strong className="text-foreground font-semibold">not replace regular clinical breast exams or mammography</strong>.
+            </p>
 
-              <div className="rounded-2xl bg-muted/40 p-4 border border-border/80">
-                <p className="font-semibold text-foreground text-sm">
-                  2. Schedule a Medical Consultation
-                </p>
-                <p className="mt-1">
-                  Book an appointment with a gynecologist, general physician, or oncologist for a formal clinical breast examination.
-                </p>
-              </div>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-foreground pt-2">
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                <span>
+                  <strong>Ages 20 – 39:</strong> Clinical breast exam by a doctor or trained nurse at least once every 1–3 years.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                <span>
+                  <strong>Ages 40+:</strong> Annual mammogram screening in addition to annual clinical breast exams.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                <span>
+                  <strong>High Risk / Family History:</strong> Consult a specialist early about mammograms or breast ultrasound screening starting before age 40.
+                </span>
+              </li>
+            </ul>
+          </div>
 
-              <div className="rounded-2xl bg-muted/40 p-4 border border-border/80">
-                <p className="font-semibold text-foreground text-sm">
-                  3. Request Diagnostic Screening
-                </p>
-                <p className="mt-1">
-                  Your doctor may recommend an ultrasound (for younger women with dense tissue) or a screening mammogram to examine the tissue clearly.
-                </p>
-              </div>
+          <div className="rounded-2xl border border-primary/20 bg-card p-6 shadow-soft text-center space-y-4">
+            <ShieldCheck className="h-12 w-12 text-primary mx-auto" />
+            <div>
+              <h3 className="font-display text-base font-bold text-foreground">
+                Cancer Care Nepal Partner
+              </h3>
+              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                PinkWalk is organized in partnership with medical experts to provide free screening consultations during event day.
+              </p>
             </div>
-
-            <div className="mt-8 pt-6 border-t border-border flex flex-wrap items-center justify-between gap-4 text-xs font-semibold">
-              <a
-                href={`mailto:${contactEmail}`}
-                className="text-primary hover:underline flex items-center gap-1"
-              >
-                <span>Need screening advice? Email PinkWalk Health Desk ({contactEmail})</span>
-              </a>
-
-              <Link to="/about" className="text-foreground hover:text-primary">
-                Learn about Cancer Care Nepal →
-              </Link>
-            </div>
+            <a
+              href={`mailto:${contactEmail}`}
+              className="inline-flex w-full items-center justify-center rounded-xl bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground shadow-pink transition-transform hover:opacity-95"
+            >
+              Contact Health Committee
+            </a>
           </div>
         </div>
       </section>
-
       {/* CTA Footer */}
       <section className="pb-20 text-center print:hidden">
         <div className="rounded-3xl border border-primary/20 bg-pink-wash p-8 sm:p-12 shadow-soft">

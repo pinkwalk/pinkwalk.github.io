@@ -107,7 +107,7 @@ function InvitePage() {
       ctx.font = `500 ${fontSize}px "Montserrat", "Outfit", sans-serif`;
 
       // Render invitee name centered at (540, 1300)
-      ctx.fillText(nameToRender, 540, 1000);
+      ctx.fillText(nameToRender, 540, 980);
 
       ctx.restore();
     }
