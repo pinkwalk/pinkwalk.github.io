@@ -14,6 +14,8 @@ import kathmanduLogo from "@/assets/kmc-logo.png";
 import lalitpurLogo from "@/assets/lalitpur-logo.jpg";
 import tkpLogo from "@/assets/tkp-logo.png";
 import happymindsLogo from "@/assets/happyminds-logo.jpg";
+import qfxLogo from "@/assets/qfx-logo.png";
+import camsLogo from "@/assets/cams-logo.png";
 
 import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
 import manishaImg from "@/assets/guests/manisha-koirala.jpg";
@@ -192,6 +194,14 @@ export const partners: LinkItem[] = [
   {
     label: "H2O Drinking Water",
     logo: h2oLogo,
+  },
+  {
+    label: "QFX Cinemas",
+    logo: qfxLogo,
+  },
+  {
+    label: "CAMS",
+    logo: camsLogo,
   },
   // {
   //   label: "Jeevee Health Pvt. Ltd.",
