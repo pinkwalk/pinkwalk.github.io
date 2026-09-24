@@ -16,6 +16,7 @@ import tkpLogo from "@/assets/tkp-logo.png";
 import happymindsLogo from "@/assets/happyminds-logo.jpg";
 import qfxLogo from "@/assets/qfx-logo.png";
 import camsLogo from "@/assets/cams-logo.png";
+import nettvLogo from "@/assets/nettv-logo.png";
 
 import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
 import manishaImg from "@/assets/guests/manisha-koirala.jpg";
@@ -202,6 +203,10 @@ export const partners: LinkItem[] = [
   {
     label: "CAMS",
     logo: camsLogo,
+  },
+  {
+    label: "NET TV",
+    logo: nettvLogo,
   },
   // {
   //   label: "Jeevee Health Pvt. Ltd.",
