@@ -1,156 +1,261 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { contactEmail, thisYearEvent } from "@/lib/event-data";
-import { Bell, Mail, Calendar, MapPin, CheckCircle2 } from "lucide-react";
-import { saveNotificationEmail } from "@/lib/firebase";
+import {
+  contactEmail,
+  thisYearEvent,
+  tshirtSizeChart,
+} from "@/lib/event-data";
+import esewaQrImg from "@/assets/esewa-qr.png";
+import esewaLogo from "@/assets/esewa-logo.png";
+import {
+  Shirt,
+  CheckCircle2,
+  Calendar,
+  MapPin,
+  Sparkles,
+  Download,
+  ShieldCheck,
+  Smartphone,
+  Heart,
+} from "lucide-react";
 
 export const Route = createFileRoute("/register")({
   head: () => ({
     meta: [
-      { title: "Registration Opening Soon — PinkWalk 2026" },
+      { title: "Register via eSewa — PinkWalk 2026" },
       {
         name: "description",
         content:
-          "Registration for PinkWalk 2026 is opening soon. Join us on October 3rd, 2026 for the breast cancer awareness walk in Kathmandu Valley.",
+          "Register for PinkWalk 2026 on October 3rd by scanning the official eSewa QR code. Choose your t-shirt size and join the walk from Basantapur to Mangal Bazar.",
       },
-      {
-        property: "og:title",
-        content: "Registration Opening Soon — PinkWalk 2026",
-      },
+      { property: "og:title", content: "Register via eSewa — PinkWalk 2026" },
       {
         property: "og:description",
         content:
-          "Registration for PinkWalk 2026 will open soon. Get notified when sign-ups launch for the October 3rd walk.",
+          "Scan the eSewa QR code to register for PinkWalk 2026. Join us on October 3rd for breast cancer awareness.",
       },
     ],
   }),
-  component: RegistrationComingSoonPage,
+  component: RegisterPage,
 });
 
-function RegistrationComingSoonPage() {
-  const [email, setEmail] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [isDuplicate, setIsDuplicate] = useState(false);
-
-  const handleNotifySubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || submitting) return;
-    setSubmitting(true);
-
-    const res = await saveNotificationEmail(email);
-    if (!res.success) {
-      // Fallback mailto if firebase config is not yet added
-      const subject = "Please notify me when PinkWalk 2026 registration opens";
-      const body = `Hi PinkWalk Team,\n\nPlease notify me at ${email} as soon as registration for PinkWalk 2026 opens!\n\nThank you!`;
-      window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
-        subject,
-      )}&body=${encodeURIComponent(body)}`;
-    } else {
-      setIsDuplicate(Boolean(res.alreadyRegistered));
-    }
-    setSubmitting(false);
-    setSubmitted(true);
-  };
-
+function RegisterPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
-      <section className="py-14 text-center sm:py-20">
+      {/* Hero Header */}
+      <section className="py-10 text-center sm:py-14">
         <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-pink-wash px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-          <Bell className="h-3.5 w-3.5" />
-          <span>Registration · {thisYearEvent.year}</span>
+          <Sparkles className="h-3.5 w-3.5" />
+          <span>Registration Open · {thisYearEvent.year}</span>
         </div>
 
-        <h1 className="mt-5 text-balance font-display text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
-          Registration <span className="text-gradient-pink">Opening Soon</span>
+        <h1 className="mt-4 text-balance font-display text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
+          Register for <span className="text-gradient-pink">PinkWalk 2026</span>
         </h1>
 
-        <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Online registration for {thisYearEvent.title} will open soon. Join us
-          on{" "}
+        <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+          Scan our official eSewa QR code to complete your registration directly via eSewa. Join us on{" "}
           <strong className="font-semibold text-foreground">
-            {thisYearEvent.dateNote}
+            {thisYearEvent.date} ({thisYearEvent.dateNote})
           </strong>{" "}
-          as we walk together from {thisYearEvent.route.startLabel} to{" "}
-          {thisYearEvent.route.endLabel} for breast cancer awareness.
+          from {thisYearEvent.route.startLabel} to {thisYearEvent.route.endLabel}.
         </p>
       </section>
 
-      <div className="mx-auto grid max-w-4xl gap-8 pb-20 md:grid-cols-2">
-        <div className="flex flex-col justify-between rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
-          <div>
-            <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-wash text-primary">
-              <Mail className="h-6 w-6" />
+      {/* Main Content Grid */}
+      <div className="grid gap-8 pb-20 lg:grid-cols-[1fr_380px]">
+        <div className="space-y-8">
+          {/* Main eSewa QR Code Card */}
+          <div className="overflow-hidden rounded-3xl border border-emerald-500/20 bg-gradient-to-br from-card via-card to-emerald-500/5 p-6 shadow-soft sm:p-8">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border/60 pb-6">
+              <div className="flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 dark:bg-emerald-950/40">
+                  <img
+                    src={esewaLogo}
+                    alt="eSewa Logo"
+                    className="h-7 w-auto object-contain"
+                  />
+                </div>
+                <div>
+                  <h2 className="font-display text-xl font-bold text-foreground sm:text-2xl">
+                    Scan QR to Register using eSewa
+                  </h2>
+                  <p className="text-xs text-muted-foreground sm:text-sm">
+                    Direct payment & registration through eSewa
+                  </p>
+                </div>
+              </div>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                Official eSewa QR
+              </span>
             </div>
-            <h2 className="mt-4 font-display text-2xl font-semibold text-foreground">
-              Get Notified
-            </h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Be the first to know when registrations launch and reserve your
-              official PinkWalk t-shirt.
-            </p>
 
-            <form onSubmit={handleNotifySubmit} className="mt-6 space-y-3">
-              <div>
-                <label htmlFor="email" className="sr-only">
-                  Email address
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
-                  className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-pink transition-transform hover:-translate-y-0.5"
-              >
-                Notify Me When Open
-              </button>
-            </form>
+            <div className="mt-8 grid gap-8 md:grid-cols-2 md:items-center">
+              {/* QR Image & Direct Link */}
+              <div className="flex flex-col items-center justify-center rounded-2xl border border-border bg-white p-6 text-center shadow-sm">
+                <a
+                  href="esewa://"
+                  title="Scan or Tap to open eSewa"
+                  className="group relative rounded-2xl border-2 border-dashed border-emerald-500/30 p-4 bg-white transition-all hover:scale-102 hover:border-emerald-500"
+                >
+                  <img
+                    src={esewaQrImg}
+                    alt="PinkWalk 2026 eSewa Registration QR Code"
+                    className="h-60 w-60 object-contain rounded-xl sm:h-64 sm:w-64"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-emerald-950/20 opacity-0 backdrop-blur-[2px] transition-opacity group-hover:opacity-100">
+                    <span className="rounded-full bg-emerald-600 px-4 py-2 text-xs font-bold text-white shadow-lg flex items-center gap-1.5">
+                      <Smartphone className="h-4 w-4" />
+                      Open eSewa App
+                    </span>
+                  </div>
+                </a>
 
-            {submitted && (
-              <div className="mt-4 flex items-start gap-2.5 rounded-xl bg-pink-wash p-3.5 text-xs text-foreground">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <span>
-                  {isDuplicate ? (
-                    <>
-                      You are already registered for updates! We'll notify you
-                      as soon as registration launches.
-                    </>
-                  ) : (
-                    <>
-                      Thank you! We've saved your email and will notify you as
-                      soon as registration opens.
-                    </>
-                  )}
-                </span>
+                <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+                  <a
+                    href="esewa://"
+                    className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2 text-xs font-semibold text-white shadow-md transition-all hover:bg-emerald-700 hover:shadow-lg"
+                  >
+                    <Smartphone className="h-4 w-4" />
+                    Open eSewa App
+                  </a>
+                  <a
+                    href={esewaQrImg}
+                    download="PinkWalk_2026_eSewa_QR.png"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-4 py-2 text-xs font-medium text-foreground transition-colors hover:bg-muted"
+                  >
+                    <Download className="h-3.5 w-3.5" />
+                    Save QR Code
+                  </a>
+                </div>
               </div>
-            )}
+
+              {/* Step-by-Step Instructions */}
+              <div className="space-y-5">
+                <h3 className="font-display text-lg font-bold text-foreground">
+                  Registration Instructions:
+                </h3>
+
+                <ol className="space-y-4 text-sm">
+                  <li className="flex items-start gap-3.5">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-xs font-bold text-white shadow-sm">
+                      1
+                    </span>
+                    <div>
+                      <p className="font-medium text-foreground">
+                        Scan QR Code
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        Open your <strong className="text-foreground">eSewa app</strong> and tap <strong className="text-foreground">Scan & Pay</strong> (or tap the QR code above on mobile).
+                      </p>
+                    </div>
+                  </li>
+
+                  <li className="flex items-start gap-3.5">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-xs font-bold text-white shadow-sm">
+                      2
+                    </span>
+                    <div>
+                      <p className="font-medium text-foreground">
+                        Enter Details in Remarks
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        In the <strong className="text-foreground">Remarks</strong> section, type your <strong className="text-foreground">Full Name, Phone Number, and T-Shirt Size</strong>.
+                      </p>
+                    </div>
+                  </li>
+
+                  <li className="flex items-start gap-3.5">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-xs font-bold text-white shadow-sm">
+                      3
+                    </span>
+                    <div>
+                      <p className="font-medium text-foreground">
+                        Registering Friends & Family?
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        You can pay for multiple people at once! Simply list all participant names and t-shirt sizes in the Remarks (e.g., <em>"Hari (L), Sita (M)"</em>).
+                      </p>
+                    </div>
+                  </li>
+                </ol>
+
+                <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-4 text-xs text-emerald-900 dark:text-emerald-200">
+                  <p className="font-semibold flex items-center gap-1.5">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                    Instant Confirmation
+                  </p>
+                  <p className="mt-1 text-muted-foreground">
+                    Once payment is completed, your registration is instantly logged with the PinkWalk team!
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="mt-6 border-t border-border/60 pt-4 text-xs text-muted-foreground">
-            Have group or sponsorship inquiries? Email us directly at{" "}
-            <a
-              href={`mailto:${contactEmail}`}
-              className="font-medium text-primary hover:underline"
-            >
-              {contactEmail}
-            </a>
+          {/* Section 2: T-Shirt Size Guide Table */}
+          <div className="rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
+            <div className="flex items-center gap-3 border-b border-border/60 pb-5">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-pink-wash text-primary">
+                <Shirt className="h-5 w-5" />
+              </div>
+              <div>
+                <h2 className="font-display text-xl font-bold text-foreground">
+                  T-Shirt Size Guide
+                </h2>
+                <p className="text-xs text-muted-foreground sm:text-sm">
+                  Check your measurements before adding your size to eSewa Remarks
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 overflow-x-auto">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="border-b border-border bg-muted/40 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    <th className="px-4 py-3 rounded-l-xl">Size</th>
+                    <th className="px-4 py-3">Chest (in Inches)</th>
+                    <th className="px-4 py-3 rounded-r-xl">Length (in Inches)</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border/60">
+                  {tshirtSizeChart.map((item) => (
+                    <tr key={item.size} className="hover:bg-pink-wash/40 transition-colors">
+                      <td className="px-4 py-3.5">
+                        <strong className="text-foreground">{item.name}</strong>
+                      </td>
+                      <td className="px-4 py-3.5 font-mono text-foreground/80">
+                        {item.chestInches}"
+                      </td>
+                      <td className="px-4 py-3.5 font-mono text-foreground/80">
+                        {item.lengthInches}"
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-4 rounded-xl bg-pink-wash p-3.5 text-xs text-muted-foreground flex items-center justify-between">
+              <span>
+                <strong>Fit Note:</strong> T-shirts are unisex fit. Dimensions are in inches.
+              </span>
+              <span className="font-semibold text-primary">
+                Include size code (e.g. M, L, XL) in eSewa Remarks
+              </span>
+            </div>
           </div>
         </div>
 
-        <div className="space-y-4">
-          <div className="rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
-            <h3 className="font-display text-lg font-semibold text-foreground">
-              Event Details
+        {/* Sidebar */}
+        <aside className="space-y-6">
+          {/* Event Card */}
+          <div className="rounded-3xl border border-border bg-card p-6 shadow-soft">
+            <h3 className="font-display text-lg font-bold text-foreground">
+              Event Summary
             </h3>
 
-            <div className="mt-5 space-y-4">
+            <div className="mt-4 space-y-4 text-sm">
               <div className="flex items-start gap-3">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-pink-wash text-primary">
                   <Calendar className="h-5 w-5" />
@@ -159,11 +264,11 @@ function RegistrationComingSoonPage() {
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     Date & Time
                   </p>
-                  <p className="mt-0.5 font-medium text-foreground">
+                  <p className="font-medium text-foreground">
                     {thisYearEvent.date}
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    {thisYearEvent.startTime}
+                    {thisYearEvent.dateNote}
                   </p>
                 </div>
               </div>
@@ -174,52 +279,72 @@ function RegistrationComingSoonPage() {
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    Route
+                    Walk Route
                   </p>
-                  <p className="mt-0.5 font-medium text-foreground">
+                  <p className="font-medium text-foreground">
                     {thisYearEvent.route.startFull}
                   </p>
                   <p className="text-xs text-muted-foreground">
                     → {thisYearEvent.route.endFull}
                   </p>
-                  <p className="mt-1 text-xs font-medium text-primary">
+                  <p className="mt-1 text-xs font-semibold text-primary">
                     {thisYearEvent.distance} · {thisYearEvent.duration}
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 rounded-2xl bg-pink-wash p-4 text-xs text-foreground">
+            <div className="mt-6 rounded-2xl bg-pink-wash p-4 text-xs">
               <p className="font-semibold text-primary">
                 What's included upon registration?
               </p>
-              <ul className="mt-1.5 list-inside list-disc space-y-1 text-muted-foreground">
-                <li>Official PinkWalk 2026 awareness t-shirt</li>
-                <li>Hydration & refreshment support along the route</li>
-                <li>
-                  Community unity & solidarity for breast cancer awareness
+              <ul className="mt-2 space-y-1.5 text-muted-foreground">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
+                  Official PinkWalk 2026 T-Shirt
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
+                  Hydration & Refreshments along route
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
+                  Community Solidarity Badge
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="flex items-center justify-between rounded-2xl bg-pink-gradient p-5 text-primary-foreground shadow-pink">
-            <div>
-              <p className="font-display text-sm font-semibold">
-                Explore 2023 Walk
-              </p>
-              <p className="text-xs text-white/80">
-                See highlights & photos from our last walk
-              </p>
-            </div>
+          {/* Contact / Inquiry Card */}
+          <div className="rounded-3xl bg-pink-gradient p-6 text-primary-foreground shadow-pink">
+            <h3 className="font-display text-lg font-semibold flex items-center gap-2">
+              <Heart className="h-5 w-5 fill-current" />
+              Need Support?
+            </h3>
+            <p className="mt-2 text-xs leading-relaxed text-white/90">
+              For group or corporate registration support, contact:
+            </p>
+            <a
+              href={`mailto:${contactEmail}`}
+              className="mt-4 inline-block font-medium underline text-sm text-white"
+            >
+              {contactEmail}
+            </a>
+          </div>
+
+          {/* Link to past walk */}
+          <div className="rounded-2xl border border-border bg-card p-5 text-center shadow-soft">
+            <p className="text-xs font-medium text-muted-foreground">
+              Want to see photos from our previous event?
+            </p>
             <Link
               to="/past-event"
-              className="inline-flex items-center rounded-full bg-white/20 px-3.5 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/30"
+              className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
             >
-              View 2023 →
+              View PinkWalk 2023 Highlights →
             </Link>
           </div>
-        </div>
+        </aside>
       </div>
     </div>
   );

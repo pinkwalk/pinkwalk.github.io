@@ -136,6 +136,9 @@ export async function saveRegistration(registrationData: {
   size: string;
   group?: string;
   notes?: string;
+  amount?: string;
+  txnId?: string;
+  participants?: Array<{ name: string; size: string; phone?: string }>;
 }): Promise<{ success: boolean; alreadyRegistered?: boolean; error?: string }> {
   try {
     const firestore = getDb();
