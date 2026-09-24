@@ -17,6 +17,7 @@ import happymindsLogo from "@/assets/happyminds-logo.jpg";
 import qfxLogo from "@/assets/qfx-logo.png";
 import camsLogo from "@/assets/cams-logo.png";
 import nettvLogo from "@/assets/nettv-logo.png";
+import neembuLogo from "@/assets/neembu-logo.png";
 
 import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
 import manishaImg from "@/assets/guests/manisha-koirala.jpg";
@@ -32,7 +33,23 @@ export type LinkItem = {
 
 export const contactEmail = "pinkwalknepal@gmail.com";
 
-export const tshirtSizes = ["XS", "S", "M", "L", "XL", "XXL"] as const;
+export type TshirtSizeInfo = {
+  name: string;
+  size: string;
+  chestInches: number;
+  lengthInches: number;
+};
+
+export const tshirtSizes = ["M", "L", "XL", "2XL", "3XL", "4XL"] as const;
+
+export const tshirtSizeChart: TshirtSizeInfo[] = [
+  { name: "Medium (M)", size: "M", chestInches: 38, lengthInches: 27 },
+  { name: "Large (L)", size: "L", chestInches: 40, lengthInches: 28 },
+  { name: "X-Large (XL)", size: "XL", chestInches: 42, lengthInches: 29 },
+  { name: "XX-Large (2XL)", size: "2XL", chestInches: 44, lengthInches: 30 },
+  { name: "XXXL-Large (3XL)", size: "3XL", chestInches: 46, lengthInches: 31 },
+  { name: "XXXXL-Large (4XL)", size: "4XL", chestInches: 48, lengthInches: 31 },
+];
 
 export const thisYearEvent = {
   year: 2026,
@@ -172,10 +189,10 @@ export const partners: LinkItem[] = [
     label: "The Kathmandu Post",
     logo: tkpLogo,
   },
-  // {
-  //   label: "Dabur Real",
-  //   logo: realLogo,
-  // },
+  {
+    label: "Neembu Fizz",
+    logo: neembuLogo,
+  },
   {
     label: "Pathao Nepal",
     logo: pathaoLogo,
