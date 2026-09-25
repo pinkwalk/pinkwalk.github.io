@@ -53,7 +53,7 @@ function RegisterPage() {
         </h1>
 
         <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Scan our official eSewa QR code to complete your registration directly via eSewa. Join us on{" "}
+          Scan our official eSewa QR code—a direct deeplink that takes you straight to the registration form inside eSewa. Join us on{" "}
           <strong className="font-semibold text-foreground">
             {thisYearEvent.date} ({thisYearEvent.dateNote})
           </strong>{" "}
@@ -80,13 +80,13 @@ function RegisterPage() {
                     Scan QR to Register using eSewa
                   </h2>
                   <p className="text-xs text-muted-foreground sm:text-sm">
-                    Direct payment & registration through eSewa
+                    Direct eSewa deeplink to registration form
                   </p>
                 </div>
               </div>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
                 <ShieldCheck className="h-3.5 w-3.5" />
-                Official eSewa QR
+                Official eSewa Deeplink
               </span>
             </div>
 
@@ -95,7 +95,7 @@ function RegisterPage() {
               <div className="flex flex-col items-center justify-center rounded-2xl border border-border bg-white p-6 text-center shadow-sm">
                 <a
                   href="esewa://"
-                  title="Scan or Tap to open eSewa"
+                  title="Scan or Tap to open eSewa Form"
                   className="group relative rounded-2xl border-2 border-dashed border-emerald-500/30 p-4 bg-white transition-all hover:scale-102 hover:border-emerald-500"
                 >
                   <img
@@ -106,7 +106,7 @@ function RegisterPage() {
                   <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-emerald-950/20 opacity-0 backdrop-blur-[2px] transition-opacity group-hover:opacity-100">
                     <span className="rounded-full bg-emerald-600 px-4 py-2 text-xs font-bold text-white shadow-lg flex items-center gap-1.5">
                       <Smartphone className="h-4 w-4" />
-                      Open eSewa App
+                      Open eSewa Form
                     </span>
                   </div>
                 </a>
@@ -117,7 +117,7 @@ function RegisterPage() {
                     className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2 text-xs font-semibold text-white shadow-md transition-all hover:bg-emerald-700 hover:shadow-lg"
                   >
                     <Smartphone className="h-4 w-4" />
-                    Open eSewa App
+                    Open eSewa Form
                   </a>
                   <a
                     href={esewaQrImg}
@@ -143,10 +143,10 @@ function RegisterPage() {
                     </span>
                     <div>
                       <p className="font-medium text-foreground">
-                        Scan QR Code
+                        Scan QR Code with your Camera
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        Open your <strong className="text-foreground">eSewa app</strong> and tap <strong className="text-foreground">Scan & Pay</strong> (or tap the QR code above on mobile).
+                        Scan the QR code with your phone camera (or tap the QR code on mobile).
                       </p>
                     </div>
                   </li>
@@ -157,10 +157,10 @@ function RegisterPage() {
                     </span>
                     <div>
                       <p className="font-medium text-foreground">
-                        Enter Details in Remarks
+                        Fill Form & Remarks
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        In the <strong className="text-foreground">Remarks</strong> section, type your <strong className="text-foreground">Full Name, Phone Number, and T-Shirt Size</strong>.
+                        Once redirected to the eSewa form, enter your <strong className="text-foreground">Your details</strong>.
                       </p>
                     </div>
                   </li>
@@ -174,7 +174,7 @@ function RegisterPage() {
                         Registering Friends & Family?
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        You can pay for multiple people at once! Simply list all participant names and t-shirt sizes in the Remarks (e.g., <em>"Hari (L), Sita (M)"</em>).
+                        You can register multiple people on the form at once!.
                       </p>
                     </div>
                   </li>

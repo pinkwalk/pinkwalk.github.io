@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import logo from "@/assets/pinkwalk-logo.png";
 import infiniteLogo from "@/assets/infinite-logo.jpg";
+import cancerCareLogo from "@/assets/cancercare-logo.jpg";
 import { thisYearEvent, contactEmail } from "@/lib/event-data";
 
 export const Route = createFileRoute("/about")({
@@ -251,6 +252,73 @@ function AboutPage() {
           </div>
         </div>
       </section>
+      {/* SECTION 4: CANCER CARE NEPAL */}
+      <section id="cancer-care-nepal" className="scroll-mt-24 pb-20">
+        <div className="rounded-3xl border border-primary/20 bg-pink-wash/80 p-6 sm:p-10 shadow-soft">
+          <div className="grid gap-8 lg:grid-cols-12 items-start">
+            <div className="lg:col-span-8">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-card px-3.5 py-1 text-xs font-semibold text-primary mb-4">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                <span>Medical Partner & Non-Profit Organization</span>
+              </div>
+
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">
+                About Cancer Care Nepal
+              </h2>
+
+              <p className="mt-4 text-sm sm:text-base leading-relaxed text-foreground/90 font-medium">
+                Cancer Care Nepal is a non-profit organization dedicated to cancer awareness, prevention, early detection, and comprehensive patient support across Nepal.
+              </p>
+
+              <p className="mt-4 text-sm sm:text-base leading-relaxed text-muted-foreground">
+                Working alongside hospitals, oncology professionals, community health workers, and donors, Cancer Care Nepal strives to ensure that no individual is denied information, screening, or medical care because of where they live or what they can afford.
+              </p>
+
+              <div className="mt-8 grid gap-4 sm:grid-cols-2 text-xs sm:text-sm">
+                <div className="rounded-2xl bg-card p-5 border border-border/80 shadow-xs">
+                  <h4 className="font-semibold text-foreground text-sm">Awareness & Early Screening</h4>
+                  <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    Conducting community health camps and breast screening programs across rural and urban Nepal.
+                  </p>
+                </div>
+                <div className="rounded-2xl bg-card p-5 border border-border/80 shadow-xs">
+                  <h4 className="font-semibold text-foreground text-sm">Patient Assistance</h4>
+                  <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    Directing donations to assist underprivileged patients with diagnostic tests, treatment, and care.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-4 flex flex-col items-center justify-center">
+              <div className="w-full rounded-2xl bg-white p-6 border border-border/80 shadow-md flex items-center justify-center">
+                <img
+                  src={cancerCareLogo}
+                  alt="Cancer Care Nepal Logo"
+                  className="h-24 sm:h-28 md:h-32 w-auto max-w-full object-contain"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-primary/20 flex flex-wrap items-center justify-between gap-4 text-xs sm:text-sm font-semibold">
+            <a
+              href="https://cancercarenepal.org.np"
+              target="_blank"
+              rel="noreferrer"
+              className="text-primary hover:underline flex items-center gap-1.5"
+            >
+              <span>Visit Cancer Care Nepal Website</span>
+              <Globe className="h-4 w-4" />
+            </a>
+
+            <Link to="/partner" className="text-foreground hover:text-primary flex items-center gap-1">
+              <span>Partner with Cancer Care Nepal & PinkWalk</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* SECTION 3: INFINITE (ISS NEPAL / INFINITE COMPUTER SOLUTIONS) */}
       <section id="infinite" className="scroll-mt-24 pb-16">
@@ -307,60 +375,7 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* SECTION 4: CANCER CARE NEPAL */}
-      <section id="cancer-care-nepal" className="scroll-mt-24 pb-20">
-        <div className="rounded-3xl border border-primary/20 bg-pink-wash/80 p-6 sm:p-10 shadow-soft">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary mb-4">
-              <ShieldCheck className="h-3.5 w-3.5" />
-              <span>Medical Partner & Non-Profit Organization</span>
-            </div>
 
-            <h2 className="font-display text-3xl font-bold text-foreground">
-              About Cancer Care Nepal
-            </h2>
-
-            <p className="mt-4 text-sm sm:text-base leading-relaxed text-foreground/90 font-medium">
-              Cancer Care Nepal is a non-profit organization dedicated to cancer awareness, prevention, early detection, and comprehensive patient support across Nepal.
-            </p>
-
-            <p className="mt-4 text-sm sm:text-base leading-relaxed text-muted-foreground">
-              Working alongside hospitals, oncology professionals, community health workers, and donors, Cancer Care Nepal strives to ensure that no individual is denied information, screening, or medical care because of where they live or what they can afford.
-            </p>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 text-xs sm:text-sm">
-              <div className="rounded-2xl bg-card p-4 border border-border">
-                <h4 className="font-semibold text-foreground">Awareness & Early Screening</h4>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  Conducting community health camps and breast screening programs across rural and urban Nepal.
-                </p>
-              </div>
-              <div className="rounded-2xl bg-card p-4 border border-border">
-                <h4 className="font-semibold text-foreground">Patient Assistance</h4>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  Directing donations to assist underprivileged patients with diagnostic tests, treatment, and care.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-8 pt-6 border-t border-primary/20 flex flex-wrap items-center justify-between gap-4 text-xs font-semibold">
-              <a
-                href="https://cancercarenepal.org.np"
-                target="_blank"
-                rel="noreferrer"
-                className="text-primary hover:underline flex items-center gap-1"
-              >
-                <span>Visit Cancer Care Nepal Website</span>
-                <Globe className="h-3.5 w-3.5" />
-              </a>
-
-              <Link to="/partner" className="text-foreground hover:text-primary">
-                Partner with Cancer Care Nepal & PinkWalk →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Footer Card */}
       <section className="pb-20 text-center">

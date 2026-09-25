@@ -43,6 +43,9 @@ export type TshirtSizeInfo = {
 export const tshirtSizes = ["M", "L", "XL", "2XL", "3XL", "4XL"] as const;
 
 export const tshirtSizeChart: TshirtSizeInfo[] = [
+  { name: "XX-Small (XXS)", size: "XXS", chestInches: 32, lengthInches: 22 },
+  { name: "X-Small (XS)", size: "XS", chestInches: 34, lengthInches: 24 },
+  { name: "Small (S)", size: "S", chestInches: 36, lengthInches: 26 },
   { name: "Medium (M)", size: "M", chestInches: 38, lengthInches: 27 },
   { name: "Large (L)", size: "L", chestInches: 40, lengthInches: 28 },
   { name: "X-Large (XL)", size: "XL", chestInches: 42, lengthInches: 29 },
