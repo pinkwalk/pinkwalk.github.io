@@ -204,21 +204,20 @@
   animation: ribbon-sway 6s ease-in-out infinite;
 }
 
-/* Print Stylesheet for Press Releases & Documents */
+/* Print Stylesheet for Press Releases, Documents & Presentation Deck */
 @media print {
   @page {
-    margin: 15mm 15mm 15mm 15mm;
-    size: A4 portrait;
+    margin: 8mm;
+    size: A4 landscape;
   }
 
   body {
     background-color: #ffffff !important;
     color: #111111 !important;
     font-size: 11pt !important;
-    line-height: 1.6 !important;
-    font-family: Georgia, ui-serif, serif !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    line-height: 1.5 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   header,
@@ -232,9 +231,28 @@
     display: block !important;
   }
 
+  .print\:flex {
+    display: flex !important;
+  }
+
   a {
     text-decoration: none !important;
-    color: #000000 !important;
+  }
+
+  /* Presentation Slide Deck Print Styling */
+  .slide-print-page {
+    width: 100%;
+    min-height: 90vh;
+    box-sizing: border-box;
+    page-break-after: always;
+    break-after: page;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background-color: #ffffff !important;
   }
 
   article {
@@ -247,31 +265,15 @@
     background: transparent !important;
   }
 
-  .bg-pink-wash,
-  .bg-muted,
-  .bg-accent,
-  .bg-card,
-  .bg-background {
-    background: transparent !important;
-  }
-
   h1,
   h2,
   h3,
   h4 {
-    color: #000000 !important;
     page-break-after: avoid;
-  }
-
-  p,
-  li {
-    color: #111111 !important;
   }
 
   blockquote,
   .border-l-4 {
-    border-left-color: #000000 !important;
-    background-color: #f9f9f9 !important;
     page-break-inside: avoid;
   }
 }

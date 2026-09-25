@@ -8,6 +8,7 @@ import {
   Play,
   Pause,
   Printer,
+  Download,
   Sparkles,
   Calendar,
   MapPin,
@@ -568,90 +569,138 @@ function SlidesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col justify-between">
-      {/* Presentation Header Bar */}
-      <header className="flex items-center justify-between border-b border-border/60 bg-card px-4 sm:px-6 py-3 shadow-xs">
-        <div className="flex items-center gap-3">
-          <Link to="/" className="flex items-center">
-            <img src={logo} alt="PinkWalk" className="h-7 w-auto" />
-          </Link>
-          <span className="hidden sm:inline-block text-xs font-semibold text-muted-foreground border-l border-border pl-3">
-            Guest Presentation Deck
-          </span>
-        </div>
+    <>
+      {/* Interactive Screen View */}
+      <div className="min-h-screen bg-background text-foreground flex flex-col justify-between print:hidden">
+        {/* Presentation Header Bar */}
+        <header className="flex items-center justify-between border-b border-border/60 bg-card px-4 sm:px-6 py-3 shadow-xs">
+          <div className="flex items-center gap-3">
+            <Link to="/" className="flex items-center">
+              <img src={logo} alt="PinkWalk" className="h-7 w-auto" />
+            </Link>
+            <span className="hidden sm:inline-block text-xs font-semibold text-muted-foreground border-l border-border pl-3">
+              Guest Presentation Deck
+            </span>
+          </div>
 
-        <div className="flex items-center gap-2 text-xs">
-          <button
-            onClick={() => setIsPlaying(!isPlaying)}
-            className="flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 font-medium text-foreground hover:bg-accent transition-colors"
-          >
-            {isPlaying ? <Pause className="h-3.5 w-3.5 text-primary" /> : <Play className="h-3.5 w-3.5 text-primary" />}
-            <span className="hidden sm:inline">{isPlaying ? "Pause" : "Autoplay"}</span>
-          </button>
+          <div className="flex items-center gap-2 text-xs">
+            <a
+              href="/pinkwalk-slides-2026.pdf"
+              download="PinkWalk-2026-Presentation-Deck.pdf"
+              className="flex items-center gap-1.5 rounded-full border border-primary/30 bg-pink-wash px-3 py-1.5 font-medium text-primary hover:bg-primary hover:text-primary-foreground transition-colors shadow-xs"
+            >
+              <Download className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Download PDF</span>
+            </a>
 
-          <button
-            onClick={toggleFullscreen}
-            className="flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 font-medium text-foreground hover:bg-accent transition-colors"
-          >
-            {isFullscreen ? <Minimize2 className="h-3.5 w-3.5" /> : <Maximize2 className="h-3.5 w-3.5" />}
-            <span className="hidden sm:inline">{isFullscreen ? "Exit Fullscreen" : "Fullscreen"}</span>
-          </button>
-
-          <button
-            onClick={() => window.print()}
-            className="flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 font-medium text-foreground hover:bg-accent transition-colors"
-          >
-            <Printer className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">Print / PDF</span>
-          </button>
-        </div>
-      </header>
-
-      {/* Main Slide Content Area */}
-      <main className="flex-1 flex items-center justify-center p-4 sm:p-8 min-h-[72vh]">
-        <div className="w-full max-w-5xl rounded-3xl border border-border bg-card p-6 sm:p-10 shadow-soft transition-all duration-300 min-h-[580px] flex flex-col justify-center relative overflow-hidden">
-          {slides[currentSlide]}
-        </div>
-      </main>
-
-      {/* Slide Navigation Controls & Indicator */}
-      <footer className="border-t border-border/60 bg-card px-4 sm:px-6 py-4 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
-          <span>Slide {currentSlide + 1} of {totalSlides}</span>
-          <span className="text-border">|</span>
-          <span className="hidden sm:inline text-muted-foreground/80">Use ← → arrow keys to navigate</span>
-        </div>
-
-        {/* Thumbnail Dots */}
-        <div className="flex items-center gap-1.5">
-          {Array.from({ length: totalSlides }).map((_, i) => (
             <button
-              key={i}
-              onClick={() => setCurrentSlide(i)}
-              className={`h-2.5 rounded-full transition-all ${i === currentSlide ? "w-8 bg-primary" : "w-2.5 bg-muted hover:bg-muted-foreground/40"
-                }`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
+              onClick={() => setIsPlaying(!isPlaying)}
+              className="flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 font-medium text-foreground hover:bg-accent transition-colors"
+            >
+              {isPlaying ? <Pause className="h-3.5 w-3.5 text-primary" /> : <Play className="h-3.5 w-3.5 text-primary" />}
+              <span className="hidden sm:inline">{isPlaying ? "Pause" : "Autoplay"}</span>
+            </button>
 
-        <div className="flex items-center gap-2">
-          <button
-            onClick={prevSlide}
-            className="flex items-center gap-1 rounded-full border border-border bg-background px-4 py-2 text-xs font-semibold text-foreground hover:bg-accent transition-colors"
+            <button
+              onClick={toggleFullscreen}
+              className="flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 font-medium text-foreground hover:bg-accent transition-colors"
+            >
+              {isFullscreen ? <Minimize2 className="h-3.5 w-3.5" /> : <Maximize2 className="h-3.5 w-3.5" />}
+              <span className="hidden sm:inline">{isFullscreen ? "Exit Fullscreen" : "Fullscreen"}</span>
+            </button>
+
+            <button
+              onClick={() => window.print()}
+              className="flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 font-medium text-foreground hover:bg-accent transition-colors"
+            >
+              <Printer className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Print / Save PDF</span>
+            </button>
+          </div>
+        </header>
+
+        {/* Main Slide Content Area */}
+        <main className="flex-1 flex items-center justify-center p-4 sm:p-8 min-h-[72vh]">
+          <div className="w-full max-w-5xl rounded-3xl border border-border bg-card p-6 sm:p-10 shadow-soft transition-all duration-300 min-h-[580px] flex flex-col justify-center relative overflow-hidden">
+            {slides[currentSlide]}
+          </div>
+        </main>
+
+        {/* Slide Navigation Controls & Indicator */}
+        <footer className="border-t border-border/60 bg-card px-4 sm:px-6 py-4 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
+            <span>Slide {currentSlide + 1} of {totalSlides}</span>
+            <span className="text-border">|</span>
+            <span className="hidden sm:inline text-muted-foreground/80">Use ← → arrow keys to navigate</span>
+          </div>
+
+          {/* Thumbnail Dots */}
+          <div className="flex items-center gap-1.5">
+            {Array.from({ length: totalSlides }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                className={`h-2.5 rounded-full transition-all ${i === currentSlide ? "w-8 bg-primary" : "w-2.5 bg-muted hover:bg-muted-foreground/40"
+                  }`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={prevSlide}
+              className="flex items-center gap-1 rounded-full border border-border bg-background px-4 py-2 text-xs font-semibold text-foreground hover:bg-accent transition-colors"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              <span>Prev</span>
+            </button>
+            <button
+              onClick={nextSlide}
+              className="flex items-center gap-1 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-pink hover:opacity-95 transition-transform hover:-translate-y-0.5"
+            >
+              <span>Next</span>
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        </footer>
+      </div>
+
+      {/* Printable All-Slides Presentation Deck (For browser print & PDF generation) */}
+      <div className="hidden print:block space-y-0 text-foreground bg-background">
+        {slides.map((slideContent, index) => (
+          <div
+            key={`print-slide-${index}`}
+            className="slide-print-page w-full min-h-screen flex flex-col justify-between p-8 sm:p-12 border-b border-border/30 last:border-b-0"
+            style={{
+              pageBreakAfter: "always",
+              breakAfter: "page",
+              pageBreakInside: "avoid",
+              breakInside: "avoid",
+            }}
           >
-            <ChevronLeft className="h-4 w-4" />
-            <span>Prev</span>
-          </button>
-          <button
-            onClick={nextSlide}
-            className="flex items-center gap-1 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-pink hover:opacity-95 transition-transform hover:-translate-y-0.5"
-          >
-            <span>Next</span>
-            <ChevronRight className="h-4 w-4" />
-          </button>
-        </div>
-      </footer>
-    </div>
+            <div className="flex items-center justify-between pb-4 mb-4 border-b border-border/40 text-xs text-muted-foreground font-medium">
+              <div className="flex items-center gap-2">
+                <img src={logo} alt="PinkWalk" className="h-5 w-auto" />
+                <span className="font-semibold text-foreground">PinkWalk 2026</span>
+                <span>· Official Guest Slide Deck</span>
+              </div>
+              <span>Slide {index + 1} of {totalSlides}</span>
+            </div>
+
+            <div className="flex-1 flex flex-col justify-center items-center py-4">
+              <div className="w-full max-w-4xl rounded-2xl border border-border bg-card p-8 shadow-none min-h-[520px] flex flex-col justify-center relative overflow-hidden">
+                {slideContent}
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-border/40 text-[10px] text-muted-foreground flex items-center justify-between">
+              <span>Basantapur Durbar Square to Mangal Bazar · Oct 3, 2026</span>
+              <span>pinkwalk.github.io/slides</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
