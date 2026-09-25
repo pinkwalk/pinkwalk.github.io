@@ -547,7 +547,7 @@ function AwarenessPage() {
                 Cancer Care Nepal Partner
               </h3>
               <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                PinkWalk is organized in partnership with medical experts to provide free screening consultations during event day.
+                PinkWalk is organized in partnership with medical experts to provide screening consultations during event day.
               </p>
             </div>
             <a

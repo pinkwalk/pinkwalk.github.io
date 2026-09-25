@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -160,16 +161,18 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const routerState = useRouterState();
+  const isSlidesRoute = routerState.location.pathname === "/slides";
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <div className="flex min-h-screen flex-col">
-        <SiteNav />
+        {!isSlidesRoute && <SiteNav />}
         <main className="flex-1">
           <Outlet />
         </main>
-        <SiteFooter />
+        {!isSlidesRoute && <SiteFooter />}
       </div>
     </QueryClientProvider>
   );

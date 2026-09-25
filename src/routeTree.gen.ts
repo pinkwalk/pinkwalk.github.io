@@ -19,6 +19,7 @@ import { Route as PastEventRouteImport } from './routes/past-event'
 import { Route as PressReleaseRouteImport } from './routes/press-release'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as Register2RouteImport } from './routes/register2'
+import { Route as SlidesRouteImport } from './routes/slides'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -70,6 +71,11 @@ const Register2Route = Register2RouteImport.update({
   path: '/register2',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SlidesRoute = SlidesRouteImport.update({
+  id: '/slides',
+  path: '/slides',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/press-release': typeof PressReleaseRoute
   '/register': typeof RegisterRoute
   '/register2': typeof Register2Route
+  '/slides': typeof SlidesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/press-release': typeof PressReleaseRoute
   '/register': typeof RegisterRoute
   '/register2': typeof Register2Route
+  '/slides': typeof SlidesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   '/press-release': typeof PressReleaseRoute
   '/register': typeof RegisterRoute
   '/register2': typeof Register2Route
+  '/slides': typeof SlidesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
     | '/press-release'
     | '/register'
     | '/register2'
+    | '/slides'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -133,6 +143,7 @@ export interface FileRouteTypes {
     | '/press-release'
     | '/register'
     | '/register2'
+    | '/slides'
   id:
     | '__root__'
     | '/'
@@ -145,6 +156,7 @@ export interface FileRouteTypes {
     | '/press-release'
     | '/register'
     | '/register2'
+    | '/slides'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -158,6 +170,7 @@ export interface RootRouteChildren {
   PressReleaseRoute: typeof PressReleaseRoute
   RegisterRoute: typeof RegisterRoute
   Register2Route: typeof Register2Route
+  SlidesRoute: typeof SlidesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -232,6 +245,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Register2RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/slides': {
+      id: '/slides'
+      path: '/slides'
+      fullPath: '/slides'
+      preLoaderRoute: typeof SlidesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -246,6 +266,7 @@ const rootRouteChildren: RootRouteChildren = {
   PressReleaseRoute: PressReleaseRoute,
   RegisterRoute: RegisterRoute,
   Register2Route: Register2Route,
+  SlidesRoute: SlidesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

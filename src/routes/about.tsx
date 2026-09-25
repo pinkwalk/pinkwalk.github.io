@@ -16,6 +16,7 @@ import {
 import logo from "@/assets/pinkwalk-logo.png";
 import infiniteLogo from "@/assets/infinite-logo.jpg";
 import cancerCareLogo from "@/assets/cancercare-logo.jpg";
+import infiniteCaresLogo from "@/assets/infinitecares-logo.svg";
 import { thisYearEvent, contactEmail } from "@/lib/event-data";
 
 export const Route = createFileRoute("/about")({
@@ -210,9 +211,12 @@ function AboutPage() {
                 <Heart className="h-3.5 w-3.5 fill-primary" />
                 <span>Corporate Social Responsibility</span>
               </div>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">
-                About Infinite Cares
-              </h2>
+              <div className="flex items-center gap-3 mt-1">
+                <img src={infiniteCaresLogo} alt="Infinite Cares" className="h-10 w-auto object-contain" />
+                <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">
+
+                </h2>
+              </div>
             </div>
             <p className="text-xs sm:text-sm text-muted-foreground max-w-md">
               The dedicated CSR unit driving community health, education, and social sustainability initiatives in Nepal.
