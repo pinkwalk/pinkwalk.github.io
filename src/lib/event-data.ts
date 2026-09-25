@@ -18,6 +18,7 @@ import qfxLogo from "@/assets/qfx-logo.png";
 import camsLogo from "@/assets/cams-logo.png";
 import nettvLogo from "@/assets/nettv-logo.png";
 import neembuLogo from "@/assets/neembu-logo.png";
+import taalLogo from "@/assets/taalnrityabhumi-logo.png";
 
 import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
 import manishaImg from "@/assets/guests/manisha-koirala.jpg";
@@ -26,6 +27,7 @@ import sugarikaImg from "@/assets/guests/sugarika-kc.jpg";
 
 export type LinkItem = {
   label: string;
+  type?: string;
   href?: string;
   note?: string;
   logo?: string;
@@ -175,58 +177,75 @@ export const organizersList: LinkItem[] = [
 ];
 
 export const partners: LinkItem[] = [
-
   {
     label: "National Hospital & Cancer Research Center",
+    type: "Hospital",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuuhOx10oq8gPP0T7cRzQZsnS0z_XrPXkJdu6T-ayDkTWDhn2o7pFGomXe&s=10",
   },
   {
     label: "ISS Pvt. Ltd.",
+    type: "Audio/Visual",
     logo: issLogo,
   },
   {
     label: "Novala Biotech",
+    type: "Biotech",
     logo: novalaLogo,
   },
   {
     label: "The Kathmandu Post",
+    type: "Media",
     logo: tkpLogo,
   },
   {
     label: "Neembu Fizz",
+    type: "Beverage",
     logo: neembuLogo,
   },
   {
     label: "Pathao Nepal",
+    type: "Mobility",
     logo: pathaoLogo,
   },
   {
     label: "World of Women Magazine",
+    type: "Magazine",
     logo: wowLogo,
   },
   {
     label: "Esewa",
+    type: "Payment",
     logo: esewaLogo,
   },
   {
     label: "Happy Minds",
+    type: "Mental Health",
     logo: happymindsLogo,
   },
   {
     label: "H2O Drinking Water",
+    type: "Hydration",
     logo: h2oLogo,
   },
   {
     label: "QFX Cinemas",
+    type: "Multiplex",
     logo: qfxLogo,
   },
   {
     label: "CAMS",
+    type: "Diagonstics",
     logo: camsLogo,
   },
   {
     label: "NET TV",
+    type: "Promotion",
     logo: nettvLogo,
+  },
+  {
+    label: "Taal Nrityabhumi",
+    type: "Cultural",
+    logo: taalLogo,
   },
   // {
   //   label: "Jeevee Health Pvt. Ltd.",

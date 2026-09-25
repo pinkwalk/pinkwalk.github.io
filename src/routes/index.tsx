@@ -68,8 +68,8 @@ function Hero() {
             width={1920}
             height={1280}
             className={`absolute inset-0 h-full w-full object-cover transition-all duration-[2500ms] ease-in-out ${idx === currentIdx
-                ? "opacity-100 scale-105"
-                : "opacity-0 scale-100"
+              ? "opacity-100 scale-105"
+              : "opacity-0 scale-100"
               }`}
           />
         ))}
@@ -510,42 +510,6 @@ function Partners() {
           ))}
         </div>
       </div> */}
-
-      <div className="mt-12">
-        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Partners
-        </p>
-        {partnersWithLogo.length > 0 && (
-          <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {partnersWithLogo.map((p) => (
-              <div
-                key={p.label}
-                className="flex items-center justify-center rounded-2xl border border-border bg-card p-5 shadow-soft"
-              >
-                <img
-                  src={p.logo}
-                  alt={p.label}
-                  className="max-h-14 w-full max-w-[150px] object-contain"
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </div>
-        )}
-        {partnersText.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-2.5">
-            {partnersText.map((p) => (
-              <span
-                key={p.label}
-                className="rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-foreground"
-              >
-                {p.label}
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
-
       <div className="mt-8">
         <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           Supported by
@@ -560,13 +524,54 @@ function Partners() {
                 <img
                   src={p.logo}
                   alt={p.label}
-                  className="max-h-14 w-full max-w-[150px] object-contain"
+                  className="max-h-22 w-full max-w-[150px] object-contain"
                   loading="lazy"
                 />
               </div>
             ))}
           </div>
         )}
+        <div className="mt-12">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            Partners
+          </p>
+          {partnersWithLogo.length > 0 && (
+            <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+              {partnersWithLogo.map((p) => (
+                <div
+                  key={p.label}
+                  className="flex flex-col items-center justify-center rounded-2xl border border-border bg-card p-4 sm:p-5 shadow-soft text-center hover:border-primary/40 transition-colors"
+                >
+                  {p.type && (
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-primary mb-2 bg-pink-wash/80 px-2.5 py-0.5 rounded-full border border-primary/20">
+                      {p.type}
+                    </span>
+                  )}
+                  <img
+                    src={p.logo}
+                    alt={p.label}
+                    className="max-h-14 w-full max-w-[150px] object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+          {partnersText.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-2.5">
+              {partnersText.map((p) => (
+                <span
+                  key={p.label}
+                  className="rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-foreground"
+                >
+                  {p.label}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+
         {supportersText.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2.5">
             {supportersText.map((p) => (

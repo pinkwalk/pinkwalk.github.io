@@ -442,9 +442,13 @@ function SlidesPage() {
           <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Corporate & Media Partners:</p>
           <div className="grid grid-cols-3 sm:grid-cols-4 gap-2.5 text-[11px]">
             {partners.map((p, idx) => (
-              <div key={idx} className="flex items-center gap-2 rounded-xl border border-border bg-card p-2.5 shadow-xs">
-                {p.logo && <img src={p.logo} alt={p.label} className="h-5 w-auto max-w-[60px] object-contain" />}
-                <span className="font-medium text-foreground truncate">{p.label}</span>
+              <div key={idx} className="flex flex-col items-center justify-center rounded-xl border border-border bg-card p-2 text-center shadow-xs">
+                {p.type && (
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-primary mb-1 truncate max-w-full">
+                    {p.type}
+                  </span>
+                )}
+                {p.logo && <img src={p.logo} alt={p.label} className="h-6 w-auto max-w-[70px] object-contain" />}
               </div>
             ))}
           </div>
