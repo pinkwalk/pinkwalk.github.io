@@ -207,8 +207,16 @@
 /* Print Stylesheet for Press Releases, Documents & Presentation Deck */
 @media print {
   @page {
-    margin: 8mm;
+    margin: 0;
     size: A4 landscape;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
   }
 
   body {
@@ -241,8 +249,8 @@
 
   /* Presentation Slide Deck Print Styling */
   .slide-print-page {
-    width: 100%;
-    min-height: 90vh;
+    width: 100vw;
+    height: 100vh;
     box-sizing: border-box;
     page-break-after: always;
     break-after: page;
@@ -250,8 +258,9 @@
     break-inside: avoid;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5rem;
     background-color: #ffffff !important;
   }
 

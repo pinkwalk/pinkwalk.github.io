@@ -667,11 +667,11 @@ function SlidesPage() {
       </div>
 
       {/* Printable All-Slides Presentation Deck (For browser print & PDF generation) */}
-      <div className="hidden print:block space-y-0 text-foreground bg-background">
+      <div className="hidden print:block text-foreground bg-background">
         {slides.map((slideContent, index) => (
           <div
             key={`print-slide-${index}`}
-            className="slide-print-page w-full min-h-screen flex flex-col justify-between p-8 sm:p-12 border-b border-border/30 last:border-b-0"
+            className="slide-print-page w-screen h-screen flex flex-col justify-center items-center p-6 bg-background text-foreground overflow-hidden"
             style={{
               pageBreakAfter: "always",
               breakAfter: "page",
@@ -679,24 +679,8 @@ function SlidesPage() {
               breakInside: "avoid",
             }}
           >
-            <div className="flex items-center justify-between pb-4 mb-4 border-b border-border/40 text-xs text-muted-foreground font-medium">
-              <div className="flex items-center gap-2">
-                <img src={logo} alt="PinkWalk" className="h-5 w-auto" />
-                <span className="font-semibold text-foreground">PinkWalk 2026</span>
-                <span>· Official Guest Slide Deck</span>
-              </div>
-              <span>Slide {index + 1} of {totalSlides}</span>
-            </div>
-
-            <div className="flex-1 flex flex-col justify-center items-center py-4">
-              <div className="w-full max-w-4xl rounded-2xl border border-border bg-card p-8 shadow-none min-h-[520px] flex flex-col justify-center relative overflow-hidden">
-                {slideContent}
-              </div>
-            </div>
-
-            <div className="pt-3 border-t border-border/40 text-[10px] text-muted-foreground flex items-center justify-between">
-              <span>Basantapur Durbar Square to Mangal Bazar · Oct 3, 2026</span>
-              <span>pinkwalk.github.io/slides</span>
+            <div className="w-full max-w-5xl rounded-3xl border border-border/60 bg-card p-8 sm:p-10 shadow-none flex flex-col justify-center relative overflow-hidden">
+              {slideContent}
             </div>
           </div>
         ))}
