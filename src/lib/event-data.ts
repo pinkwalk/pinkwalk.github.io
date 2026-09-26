@@ -189,7 +189,7 @@ export const partners: LinkItem[] = [
   },
   {
     label: "Novala Biotech",
-    type: "Biotech",
+    type: "Diagnostics",
     logo: novalaLogo,
   },
   {
@@ -234,7 +234,7 @@ export const partners: LinkItem[] = [
   },
   {
     label: "CAMS",
-    type: "Diagonstics",
+    type: "Medical/Clinical",
     logo: camsLogo,
   },
   {
