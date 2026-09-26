@@ -206,7 +206,7 @@ export const partners: LinkItem[] = [
   },
   {
     label: "The max Foundation",
-    type: "Promotion",
+    type: "Care",
     logo: themaxLogo,
     href: "https://www.themaxfoundation.org",
   },
