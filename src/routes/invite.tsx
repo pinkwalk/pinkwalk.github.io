@@ -11,7 +11,7 @@ import {
   MapPin,
   RefreshCw,
 } from "lucide-react";
-import { thisYearEvent } from "@/lib/event-data";
+import { thisYearEvent, getInviteMessage } from "@/lib/event-data";
 import invitationSvg from "@/assets/invitation.svg";
 
 export const Route = createFileRoute("/invite")({
@@ -142,7 +142,7 @@ function InvitePage() {
   const handleShareCard = async () => {
     const canvas = canvasRef.current;
     const friend = currentDisplayName.trim() || "Friend";
-    const shareText = `Hey ${friend}! 💕 I'm inviting you to join PinkWalk 2026 for Breast Cancer Awareness on ${thisYearEvent.dateNote}. Let's walk together! 🌸`;
+    const shareText = `Hey ${friend}! 💕 I'm inviting you to join PinkWalk 2026 for Breast Cancer Awareness on ${thisYearEvent.dateNote} (${thisYearEvent.date}) at ${thisYearEvent.time}. Let's walk together! 🌸`;
 
     if (canvas && navigator.share && navigator.canShare) {
       try {
@@ -183,7 +183,7 @@ function InvitePage() {
   // Copy invitation text message
   const handleCopyText = () => {
     const friend = currentDisplayName.trim() || "Friend";
-    const message = `Hi ${friend}! 🌸\n\nI want to invite you to walk with me at PinkWalk 2026, a community breast cancer awareness walk in Kathmandu!\n\n📅 Date: ${thisYearEvent.dateNote}\n📍 Route: ${thisYearEvent.route.startLabel} to ${thisYearEvent.route.endLabel}\n\nLet's support breast cancer survivors and raise awareness together! 💕\n\nLearn more & register: ${window.location.origin}`;
+    const message = getInviteMessage(friend, window.location.origin);
 
     navigator.clipboard.writeText(message);
     setCopied(true);

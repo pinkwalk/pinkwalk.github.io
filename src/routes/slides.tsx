@@ -426,32 +426,67 @@ function SlidesPage() {
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Civic Supporters:</p>
           <div className="grid grid-cols-3 gap-3 text-xs">
-            {supporters.map((s, idx) => (
-              <div key={idx} className="flex items-center gap-2.5 rounded-xl border border-border bg-card p-3 shadow-xs">
-                {s.logo ? (
-                  <img src={s.logo} alt={s.label} className="h-6 w-auto max-w-[80px] object-contain" />
-                ) : (
-                  <ShieldCheck className="h-5 w-5 text-primary shrink-0" />
-                )}
-                <span className="font-semibold text-foreground truncate">{s.label}</span>
-              </div>
-            ))}
+            {supporters.map((s, idx) =>
+              s.href ? (
+                <a
+                  key={idx}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 rounded-xl border border-border bg-card p-3 shadow-xs hover:border-primary/50 transition-colors"
+                >
+                  {s.logo ? (
+                    <img src={s.logo} alt={s.label} className="h-6 w-auto max-w-[80px] object-contain" />
+                  ) : (
+                    <ShieldCheck className="h-5 w-5 text-primary shrink-0" />
+                  )}
+                  <span className="font-semibold text-foreground truncate">{s.label}</span>
+                </a>
+              ) : (
+                <div key={idx} className="flex items-center gap-2.5 rounded-xl border border-border bg-card p-3 shadow-xs">
+                  {s.logo ? (
+                    <img src={s.logo} alt={s.label} className="h-6 w-auto max-w-[80px] object-contain" />
+                  ) : (
+                    <ShieldCheck className="h-5 w-5 text-primary shrink-0" />
+                  )}
+                  <span className="font-semibold text-foreground truncate">{s.label}</span>
+                </div>
+              )
+            )}
           </div>
         </div>
 
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Corporate & Media Partners:</p>
           <div className="grid grid-cols-3 sm:grid-cols-4 gap-2.5 text-[11px]">
-            {partners.map((p, idx) => (
-              <div key={idx} className="flex flex-col items-center justify-center rounded-xl border border-border bg-card p-2 text-center shadow-xs">
-                {p.type && (
-                  <span className="text-[9px] font-bold uppercase tracking-wider text-primary mb-1 truncate max-w-full">
-                    {p.type}
-                  </span>
-                )}
-                {p.logo && <img src={p.logo} alt={p.label} className="h-6 w-auto max-w-[70px] object-contain" />}
-              </div>
-            ))}
+            {partners.map((p, idx) =>
+              p.href ? (
+                <a
+                  key={idx}
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={p.label}
+                  className="flex flex-col items-center justify-center rounded-xl border border-border bg-card p-2 text-center shadow-xs hover:border-primary/50 transition-colors"
+                >
+                  {p.type && (
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-primary mb-1 truncate max-w-full">
+                      {p.type}
+                    </span>
+                  )}
+                  {p.logo && <img src={p.logo} alt={p.label} className="h-6 w-auto max-w-[70px] object-contain" />}
+                </a>
+              ) : (
+                <div key={idx} className="flex flex-col items-center justify-center rounded-xl border border-border bg-card p-2 text-center shadow-xs">
+                  {p.type && (
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-primary mb-1 truncate max-w-full">
+                      {p.type}
+                    </span>
+                  )}
+                  {p.logo && <img src={p.logo} alt={p.label} className="h-6 w-auto max-w-[70px] object-contain" />}
+                </div>
+              )
+            )}
           </div>
         </div>
       </div>

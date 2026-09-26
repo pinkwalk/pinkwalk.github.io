@@ -19,6 +19,9 @@ import camsLogo from "@/assets/cams-logo.png";
 import nettvLogo from "@/assets/nettv-logo.png";
 import neembuLogo from "@/assets/neembu-logo.png";
 import taalLogo from "@/assets/taalnrityabhumi-logo.png";
+import themaxLogo from "@/assets/themax-logo.jpg";
+import bajraLogo from "@/assets/bajra-logo.png";
+import jhiguLogo from "@/assets/jhigu-logo.png";
 
 import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
 import manishaImg from "@/assets/guests/manisha-koirala.jpg";
@@ -61,6 +64,7 @@ export const thisYearEvent = {
   month: "October 2026",
   date: "October 3rd, 2026",
   dateNote: "शनिवार, आश्विन १७, २०८३",
+  time: "6:00 AM (Assembly) / 6:15 AM (Flag-Off)",
   title: "PinkWalk 2026",
   tagline: "Basantapur → Mangal Bazar",
   route: {
@@ -80,7 +84,7 @@ export const thisYearEvent = {
   ],
   duration: "around 1 hr",
   distance: "≈ 4.3 km",
-  startTime: "Early morning (time TBA)",
+  startTime: "6:00 AM",
   highlights: [
     "A heritage walk through the heart of the Kathmandu Valley",
     "From Kathmandu Durbar Square to Lalitpur Durbar Square",
@@ -89,6 +93,12 @@ export const thisYearEvent = {
   ],
   organizers: ["Infinite Care"],
   contactPersons: ["Dijup Tuladhar", "Lijala Shrestha"],
+};
+
+export const getInviteMessage = (friendName?: string, currentUrl?: string) => {
+  const friend = friendName?.trim() || "Friend";
+  const url = currentUrl || "https://pinkwalk.github.io";
+  return `Hi ${friend}! 🌸\n\nI want to invite you to walk with me at PinkWalk 2026, a community breast cancer awareness walk in Kathmandu!\n\n📅 Date: ${thisYearEvent.dateNote} (${thisYearEvent.date})\n⏰ Time: ${thisYearEvent.time}\n📍 Route: ${thisYearEvent.route.startLabel} to ${thisYearEvent.route.endLabel} (${thisYearEvent.distance})\n\nLet's support breast cancer survivors and raise awareness together! 💕\n\nYour support helps us spread hope kindly share this invitation on your story and tag @PinkWalkNepal to help bring our community together.\n\nLearn more & register: ${url}`;
 };
 
 export type GuestItem = {
@@ -186,16 +196,25 @@ export const partners: LinkItem[] = [
     label: "ISS Pvt. Ltd.",
     type: "Audio/Visual",
     logo: issLogo,
+    href: "https://www.isssoundz.com",
   },
   {
     label: "Novala Biotech",
     type: "Diagnostics",
     logo: novalaLogo,
+    href: "https://www.novala.com.np",
+  },
+  {
+    label: "The max Foundation",
+    type: "Promotion",
+    logo: themaxLogo,
+    href: "https://www.themaxfoundation.org",
   },
   {
     label: "The Kathmandu Post",
     type: "Media",
     logo: tkpLogo,
+    href: "https://kathmandupost.com",
   },
   {
     label: "Neembu Fizz",
@@ -206,21 +225,25 @@ export const partners: LinkItem[] = [
     label: "Pathao Nepal",
     type: "Mobility",
     logo: pathaoLogo,
+    href: "https://pathao.com/np/",
   },
   {
     label: "World of Women Magazine",
     type: "Magazine",
     logo: wowLogo,
+    href: "https://wownepal.com.np",
   },
   {
     label: "Esewa",
     type: "Payment",
     logo: esewaLogo,
+    href: "https://esewa.com.np",
   },
   {
     label: "Happy Minds",
     type: "Mental Health",
     logo: happymindsLogo,
+    href: "https://www.facebook.com/happymind.health",
   },
   {
     label: "H2O Drinking Water",
@@ -231,21 +254,34 @@ export const partners: LinkItem[] = [
     label: "QFX Cinemas",
     type: "Multiplex",
     logo: qfxLogo,
+    href: "https://www.qfxcinemas.com",
   },
   {
     label: "CAMS",
-    type: "Medical/Clinical",
+    type: "Clinical",
     logo: camsLogo,
+    href: "https://camsnepal.com",
   },
   {
     label: "NET TV",
     type: "Promotion",
     logo: nettvLogo,
+    href: "https://nettv.com.np",
   },
   {
     label: "Taal Nrityabhumi",
     type: "Cultural",
     logo: taalLogo,
+  },
+  {
+    label: "Bajra Nasah Khala",
+    type: "Cultural",
+    logo: bajraLogo,
+  },
+  {
+    label: "Jhigu newa baajan Khala",
+    type: "Cultural",
+    logo: jhiguLogo,
   },
   // {
   //   label: "Jeevee Health Pvt. Ltd.",

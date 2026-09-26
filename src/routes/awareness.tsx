@@ -376,8 +376,8 @@ function AwarenessPage() {
             </h3>
             <div className="relative w-full overflow-hidden rounded-2xl bg-black aspect-video shadow-md border border-border/80">
               <iframe
-                src="https://www.youtube-nocookie.com/embed/jjBY8Wp1I6Y"
-                title="Breast Cancer Early Detection Overview"
+                src="https://www.youtube-nocookie.com/embed/eY6p1lnxbyY"
+                title="Breast Cancer Video made by NHEICC"
                 className="absolute top-0 left-0 h-full w-full border-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen

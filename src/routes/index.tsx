@@ -516,19 +516,37 @@ function Partners() {
         </p>
         {supportersWithLogo.length > 0 && (
           <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {supportersWithLogo.map((p) => (
-              <div
-                key={p.label}
-                className="flex items-center justify-center rounded-2xl border border-border bg-card p-5 shadow-soft"
-              >
-                <img
-                  src={p.logo}
-                  alt={p.label}
-                  className="max-h-22 w-full max-w-[150px] object-contain"
-                  loading="lazy"
-                />
-              </div>
-            ))}
+            {supportersWithLogo.map((p) =>
+              p.href ? (
+                <a
+                  key={p.label}
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={p.label}
+                  className="flex items-center justify-center rounded-2xl border border-border bg-card p-5 shadow-soft hover:border-primary/50 hover:shadow-md transition-all"
+                >
+                  <img
+                    src={p.logo}
+                    alt={p.label}
+                    className="max-h-22 w-full max-w-[150px] object-contain"
+                    loading="lazy"
+                  />
+                </a>
+              ) : (
+                <div
+                  key={p.label}
+                  className="flex items-center justify-center rounded-2xl border border-border bg-card p-5 shadow-soft"
+                >
+                  <img
+                    src={p.logo}
+                    alt={p.label}
+                    className="max-h-22 w-full max-w-[150px] object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              )
+            )}
           </div>
         )}
         <div className="mt-12">
@@ -537,36 +555,66 @@ function Partners() {
           </p>
           {partnersWithLogo.length > 0 && (
             <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-              {partnersWithLogo.map((p) => (
-                <div
-                  key={p.label}
-                  className="flex flex-col items-center justify-center rounded-2xl border border-border bg-card p-4 sm:p-5 shadow-soft text-center hover:border-primary/40 transition-colors"
-                >
-                  {p.type && (
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-primary mb-2 bg-pink-wash/80 px-2.5 py-0.5 rounded-full border border-primary/20">
-                      {p.type}
-                    </span>
-                  )}
-                  <img
-                    src={p.logo}
-                    alt={p.label}
-                    className="max-h-14 w-full max-w-[150px] object-contain"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
+              {partnersWithLogo.map((p) => {
+                const inner = (
+                  <>
+                    {p.type && (
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-primary mb-2 bg-pink-wash/80 px-2.5 py-0.5 rounded-full border border-primary/20">
+                        {p.type}
+                      </span>
+                    )}
+                    <img
+                      src={p.logo}
+                      alt={p.label}
+                      className="max-h-14 w-full max-w-[150px] object-contain"
+                      loading="lazy"
+                    />
+                  </>
+                );
+                return p.href ? (
+                  <a
+                    key={p.label}
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={p.label}
+                    className="flex flex-col items-center justify-center rounded-2xl border border-border bg-card p-4 sm:p-5 shadow-soft text-center hover:border-primary/50 hover:shadow-md transition-all"
+                  >
+                    {inner}
+                  </a>
+                ) : (
+                  <div
+                    key={p.label}
+                    className="flex flex-col items-center justify-center rounded-2xl border border-border bg-card p-4 sm:p-5 shadow-soft text-center hover:border-primary/40 transition-colors"
+                  >
+                    {inner}
+                  </div>
+                );
+              })}
             </div>
           )}
           {partnersText.length > 0 && (
             <div className="mt-4 flex flex-wrap gap-2.5">
-              {partnersText.map((p) => (
-                <span
-                  key={p.label}
-                  className="rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-foreground"
-                >
-                  {p.label}
-                </span>
-              ))}
+              {partnersText.map((p) =>
+                p.href ? (
+                  <a
+                    key={p.label}
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                  >
+                    {p.label}
+                  </a>
+                ) : (
+                  <span
+                    key={p.label}
+                    className="rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-foreground"
+                  >
+                    {p.label}
+                  </span>
+                )
+              )}
             </div>
           )}
         </div>
@@ -574,14 +622,26 @@ function Partners() {
 
         {supportersText.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2.5">
-            {supportersText.map((p) => (
-              <span
-                key={p.label}
-                className="rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-foreground"
-              >
-                {p.label}
-              </span>
-            ))}
+            {supportersText.map((p) =>
+              p.href ? (
+                <a
+                  key={p.label}
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                >
+                  {p.label}
+                </a>
+              ) : (
+                <span
+                  key={p.label}
+                  className="rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-foreground"
+                >
+                  {p.label}
+                </span>
+              )
+            )}
           </div>
         )}
       </div>
