@@ -92,7 +92,7 @@ export const thisYearEvent = {
     "Walk together for about an hour in solidarity",
     "Pink for breast cancer awareness",
   ],
-  organizers: ["Infinite Care"],
+  organizers: ["Infinite Cares"],
   contactPersons: ["Dijup Tuladhar", "Lijala Shrestha"],
 };
 

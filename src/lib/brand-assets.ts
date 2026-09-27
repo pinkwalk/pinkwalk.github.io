@@ -252,7 +252,7 @@ export function generateBannerSvg(
 
     <!-- Footer Credit -->
     <text x="${width / 2}" y="${height - 24}" fill="${subtitleColor}" font-family="sans-serif" font-size="${baseFontSize * 0.35}" opacity="0.8" text-anchor="middle">
-      Organised by Infinite Care · pinkwalk.org
+      Organised by Infinite Cares · pinkwalk.github.io
     </text>
   </svg>
   `;

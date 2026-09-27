@@ -21,7 +21,7 @@ export function SiteFooter() {
           />
           <p className="mt-4 max-w-sm text-pretty text-sm leading-relaxed text-muted-foreground">
             A community breast cancer awareness walk in Kathmandu Valley,
-            organised by Infinite Care. Walk together. Raise awareness. Support
+            organised by Infinite Cares. Walk together. Raise awareness. Support
             life after cancer.
           </p>
           <p className="mt-4 text-sm font-medium text-foreground">
