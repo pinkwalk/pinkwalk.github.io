@@ -424,7 +424,7 @@ function SlidesPage() {
 
       <div className="space-y-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Civic Supporters:</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Supporters:</p>
           <div className="grid grid-cols-3 gap-3 text-xs">
             {supporters.map((s, idx) =>
               s.href ? (
@@ -457,7 +457,7 @@ function SlidesPage() {
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Corporate & Media Partners:</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Partners:</p>
           <div className="grid grid-cols-3 sm:grid-cols-4 gap-2.5 text-[11px]">
             {partners.map((p, idx) =>
               p.href ? (

@@ -22,6 +22,7 @@ import taalLogo from "@/assets/taalnrityabhumi-logo.png";
 import themaxLogo from "@/assets/themax-logo.jpg";
 import bajraLogo from "@/assets/bajra-logo.png";
 import jhiguLogo from "@/assets/jhigu-logo.png";
+import smritiLogo from "@/assets/smritipatra-logo.jpg";
 
 import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
 import manishaImg from "@/assets/guests/manisha-koirala.jpg";
@@ -283,10 +284,11 @@ export const partners: LinkItem[] = [
     type: "Cultural",
     logo: jhiguLogo,
   },
-  // {
-  //   label: "Jeevee Health Pvt. Ltd.",
-  //   logo: jeeveeLogo,
-  // },
+  {
+    label: "Smriti",
+    type: "Moment",
+    logo: smritiLogo,
+  },
 ];
 
 export const supporters: LinkItem[] = [
