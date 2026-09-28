@@ -24,6 +24,8 @@ import bajraLogo from "@/assets/bajra-logo.png";
 import jhiguLogo from "@/assets/jhigu-logo.png";
 import smritiLogo from "@/assets/smritipatra-logo.jpg";
 import onepasalLogo from "@/assets/onepasal-logo.svg";
+import hakhaLogo from "@/assets/hakha-logo.jpg";
+import mangalLogo from "@/assets/mangal-logo.jpg";
 
 import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
 import manishaImg from "@/assets/guests/manisha-koirala.jpg";
@@ -323,6 +325,14 @@ export const supporters: LinkItem[] = [
     label: "Nepal Cancer Survivor's Society",
     logo: necassLogo,
     href: "https://www.necass.org.np",
+  },
+  {
+    label: "Hakha Tole Samrakshan Samiti",
+    logo: hakhaLogo,
+  },
+  {
+    label: "Mangal Bazar",
+    logo: mangalLogo,
   },
 ];
 
