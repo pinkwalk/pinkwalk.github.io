@@ -389,7 +389,7 @@ function SlidesPage() {
       <div>
         <span className="text-xs font-semibold uppercase tracking-wider text-primary">Dignitaries & Champions</span>
         <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-1">
-          Honored Guests & Social Advocates
+          2023 Honored Guests & Social Advocates
         </h2>
       </div>
 

@@ -297,8 +297,12 @@ export const partners: LinkItem[] = [
     logo: smritiLogo,
     href: "https://smritipatra.com",
   },
-
-
+  {
+    label: "Jeevee",
+    type: "Shopping",
+    logo: jeeveeLogo,
+    href: "https://jeevee.com",
+  },
 ];
 
 export const supporters: LinkItem[] = [

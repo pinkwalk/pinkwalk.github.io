@@ -12,7 +12,7 @@ export function SiteFooter() {
       id="contact"
       className="mt-24 border-t border-border/60 bg-pink-wash print:hidden"
     >
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:px-6 sm:grid-cols-2 md:grid-cols-[1.2fr_0.8fr_1fr_1fr]">
         <div>
           <img
             src={logo}
@@ -48,7 +48,7 @@ export function SiteFooter() {
 
         <div>
           <h3 className="font-display text-sm font-semibold text-foreground">
-            Explore
+            Participate & Explore
           </h3>
           <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
             <li>
@@ -57,33 +57,56 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/register" className="hover:text-primary">
+                Register for Walk
+              </Link>
+            </li>
+            <li>
+              <Link to="/join" className="hover:text-primary">
+                I'm Going (Photo Badge)
+              </Link>
+            </li>
+            <li>
+              <Link to="/invite" className="hover:text-primary">
+                Invite Friends
+              </Link>
+            </li>
+            <li>
+              <Link to="/awareness" className="hover:text-primary">
+                BSE Guide
+              </Link>
+            </li>
+            <li>
               <Link to="/about" className="hover:text-primary">
                 About Us
               </Link>
             </li>
             <li>
-              <Link to="/awareness" className="hover:text-primary">
-                Breast Self-Exam Guide
+              <Link to="/past-event" className="hover:text-primary">
+                PinkWalk 2023
               </Link>
             </li>
-            {/* <li>
-              <Link to="/invite" className="hover:text-primary">
-                Invite Friends (Card Generator)
-              </Link>
-            </li> */}
-            <li>
-              <Link to="/register" className="hover:text-primary">
-                Register
-              </Link>
-            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-display text-sm font-semibold text-foreground">
+            Resources & Media
+          </h3>
+          <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
             <li>
               <Link to="/partner" className="hover:text-primary">
                 Partner With Us
               </Link>
             </li>
             <li>
-              <Link to="/past-event" className="hover:text-primary">
-                PinkWalk 2023
+              <Link to="/branding" className="hover:text-primary">
+                Branding & Media Kit
+              </Link>
+            </li>
+            <li>
+              <Link to="/press-release" className="hover:text-primary">
+                Press Releases
               </Link>
             </li>
             <li>
@@ -110,16 +133,6 @@ export function SiteFooter() {
               >
                 Cancer Care Nepal ↗
               </a>
-            </li>
-            <li>
-              <Link to="/branding" className="hover:text-primary">
-                Branding & Media Kit
-              </Link>
-            </li>
-            <li>
-              <Link to="/press-release" className="hover:text-primary">
-                Press Releases
-              </Link>
             </li>
           </ul>
         </div>
