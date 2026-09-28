@@ -26,6 +26,8 @@ import smritiLogo from "@/assets/smritipatra-logo.jpg";
 import onepasalLogo from "@/assets/onepasal-logo.svg";
 import hakhaLogo from "@/assets/hakha-logo.jpg";
 import mangalLogo from "@/assets/mangal-logo.jpg";
+import unoLogo from "@/assets/uno-logo.png";
+import lemonalLogo from "@/assets/lemonal-logo.jpg";
 
 import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
 import manishaImg from "@/assets/guests/manisha-koirala.jpg";
@@ -304,6 +306,18 @@ export const partners: LinkItem[] = [
     type: "Shopping",
     logo: jeeveeLogo,
     href: "https://jeevee.com",
+  },
+  {
+    label: "UNO",
+    type: "Rewards",
+    logo: unoLogo,
+    href: "https://jeevee.com",
+  },
+  {
+    label: "Le Monal",
+    type: "Confectionery",
+    logo: lemonalLogo,
+    href: "https://lemonalchocolates.com",
   },
 ];
 
