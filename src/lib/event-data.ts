@@ -23,6 +23,7 @@ import themaxLogo from "@/assets/themax-logo.jpg";
 import bajraLogo from "@/assets/bajra-logo.png";
 import jhiguLogo from "@/assets/jhigu-logo.png";
 import smritiLogo from "@/assets/smritipatra-logo.jpg";
+import onepasalLogo from "@/assets/onepasal-logo.svg";
 
 import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
 import manishaImg from "@/assets/guests/manisha-koirala.jpg";
@@ -258,6 +259,12 @@ export const partners: LinkItem[] = [
     href: "https://www.qfxcinemas.com",
   },
   {
+    label: "One Pasal",
+    type: "Ecommerce",
+    logo: onepasalLogo,
+    href: "https://onepasal.com",
+  },
+  {
     label: "CAMS",
     type: "Clinical",
     logo: camsLogo,
@@ -288,7 +295,10 @@ export const partners: LinkItem[] = [
     label: "Smriti",
     type: "Moment",
     logo: smritiLogo,
+    href: "https://smritipatra.com",
   },
+
+
 ];
 
 export const supporters: LinkItem[] = [
@@ -298,14 +308,17 @@ export const supporters: LinkItem[] = [
   {
     label: "Kathmandu Metropolitan City",
     logo: kathmanduLogo,
+    href: "https://kathmandu.gov.np",
   },
   {
     label: "Lalitpur Metropolitan City",
     logo: lalitpurLogo,
+    href: "https://lalitpurmun.gov.np",
   },
   {
     label: "Nepal Cancer Survivor's Society",
     logo: necassLogo,
+    href: "https://www.necass.org.np",
   },
 ];
 

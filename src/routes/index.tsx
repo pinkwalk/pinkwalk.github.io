@@ -473,16 +473,33 @@ function PastEventTeaser() {
   );
 }
 
-function Partners() {
-  const partnersWithLogo = partners.filter((p) => p.logo);
-  const partnersText = partners.filter((p) => !p.logo);
+function shuffleArray<T>(array: T[]): T[] {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
 
-  const supportersWithLogo = supporters.filter((p) => p.logo);
-  const supportersText = supporters.filter((p) => !p.logo);
+function Partners() {
+  const [supportersWithLogo] = useState(() =>
+    shuffleArray(supporters.filter((p) => p.logo))
+  );
+  const [supportersText] = useState(() =>
+    shuffleArray(supporters.filter((p) => !p.logo))
+  );
+
+  const [partnersWithLogo] = useState(() =>
+    shuffleArray(partners.filter((p) => p.logo))
+  );
+  const [partnersText] = useState(() =>
+    shuffleArray(partners.filter((p) => !p.logo))
+  );
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-      <PartnerCallout className="mb-14" />
+    <section className="mx-auto max-w-6xl px-4 py-12 sm:py-16 sm:px-6">
+      <PartnerCallout className="mb-8 sm:mb-10" />
 
       <SectionHeading
         eyebrow="Together"
@@ -490,32 +507,12 @@ function Partners() {
         subtitle="PinkWalk is made possible by the organisations that walk, fund, and amplify the cause."
       />
 
-      {/* <div className="mt-8">
-        <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-          Organized by
-        </p>
-        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-2xl">
-          {organizersList.map((o) => (
-            <div
-              key={o.label}
-              className="flex items-center justify-center rounded-2xl border border-primary/30 bg-card p-6 shadow-soft hover:border-primary transition-all"
-            >
-              <img
-                src={o.logo}
-                alt={o.label}
-                className="max-h-16 w-full max-w-[200px] object-contain"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
-      </div> */}
-      <div className="mt-8">
+      <div className="mt-6">
         <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           Supported by
         </p>
         {supportersWithLogo.length > 0 && (
-          <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="mt-3 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {supportersWithLogo.map((p) =>
               p.href ? (
                 <a
@@ -549,12 +546,12 @@ function Partners() {
             )}
           </div>
         )}
-        <div className="mt-12">
+        <div className="mt-8">
           <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
             Partners
           </p>
           {partnersWithLogo.length > 0 && (
-            <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            <div className="mt-3 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {partnersWithLogo.map((p) => {
                 const inner = (
                   <>
@@ -594,7 +591,7 @@ function Partners() {
             </div>
           )}
           {partnersText.length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-2.5">
+            <div className="mt-3 flex flex-wrap gap-2.5">
               {partnersText.map((p) =>
                 p.href ? (
                   <a
@@ -621,7 +618,7 @@ function Partners() {
 
 
         {supportersText.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-2.5">
+          <div className="mt-3 flex flex-wrap gap-2.5">
             {supportersText.map((p) =>
               p.href ? (
                 <a
