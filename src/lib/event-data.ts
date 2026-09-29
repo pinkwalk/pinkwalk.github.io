@@ -29,6 +29,7 @@ import mangalLogo from "@/assets/mangal-logo.jpg";
 import unoLogo from "@/assets/uno-logo.png";
 import lemonalLogo from "@/assets/lemonal-logo.jpg";
 import javaLogo from "@/assets/java-logo.png";
+import crayonsLogo from "@/assets/crayons-logo.png";
 
 import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
 import manishaImg from "@/assets/guests/manisha-koirala.jpg";
@@ -326,7 +327,12 @@ export const partners: LinkItem[] = [
     logo: javaLogo,
     href: "https://himalayanjava.com",
   },
-
+  {
+    label: "Crayons Corp",
+    type: "Appreciation",
+    logo: crayonsLogo,
+    href: "https://www.crayonscorp.com",
+  },
 ];
 
 export const supporters: LinkItem[] = [
