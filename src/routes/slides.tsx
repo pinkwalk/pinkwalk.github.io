@@ -422,7 +422,7 @@ function SlidesPage() {
     </div>,
 
     // Slide 8: Ecosystem Support
-    <div key="slide-8" className="flex flex-col justify-center space-y-4 sm:space-y-5 h-full px-3 sm:px-8">
+    <div key="slide-8" className="flex flex-col justify-center space-y-3 sm:space-y-4 h-full px-3 sm:px-8">
       <div>
         <span className="text-xs font-semibold uppercase tracking-wider text-primary">Ecosystem Support</span>
         <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mt-0.5">
@@ -430,9 +430,9 @@ function SlidesPage() {
         </h2>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-2.5 sm:space-y-3">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-1.5">Supporters</p>
+          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-1">Supporters</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5">
             {supporters.map((s, idx) =>
               s.href ? (
@@ -441,19 +441,19 @@ function SlidesPage() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 rounded-xl border border-border bg-card p-2 sm:p-2.5 shadow-xs hover:border-primary/50 transition-colors"
+                  className="flex items-center gap-2.5 rounded-xl border border-border bg-card p-1.5 sm:p-2 shadow-xs hover:border-primary/50 transition-colors"
                 >
                   {s.logo ? (
-                    <img src={s.logo} alt={s.label} className="h-7 sm:h-8 w-auto max-w-[65px] sm:max-w-[75px] object-contain shrink-0" />
+                    <img src={s.logo} alt={s.label} className="h-6 sm:h-7 w-auto max-w-[65px] sm:max-w-[75px] object-contain shrink-0" />
                   ) : (
                     <ShieldCheck className="h-4 w-4 text-primary shrink-0" />
                   )}
                   <span className="font-normal text-foreground text-[11px] sm:text-xs leading-tight">{s.label}</span>
                 </a>
               ) : (
-                <div key={idx} className="flex items-center gap-2.5 rounded-xl border border-border bg-card p-2 sm:p-2.5 shadow-xs">
+                <div key={idx} className="flex items-center gap-2.5 rounded-xl border border-border bg-card p-1.5 sm:p-2 shadow-xs">
                   {s.logo ? (
-                    <img src={s.logo} alt={s.label} className="h-7 sm:h-8 w-auto max-w-[65px] sm:max-w-[75px] object-contain shrink-0" />
+                    <img src={s.logo} alt={s.label} className="h-6 sm:h-7 w-auto max-w-[65px] sm:max-w-[75px] object-contain shrink-0" />
                   ) : (
                     <ShieldCheck className="h-4 w-4 text-primary shrink-0" />
                   )}
@@ -465,8 +465,8 @@ function SlidesPage() {
         </div>
 
         <div>
-          <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1.5">Partners</p>
-          <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 text-xs">
+          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-1">Partners</p>
+          <div className="grid grid-cols-3 sm:grid-cols-5 gap-1.5 text-xs">
             {partners.map((p, idx) =>
               p.href ? (
                 <a
@@ -475,20 +475,20 @@ function SlidesPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   title={p.label}
-                  className="flex items-center justify-center rounded-xl border border-border bg-card p-2 text-center shadow-xs hover:border-primary/50 transition-colors h-11 sm:h-12"
+                  className="flex items-center justify-center rounded-xl border border-border bg-card p-1 sm:p-1.5 text-center shadow-xs hover:border-primary/50 transition-colors h-9 sm:h-10"
                 >
                   {p.logo ? (
-                    <img src={p.logo} alt={p.label} className="h-6 sm:h-7 w-auto max-w-[75px] sm:max-w-[85px] object-contain" />
+                    <img src={p.logo} alt={p.label} className="h-5 sm:h-6 w-auto max-w-[65px] sm:max-w-[75px] object-contain" />
                   ) : (
-                    <span className="text-xs font-semibold text-foreground truncate max-w-full">{p.label}</span>
+                    <span className="text-[11px] font-semibold text-foreground truncate max-w-full">{p.label}</span>
                   )}
                 </a>
               ) : (
-                <div key={idx} className="flex items-center justify-center rounded-xl border border-border bg-card p-2 text-center shadow-xs h-11 sm:h-12">
+                <div key={idx} className="flex items-center justify-center rounded-xl border border-border bg-card p-1 sm:p-1.5 text-center shadow-xs h-9 sm:h-10">
                   {p.logo ? (
-                    <img src={p.logo} alt={p.label} className="h-6 sm:h-7 w-auto max-w-[75px] sm:max-w-[85px] object-contain" />
+                    <img src={p.logo} alt={p.label} className="h-5 sm:h-6 w-auto max-w-[65px] sm:max-w-[75px] object-contain" />
                   ) : (
-                    <span className="text-xs font-semibold text-foreground truncate max-w-full">{p.label}</span>
+                    <span className="text-[11px] font-semibold text-foreground truncate max-w-full">{p.label}</span>
                   )}
                 </div>
               )
