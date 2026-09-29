@@ -187,43 +187,51 @@ function SlidesPage() {
     </div>,
 
     // Slide 3: Our Cause & Mission
-    <div key="slide-3" className="flex flex-col justify-center space-y-6 h-full px-4 sm:px-12">
+    <div key="slide-3" className="flex flex-col justify-center space-y-3 sm:space-y-4 h-full px-2 sm:px-6">
       <div>
         <span className="text-xs font-semibold uppercase tracking-wider text-primary">Purpose & Impact</span>
-        <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-1">
+        <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mt-0.5">
           Why We Walk: Early Detection Saves Lives
         </h2>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-5">
-        <div className="rounded-2xl border border-border bg-card p-6 shadow-xs space-y-3">
-          <div className="h-10 w-10 rounded-xl bg-pink-wash flex items-center justify-center text-primary font-bold">1</div>
-          <h3 className="font-display text-lg font-semibold text-foreground">Promote Early Detection</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed">
+      <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+        <div className="rounded-2xl border border-border bg-card p-3.5 sm:p-4 shadow-xs space-y-1.5">
+          <div className="flex items-center gap-2.5">
+            <div className="h-7 w-7 rounded-lg bg-pink-wash flex items-center justify-center text-primary font-bold text-xs shrink-0">1</div>
+            <h3 className="font-display text-base font-semibold text-foreground">Promote Early Detection</h3>
+          </div>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
             Breast cancer detected in early stages has over 90% treatability. PinkWalk educates women and families on regular Breast Self-Examinations (BSE) and mammography screenings.
           </p>
         </div>
 
-        <div className="rounded-2xl border border-border bg-card p-6 shadow-xs space-y-3">
-          <div className="h-10 w-10 rounded-xl bg-pink-wash flex items-center justify-center text-primary font-bold">2</div>
-          <h3 className="font-display text-lg font-semibold text-foreground">Break Social Stigma</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed">
+        <div className="rounded-2xl border border-border bg-card p-3.5 sm:p-4 shadow-xs space-y-1.5">
+          <div className="flex items-center gap-2.5">
+            <div className="h-7 w-7 rounded-lg bg-pink-wash flex items-center justify-center text-primary font-bold text-xs shrink-0">2</div>
+            <h3 className="font-display text-base font-semibold text-foreground">Break Social Stigma</h3>
+          </div>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
             Open health dialogues eliminate hesitation around breast healthcare in Nepali society, encouraging timely consultation with healthcare providers.
           </p>
         </div>
 
-        <div className="rounded-2xl border border-border bg-card p-6 shadow-xs space-y-3">
-          <div className="h-10 w-10 rounded-xl bg-pink-wash flex items-center justify-center text-primary font-bold">3</div>
-          <h3 className="font-display text-lg font-semibold text-foreground">Support Patients & Survivors</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed">
+        <div className="rounded-2xl border border-border bg-card p-3.5 sm:p-4 shadow-xs space-y-1.5">
+          <div className="flex items-center gap-2.5">
+            <div className="h-7 w-7 rounded-lg bg-pink-wash flex items-center justify-center text-primary font-bold text-xs shrink-0">3</div>
+            <h3 className="font-display text-base font-semibold text-foreground">Support Patients & Survivors</h3>
+          </div>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
             Partnering with Cancer Care Nepal to provide medical guidance and financial treatment assistance to underprivileged patients fighting breast cancer.
           </p>
         </div>
 
-        <div className="rounded-2xl border border-border bg-card p-6 shadow-xs space-y-3">
-          <div className="h-10 w-10 rounded-xl bg-pink-wash flex items-center justify-center text-primary font-bold">4</div>
-          <h3 className="font-display text-lg font-semibold text-foreground">Unite Civic & Corporate Leaders</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed">
+        <div className="rounded-2xl border border-border bg-card p-3.5 sm:p-4 shadow-xs space-y-1.5">
+          <div className="flex items-center gap-2.5">
+            <div className="h-7 w-7 rounded-lg bg-pink-wash flex items-center justify-center text-primary font-bold text-xs shrink-0">4</div>
+            <h3 className="font-display text-base font-semibold text-foreground">Unite Civic & Corporate Leaders</h3>
+          </div>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
             Bringing together mayors, corporate leaders, IT professionals, doctors, students, and media in a shared commitment to public health.
           </p>
         </div>
@@ -413,19 +421,19 @@ function SlidesPage() {
       </div>
     </div>,
 
-    // Slide 8: Partners & Supporters
-    <div key="slide-8" className="flex flex-col justify-center space-y-6 h-full px-4 sm:px-12">
+    // Slide 8: Ecosystem Support
+    <div key="slide-8" className="flex flex-col justify-center space-y-4 sm:space-y-5 h-full px-3 sm:px-8">
       <div>
         <span className="text-xs font-semibold uppercase tracking-wider text-primary">Ecosystem Support</span>
-        <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-1">
+        <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mt-0.5">
           Our Partners & Supporters
         </h2>
       </div>
 
       <div className="space-y-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Supporters:</p>
-          <div className="grid grid-cols-3 gap-3 text-xs">
+          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-1.5">Supporters</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5">
             {supporters.map((s, idx) =>
               s.href ? (
                 <a
@@ -433,23 +441,23 @@ function SlidesPage() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 rounded-xl border border-border bg-card p-3 shadow-xs hover:border-primary/50 transition-colors"
+                  className="flex items-center gap-2.5 rounded-xl border border-border bg-card p-2 sm:p-2.5 shadow-xs hover:border-primary/50 transition-colors"
                 >
                   {s.logo ? (
-                    <img src={s.logo} alt={s.label} className="h-6 w-auto max-w-[80px] object-contain" />
+                    <img src={s.logo} alt={s.label} className="h-7 sm:h-8 w-auto max-w-[65px] sm:max-w-[75px] object-contain shrink-0" />
                   ) : (
-                    <ShieldCheck className="h-5 w-5 text-primary shrink-0" />
+                    <ShieldCheck className="h-4 w-4 text-primary shrink-0" />
                   )}
-                  <span className="font-semibold text-foreground truncate">{s.label}</span>
+                  <span className="font-normal text-foreground text-[11px] sm:text-xs leading-tight">{s.label}</span>
                 </a>
               ) : (
-                <div key={idx} className="flex items-center gap-2.5 rounded-xl border border-border bg-card p-3 shadow-xs">
+                <div key={idx} className="flex items-center gap-2.5 rounded-xl border border-border bg-card p-2 sm:p-2.5 shadow-xs">
                   {s.logo ? (
-                    <img src={s.logo} alt={s.label} className="h-6 w-auto max-w-[80px] object-contain" />
+                    <img src={s.logo} alt={s.label} className="h-7 sm:h-8 w-auto max-w-[65px] sm:max-w-[75px] object-contain shrink-0" />
                   ) : (
-                    <ShieldCheck className="h-5 w-5 text-primary shrink-0" />
+                    <ShieldCheck className="h-4 w-4 text-primary shrink-0" />
                   )}
-                  <span className="font-semibold text-foreground truncate">{s.label}</span>
+                  <span className="font-normal text-foreground text-[11px] sm:text-xs leading-tight">{s.label}</span>
                 </div>
               )
             )}
@@ -457,8 +465,8 @@ function SlidesPage() {
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Partners:</p>
-          <div className="grid grid-cols-3 sm:grid-cols-4 gap-2.5 text-[11px]">
+          <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1.5">Partners</p>
+          <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 text-xs">
             {partners.map((p, idx) =>
               p.href ? (
                 <a
@@ -467,23 +475,21 @@ function SlidesPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   title={p.label}
-                  className="flex flex-col items-center justify-center rounded-xl border border-border bg-card p-2 text-center shadow-xs hover:border-primary/50 transition-colors"
+                  className="flex items-center justify-center rounded-xl border border-border bg-card p-2 text-center shadow-xs hover:border-primary/50 transition-colors h-11 sm:h-12"
                 >
-                  {p.type && (
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-primary mb-1 truncate max-w-full">
-                      {p.type}
-                    </span>
+                  {p.logo ? (
+                    <img src={p.logo} alt={p.label} className="h-6 sm:h-7 w-auto max-w-[75px] sm:max-w-[85px] object-contain" />
+                  ) : (
+                    <span className="text-xs font-semibold text-foreground truncate max-w-full">{p.label}</span>
                   )}
-                  {p.logo && <img src={p.logo} alt={p.label} className="h-6 w-auto max-w-[70px] object-contain" />}
                 </a>
               ) : (
-                <div key={idx} className="flex flex-col items-center justify-center rounded-xl border border-border bg-card p-2 text-center shadow-xs">
-                  {p.type && (
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-primary mb-1 truncate max-w-full">
-                      {p.type}
-                    </span>
+                <div key={idx} className="flex items-center justify-center rounded-xl border border-border bg-card p-2 text-center shadow-xs h-11 sm:h-12">
+                  {p.logo ? (
+                    <img src={p.logo} alt={p.label} className="h-6 sm:h-7 w-auto max-w-[75px] sm:max-w-[85px] object-contain" />
+                  ) : (
+                    <span className="text-xs font-semibold text-foreground truncate max-w-full">{p.label}</span>
                   )}
-                  {p.logo && <img src={p.logo} alt={p.label} className="h-6 w-auto max-w-[70px] object-contain" />}
                 </div>
               )
             )}

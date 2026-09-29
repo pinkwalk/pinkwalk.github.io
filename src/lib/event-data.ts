@@ -359,7 +359,7 @@ export const supporters: LinkItem[] = [
     logo: hakhaLogo,
   },
   {
-    label: "Mangal Bazar",
+    label: "Mangal Tol Sudhar Sangh",
     logo: mangalLogo,
   },
 ];
