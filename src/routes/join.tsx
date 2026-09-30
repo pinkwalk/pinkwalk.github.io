@@ -86,22 +86,22 @@ const FRAME_STYLES: StyleOption[] = [
     height: 1920,
     aspectRatioClass: "aspect-[9/16]",
   },
-  {
-    id: "polaroid",
-    name: "Classic Polaroid Print",
-    desc: "4:5 Classic — White photo frame with caption area",
-    width: 1080,
-    height: 1350,
-    aspectRatioClass: "aspect-[4/5]",
-  },
-  {
-    id: "plum-dark",
-    name: "Deep Plum Premium",
-    desc: "1:1 Dark Mode — Elegant dark background with glowing pink accents",
-    width: 1080,
-    height: 1080,
-    aspectRatioClass: "aspect-square",
-  },
+  // {
+  //   id: "polaroid",
+  //   name: "Classic Polaroid Print",
+  //   desc: "4:5 Classic — White photo frame with caption area",
+  //   width: 1080,
+  //   height: 1350,
+  //   aspectRatioClass: "aspect-[4/5]",
+  // },
+  // {
+  //   id: "plum-dark",
+  //   name: "Deep Plum Premium",
+  //   desc: "1:1 Dark Mode — Elegant dark background with glowing pink accents",
+  //   width: 1080,
+  //   height: 1080,
+  //   aspectRatioClass: "aspect-square",
+  // },
 ];
 
 function JoinPage() {
@@ -219,261 +219,120 @@ function JoinPage() {
     // Clear canvas
     ctx.clearRect(0, 0, W, H);
 
+
     // ==========================================
-    // STYLE 1: PINK GLAM SQUARE BADGE (1080x1080)
+    // CONSISTENT BADGE DESIGN SYSTEM
+    // All styles share the same layout hierarchy:
+    // Logo → Official Badge Pill → Headline → Photo Frame (Name Pill + Ribbon) → Tagline → Date/Route Box → CTA → Footer
+    // Background: Pink watercolor vignette (light, with pink edges fading to white center)
     // ==========================================
+
+    // Helper: Draw pink watercolor vignette background
+    const drawWatercolorBg = (intense = false) => {
+      // White base
+      ctx.fillStyle = "#FFFFFF";
+      ctx.fillRect(0, 0, W, H);
+
+      // Corner watercolor blobs
+      const corners = [
+        { cx: 0, cy: 0 },
+        { cx: W, cy: 0 },
+        { cx: 0, cy: H },
+        { cx: W, cy: H },
+      ];
+      const edges = [
+        { cx: W / 2, cy: -H * 0.05 },
+        { cx: W / 2, cy: H * 1.05 },
+        { cx: -W * 0.05, cy: H / 2 },
+        { cx: W * 1.05, cy: H / 2 },
+      ];
+
+      const baseAlpha = intense ? 0.6 : 0.5;
+      const edgeAlpha = intense ? 0.38 : 0.28;
+
+      corners.forEach(({ cx, cy }) => {
+        const radius = Math.max(W, H) * 0.55;
+        const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+        grad.addColorStop(0, `rgba(255, 182, 206, ${baseAlpha})`);
+        grad.addColorStop(0.45, `rgba(255, 210, 225, ${baseAlpha * 0.35})`);
+        grad.addColorStop(1, "rgba(255, 255, 255, 0)");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, W, H);
+      });
+
+      edges.forEach(({ cx, cy }) => {
+        const radius = Math.max(W, H) * 0.4;
+        const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+        grad.addColorStop(0, `rgba(255, 190, 214, ${edgeAlpha})`);
+        grad.addColorStop(0.5, `rgba(255, 215, 230, ${edgeAlpha * 0.3})`);
+        grad.addColorStop(1, "rgba(255, 255, 255, 0)");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, W, H);
+      });
+    };
+
     if (frameStyle === "glam-square") {
-      // Background gradient
-      const bgGrad = ctx.createLinearGradient(0, 0, W, H);
-      bgGrad.addColorStop(0, "#FDF8F9");
-      bgGrad.addColorStop(0.5, "#FFF0F5");
-      bgGrad.addColorStop(1, "#FCE4EC");
-      ctx.fillStyle = bgGrad;
-      ctx.fillRect(0, 0, W, H);
+      // ==========================================
+      // STYLE 1: PINK GLAM SQUARE (1080×1080)
+      // ==========================================
 
-      // Decorative top arc / background shapes
-      ctx.fillStyle = "rgba(236, 0, 140, 0.05)";
-      ctx.beginPath();
-      ctx.arc(W / 2, -100, 700, 0, Math.PI * 2);
-      ctx.fill();
+      // Pink watercolor background
+      drawWatercolorBg();
 
-      // Top Header Ribbon Banner
-      const topBannerGrad = ctx.createLinearGradient(0, 0, W, 0);
-      topBannerGrad.addColorStop(0, "#EC008C");
-      topBannerGrad.addColorStop(0.5, "#D81B60");
-      topBannerGrad.addColorStop(1, "#4A1231");
-      ctx.fillStyle = topBannerGrad;
-      ctx.fillRect(0, 0, W, 140);
-
-      // Top Banner Text
-      ctx.save();
-      ctx.fillStyle = "#FFFFFF";
-      ctx.font = "bold 44px 'Outfit', 'Montserrat', sans-serif";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText("I'M GOING TO PINKWALK 2026", W / 2, 70);
-      ctx.restore();
-
-      // Draw Photo (Circular masked avatar at center)
-      const centerX = W / 2;
-      const centerY = 520;
-      const radius = 310;
-
-      // Photo backdrop shadow
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius + 10, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(236, 0, 140, 0.15)";
-      ctx.shadowColor = "rgba(236, 0, 140, 0.3)";
-      ctx.shadowBlur = 30;
-      ctx.fill();
-      ctx.restore();
-
-      // Photo Ring Border
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius + 8, 0, Math.PI * 2);
-      const ringGrad = ctx.createLinearGradient(
-        centerX - radius,
-        centerY - radius,
-        centerX + radius,
-        centerY + radius
-      );
-      ringGrad.addColorStop(0, "#EC008C");
-      ringGrad.addColorStop(0.5, "#FF6B8B");
-      ringGrad.addColorStop(1, "#4A1231");
-      ctx.fillStyle = ringGrad;
-      ctx.fill();
-      ctx.restore();
-
-      // Clip Circle for User Photo
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-      ctx.clip();
-
-      if (userImage) {
-        // Draw user uploaded image inside circle clip
-        ctx.save();
-        ctx.translate(centerX + offsetX, centerY + offsetY);
-        ctx.rotate((rotation * Math.PI) / 180);
-
-        // Aspect ratio cover math
-        const imgAspect = userImage.width / userImage.height;
-        let drawW = radius * 2 * zoom;
-        let drawH = drawW / imgAspect;
-
-        if (drawH < radius * 2 * zoom) {
-          drawH = radius * 2 * zoom;
-          drawW = drawH * imgAspect;
-        }
-
-        ctx.drawImage(userImage, -drawW / 2, -drawH / 2, drawW, drawH);
-        ctx.restore();
-      } else {
-        // Fallback default placeholder canvas background
-        ctx.fillStyle = "#F8BBD0";
-        ctx.fillRect(
-          centerX - radius,
-          centerY - radius,
-          radius * 2,
-          radius * 2
-        );
-
-        ctx.fillStyle = "#EC008C";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.font = "600 36px 'Outfit', sans-serif";
-        ctx.fillText("Click 'Upload Photo' Below", centerX, centerY - 20);
-        ctx.font = "400 28px 'Outfit', sans-serif";
-        ctx.fillStyle = "#880E4F";
-        ctx.fillText("to customize your badge", centerX, centerY + 30);
-      }
-
-      ctx.restore(); // Restore clip
-
-      // Overlaid Pink Ribbon Emblem at top-right of circle
-      if (ribbonImageRef.current) {
-        ctx.save();
-        const ribbonSize = 130;
-        ctx.drawImage(
-          ribbonImageRef.current,
-          centerX + radius - 70,
-          centerY - radius - 20,
-          ribbonSize,
-          ribbonSize
-        );
-        ctx.restore();
-      }
-
-      // User Name Box below circle
-      const nameText = userName.trim()
-        ? userName.trim()
-        : "Join Me in Kathmandu!";
-      ctx.save();
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-
-      // Pill container for Name
-      const pillWidth = Math.min(
-        W - 120,
-        Math.max(480, nameText.length * 28 + 80)
-      );
-      ctx.fillStyle = "#31006E"; // Deep purple
-      ctx.beginPath();
-      ctx.roundRect(W / 2 - pillWidth / 2, 860, pillWidth, 76, 38);
-      ctx.fill();
-
-      // Name Text
-      ctx.fillStyle = "#FFFFFF";
-      ctx.font = "bold 38px 'Montserrat', sans-serif";
-      ctx.fillText(nameText, W / 2, 898);
-      ctx.restore();
-
-      // Tagline Text
-      ctx.save();
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillStyle = "#EC008C";
-      ctx.font = "600 32px 'Outfit', sans-serif";
-      ctx.fillText(activeTagline, W / 2, 965);
-      ctx.restore();
-
-      // Footer Banner (Date, Location, Hashtag)
-      ctx.save();
-      ctx.fillStyle = "#4A1231";
-      ctx.fillRect(0, H - 65, W, 65);
-
-      ctx.fillStyle = "#FFFFFF";
-      ctx.font = "500 24px 'Outfit', sans-serif";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText(
-        `📅 ${thisYearEvent.date} · 📍 ${thisYearEvent.route.startLabel} to ${thisYearEvent.route.endLabel} · #PinkWalk2026`,
-        W / 2,
-        H - 32
-      );
-      ctx.restore();
-
-      // Top Logo watermark
+      // Logo (centered)
       if (logoImageRef.current) {
-        ctx.save();
-        const logoW = 160;
+        const logoW = 350;
         const logoH = (logoW * logoImageRef.current.height) / logoImageRef.current.width;
-        ctx.drawImage(logoImageRef.current, 30, 20, logoW, logoH);
-        ctx.restore();
+        ctx.drawImage(logoImageRef.current, W / 2 - logoW / 2, 45, logoW, logoH);
       }
-    }
 
-    // ==========================================
-    // STYLE 2: INSTAGRAM STORY PORTRAIT (1080x1920)
-    // ==========================================
-    else if (frameStyle === "story-portrait") {
-      // Dark/Pink luxury gradient backdrop
-      const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
-      bgGrad.addColorStop(0, "#2F0B20");
-      bgGrad.addColorStop(0.35, "#540D36");
-      bgGrad.addColorStop(0.7, "#880E4F");
-      bgGrad.addColorStop(1, "#31006E");
-      ctx.fillStyle = bgGrad;
-      ctx.fillRect(0, 0, W, H);
+      // Official Badge Pill
+      // ctx.save();
+      // ctx.fillStyle = "rgba(236, 0, 140, 0.08)";
+      // ctx.strokeStyle = "rgba(236, 0, 140, 0.3)";
+      // ctx.lineWidth = 2;
+      // ctx.beginPath();
+      // ctx.roundRect(W / 2 - 220, 72, 440, 42, 21);
+      // ctx.fill();
+      // ctx.stroke();
+      // ctx.fillStyle = "#D81B60";
+      // ctx.font = "bold 20px 'Outfit', sans-serif";
+      // ctx.textAlign = "center";
+      // ctx.textBaseline = "middle";
+      // ctx.fillText("OFFICIAL AWARENESS WALK 2026", W / 2, 93);
+      // ctx.restore();
 
-      // Decorative Glowing Circles
-      ctx.fillStyle = "rgba(236, 0, 140, 0.15)";
-      ctx.beginPath();
-      ctx.arc(W / 2, H * 0.4, 600, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Top Tagline Badge
-      ctx.save();
-      ctx.fillStyle = "rgba(255, 255, 255, 0.15)";
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.roundRect(W / 2 - 280, 120, 560, 60, 30);
-      ctx.fill();
-      ctx.stroke();
-
-      ctx.fillStyle = "#FFD1DC";
-      ctx.font = "bold 26px 'Outfit', sans-serif";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText("OFFICIAL AWARENESS WALK 2026", W / 2, 150);
-      ctx.restore();
-
-      // Headline Text
+      // Headline
       ctx.save();
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillStyle = "#FFFFFF";
-      ctx.font = "bold 64px 'Montserrat', sans-serif";
-      ctx.shadowColor = "rgba(0, 0, 0, 0.4)";
-      ctx.shadowBlur = 15;
-      ctx.fillText("I'M WALKING FOR", W / 2, 230);
-      ctx.fillStyle = "#FF6B8B";
-      ctx.font = "bold 72px 'Montserrat', sans-serif";
-      ctx.fillText("PINKWALK 2026", W / 2, 310);
+      ctx.fillStyle = "#1A1A1A";
+      ctx.font = "bold 38px 'Montserrat', sans-serif";
+      ctx.fillText("I'M WALKING FOR", W / 2, 200);
+      ctx.fillStyle = "#EC008C";
+      ctx.font = "bold 48px 'Montserrat', sans-serif";
+      ctx.fillText("PINKWALK 2026", W / 2, 250);
       ctx.restore();
 
-      // Main Large Photo Mask (Rounded Rectangle Frame)
+      // Photo Frame
       const frameX = 90;
-      const frameY = 410;
-      const frameW = W - 180; // 900
-      const frameH = 920;
-      const frameRadius = 40;
+      const frameY = 300;
+      const frameW = W - 180;
+      const frameH = 490;
+      const frameRadius = 32;
 
-      // Frame Drop Shadow
+      // Frame shadow
       ctx.save();
-      ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
-      ctx.shadowBlur = 40;
-      ctx.shadowOffsetY = 20;
+      ctx.shadowColor = "rgba(236, 0, 140, 0.18)";
+      ctx.shadowBlur = 28;
+      ctx.shadowOffsetY = 10;
       ctx.fillStyle = "#FFFFFF";
       ctx.beginPath();
       ctx.roundRect(frameX, frameY, frameW, frameH, frameRadius);
       ctx.fill();
       ctx.restore();
 
-      // Photo Clip
+      // Photo clip
       ctx.save();
       ctx.beginPath();
       ctx.roundRect(frameX, frameY, frameW, frameH, frameRadius);
@@ -482,358 +341,618 @@ function JoinPage() {
       if (userImage) {
         const cx = frameX + frameW / 2;
         const cy = frameY + frameH / 2;
-
         ctx.translate(cx + offsetX, cy + offsetY);
         ctx.rotate((rotation * Math.PI) / 180);
-
         const imgAspect = userImage.width / userImage.height;
         let drawW = frameW * zoom;
         let drawH = drawW / imgAspect;
-
         if (drawH < frameH * zoom) {
           drawH = frameH * zoom;
           drawW = drawH * imgAspect;
         }
-
         ctx.drawImage(userImage, -drawW / 2, -drawH / 2, drawW, drawH);
       } else {
         ctx.fillStyle = "#FCE4EC";
         ctx.fillRect(frameX, frameY, frameW, frameH);
+        ctx.fillStyle = "#EC008C";
+        ctx.font = "600 32px 'Outfit', sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("Upload Your Photo Here", frameX + frameW / 2, frameY + frameH / 2 - 16);
+        ctx.font = "300 24px 'Outfit', sans-serif";
+        ctx.fillStyle = "#880E4F";
+        ctx.fillText("Show your support for PinkWalk 2026", frameX + frameW / 2, frameY + frameH / 2 + 24);
+      }
+      ctx.restore();
 
+      // Name pill overlaid at bottom-left of frame
+      const nameText = userName.trim() || "Walk Participant";
+      ctx.save();
+      const nameBoxY = frameY + frameH - 90;
+      const namePillW = Math.min(frameW - 160, Math.max(380, nameText.length * 24 + 70));
+      ctx.fillStyle = "rgba(49, 0, 110, 0.92)";
+      ctx.beginPath();
+      ctx.roundRect(frameX + 24, nameBoxY, namePillW, 66, 16);
+      ctx.fill();
+      // Left accent stripe
+      ctx.beginPath();
+      ctx.roundRect(frameX + 24, nameBoxY, namePillW, 66, 16);
+      ctx.clip();
+      ctx.fillStyle = "#EC008C";
+      ctx.fillRect(frameX + 24, nameBoxY, 7, 66);
+      ctx.restore();
+
+      ctx.save();
+      ctx.fillStyle = "#FFFFFF";
+      ctx.font = "bold 30px 'Montserrat', sans-serif";
+      ctx.textAlign = "left";
+      ctx.textBaseline = "middle";
+      ctx.fillText(nameText, frameX + 52, nameBoxY + 33);
+      ctx.restore();
+
+      // Ribbon at bottom-right of frame
+      if (ribbonImageRef.current) {
+        ctx.drawImage(ribbonImageRef.current, frameX + frameW - 90, frameY + frameH - 95, 110, 110);
+      }
+
+      // Tagline
+      ctx.save();
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "#D81B60";
+      ctx.font = "600 36px 'Outfit', sans-serif";
+      ctx.fillText(`"${activeTagline}"`, W / 2, 855);
+      ctx.restore();
+
+      // Date & Route Box
+      ctx.save();
+      const dateBoxW = 720;
+      const dateBoxH = 98;
+      const dateBoxY = 910;
+      ctx.fillStyle = "rgba(236, 0, 140, 0.06)";
+      ctx.strokeStyle = "rgba(236, 0, 140, 0.2)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.roundRect(W / 2 - dateBoxW / 2, dateBoxY, dateBoxW, dateBoxH, 20);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = "#2A091A";
+      ctx.font = "bold 26px 'Outfit', sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(`📅 ${thisYearEvent.dateNote}`, W / 2, dateBoxY + 37);
+      ctx.font = "500 22px 'Outfit', sans-serif";
+      ctx.fillStyle = "#EC008C";
+      ctx.fillText(`📍 ${thisYearEvent.route.startLabel} → ${thisYearEvent.route.endLabel}`, W / 2, dateBoxY + 78);
+      ctx.restore();
+
+      // CTA
+      // ctx.save();
+      // ctx.textAlign = "center";
+      // ctx.fillStyle = "#2A091A";
+      // ctx.font = "bold 28px 'Montserrat', sans-serif";
+      // ctx.fillText("JOIN ME AT THE WALK! 🌸", W / 2, 965);
+      // ctx.restore();
+
+      // Footer
+      ctx.save();
+      ctx.font = "400 20px 'Outfit', sans-serif";
+      ctx.fillStyle = "rgba(74, 18, 49, 0.55)";
+      ctx.textAlign = "center";
+      ctx.fillText("pinkwalk.github.io · #PinkWalk2026", W / 2, 1055);
+      ctx.restore();
+    }
+
+    // ==========================================
+    // STYLE 2: INSTAGRAM STORY PORTRAIT (1080×1920)
+    // ==========================================
+    else if (frameStyle === "story-portrait") {
+      // Pink watercolor background
+      drawWatercolorBg();
+
+      // Logo (centered)
+      if (logoImageRef.current) {
+        const logoW = 450;
+        const logoH = (logoW * logoImageRef.current.height) / logoImageRef.current.width;
+        ctx.drawImage(logoImageRef.current, W / 2 - logoW / 2, 45, logoW, logoH);
+      }
+
+      // Official Badge Pill
+      // ctx.save();
+      // ctx.fillStyle = "rgba(236, 0, 140, 0.08)";
+      // ctx.strokeStyle = "rgba(236, 0, 140, 0.3)";
+      // ctx.lineWidth = 2;
+      // ctx.beginPath();
+      // ctx.roundRect(W / 2 - 280, 120, 560, 60, 30);
+      // ctx.fill();
+      // ctx.stroke();
+      // ctx.fillStyle = "#D81B60";
+      // ctx.font = "bold 26px 'Outfit', sans-serif";
+      // ctx.textAlign = "center";
+      // ctx.textBaseline = "middle";
+      // ctx.fillText("OFFICIAL AWARENESS WALK 2026", W / 2, 150);
+      // ctx.restore();
+
+      // Headline
+      ctx.save();
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "#1A1A1A";
+      ctx.font = "bold 64px 'Montserrat', sans-serif";
+      ctx.fillText("I'M WALKING FOR", W / 2, 262);
+      ctx.fillStyle = "#EC008C";
+      ctx.font = "bold 72px 'Montserrat', sans-serif";
+      ctx.fillText("PINKWALK 2026", W / 2, 342);
+      ctx.restore();
+
+      // Photo Frame
+      const frameX = 90;
+      const frameY = 410;
+      const frameW = W - 180;
+      const frameH = 1040;
+      const frameRadius = 40;
+
+      // Frame shadow
+      ctx.save();
+      ctx.shadowColor = "rgba(236, 0, 140, 0.18)";
+      ctx.shadowBlur = 35;
+      ctx.shadowOffsetY = 14;
+      ctx.fillStyle = "#FFFFFF";
+      ctx.beginPath();
+      ctx.roundRect(frameX, frameY, frameW, frameH, frameRadius);
+      ctx.fill();
+      ctx.restore();
+
+      // Photo clip
+      ctx.save();
+      ctx.beginPath();
+      ctx.roundRect(frameX, frameY, frameW, frameH, frameRadius);
+      ctx.clip();
+
+      if (userImage) {
+        const cx = frameX + frameW / 2;
+        const cy = frameY + frameH / 2;
+        ctx.translate(cx + offsetX, cy + offsetY);
+        ctx.rotate((rotation * Math.PI) / 180);
+        const imgAspect = userImage.width / userImage.height;
+        let drawW = frameW * zoom;
+        let drawH = drawW / imgAspect;
+        if (drawH < frameH * zoom) {
+          drawH = frameH * zoom;
+          drawW = drawH * imgAspect;
+        }
+        ctx.drawImage(userImage, -drawW / 2, -drawH / 2, drawW, drawH);
+      } else {
+        ctx.fillStyle = "#FCE4EC";
+        ctx.fillRect(frameX, frameY, frameW, frameH);
         ctx.fillStyle = "#EC008C";
         ctx.font = "600 40px 'Outfit', sans-serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillText("Upload Your Photo Here", frameX + frameW / 2, frameY + frameH / 2 - 20);
         ctx.font = "300 28px 'Outfit', sans-serif";
-        ctx.fillStyle = "#4A1231";
+        ctx.fillStyle = "#880E4F";
         ctx.fillText("Show your support for PinkWalk 2026", frameX + frameW / 2, frameY + frameH / 2 + 35);
       }
+      ctx.restore();
 
-      ctx.restore(); // Restore photo clip
-
-      // Ribbon Badge overlay on frame bottom right
-      if (ribbonImageRef.current) {
-        ctx.save();
-        ctx.drawImage(
-          ribbonImageRef.current,
-          frameX + frameW - 140,
-          frameY + frameH - 140,
-          160,
-          160
-        );
-        ctx.restore();
-      }
-
-      // User Name Box Overlay at bottom of Photo
+      // Name pill overlaid at bottom-left of frame
       const nameText = userName.trim() || "Walk Participant";
       ctx.save();
       const nameBoxY = frameY + frameH - 110;
-      ctx.fillStyle = "rgba(49, 0, 110, 0.9)";
+      const namePillW = Math.min(frameW - 180, Math.max(460, nameText.length * 28 + 80));
+      ctx.fillStyle = "rgba(49, 0, 110, 0.92)";
       ctx.beginPath();
-      ctx.roundRect(frameX + 30, nameBoxY, frameW - 180, 80, 20);
+      ctx.roundRect(frameX + 30, nameBoxY, namePillW, 80, 20);
       ctx.fill();
-
-      ctx.fillStyle = "#FFFFFF";
-      ctx.font = "bold 40px 'Montserrat', sans-serif";
-      ctx.textAlign = "left";
-      ctx.textBaseline = "middle";
-      ctx.fillText(nameText, frameX + 60, nameBoxY + 40);
+      // Left accent stripe
+      ctx.beginPath();
+      ctx.roundRect(frameX + 30, nameBoxY, namePillW, 80, 20);
+      ctx.clip();
+      ctx.fillStyle = "#EC008C";
+      ctx.fillRect(frameX + 30, nameBoxY, 8, 80);
       ctx.restore();
 
-      // Lower Section Tagline
+      ctx.save();
+      ctx.fillStyle = "#FFFFFF";
+      ctx.font = "bold 38px 'Montserrat', sans-serif";
+      ctx.textAlign = "left";
+      ctx.textBaseline = "middle";
+      ctx.fillText(nameText, frameX + 62, nameBoxY + 40);
+      ctx.restore();
+
+      // Ribbon at bottom-right of frame
+      if (ribbonImageRef.current) {
+        ctx.drawImage(ribbonImageRef.current, frameX + frameW - 140, frameY + frameH - 150, 160, 160);
+      }
+
+      // Tagline
       ctx.save();
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillStyle = "#FFD1DC";
-      ctx.font = "600 38px 'Outfit', sans-serif";
-      ctx.fillText(`"${activeTagline}"`, W / 2, 1400);
+      ctx.fillStyle = "#D81B60";
+      ctx.font = "600 42px 'Outfit', sans-serif";
+      ctx.fillText(`"${activeTagline}"`, W / 2, 1550);
       ctx.restore();
 
       // Date & Route Box
       ctx.save();
       const dateBoxW = W - 180;
       const dateBoxH = 180;
-      const dateBoxY = 1480;
-      ctx.fillStyle = "rgba(255, 255, 255, 0.12)";
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
+      const dateBoxY = 1640;
+      ctx.fillStyle = "rgba(236, 0, 140, 0.06)";
+      ctx.strokeStyle = "rgba(236, 0, 140, 0.2)";
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.roundRect(W / 2 - dateBoxW / 2, dateBoxY, dateBoxW, dateBoxH, 24);
       ctx.fill();
       ctx.stroke();
-
-      ctx.fillStyle = "#FFFFFF";
+      ctx.fillStyle = "#2A091A";
       ctx.font = "bold 36px 'Outfit', sans-serif";
       ctx.textAlign = "center";
       ctx.fillText(`📅 ${thisYearEvent.dateNote}`, W / 2, dateBoxY + 55);
       ctx.font = "500 30px 'Outfit', sans-serif";
-      ctx.fillStyle = "#FF6B8B";
-      ctx.fillText(
-        `📍 ${thisYearEvent.route.startLabel} → ${thisYearEvent.route.endLabel}`,
-        W / 2,
-        dateBoxY + 115
-      );
+      ctx.fillStyle = "#EC008C";
+      ctx.fillText(`📍 ${thisYearEvent.route.startLabel} → ${thisYearEvent.route.endLabel}`, W / 2, dateBoxY + 115);
       ctx.restore();
 
-      // Call to action Footer
+      // CTA
+      // ctx.save();
+      // ctx.textAlign = "center";
+      // ctx.fillStyle = "#2A091A";
+      // ctx.font = "bold 36px 'Montserrat', sans-serif";
+      // ctx.fillText("JOIN ME AT THE WALK! 🌸", W / 2, 1762);
+      // ctx.restore();
+
+      // Footer
       ctx.save();
-      ctx.textAlign = "center";
-      ctx.fillStyle = "#FFFFFF";
-      ctx.font = "bold 36px 'Montserrat', sans-serif";
-      ctx.fillText("JOIN ME AT THE WALK! 🌸", W / 2, 1750);
-
       ctx.font = "400 24px 'Outfit', sans-serif";
-      ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
-      ctx.fillText("pinkwalk.github.io · #PinkWalk2026", W / 2, 1820);
+      ctx.fillStyle = "rgba(74, 18, 49, 0.55)";
+      ctx.textAlign = "center";
+      ctx.fillText("pinkwalk.github.io · #PinkWalk2026", W / 2, 1880);
       ctx.restore();
-
-      // Top Logo
-      if (logoImageRef.current) {
-        ctx.save();
-        const logoW = 200;
-        const logoH =
-          (logoW * logoImageRef.current.height) / logoImageRef.current.width;
-        ctx.drawImage(logoImageRef.current, W / 2 - logoW / 2, 45, logoW, logoH);
-        ctx.restore();
-      }
     }
 
     // ==========================================
-    // STYLE 3: CLASSIC POLAROID PRINT (1080x1350)
+    // STYLE 3: CLASSIC POLAROID (1080×1350)
     // ==========================================
     else if (frameStyle === "polaroid") {
-      // Warm pinkish textured background
-      const bgGrad = ctx.createLinearGradient(0, 0, W, H);
-      bgGrad.addColorStop(0, "#F5EBEB");
-      bgGrad.addColorStop(1, "#E8D5DA");
-      ctx.fillStyle = bgGrad;
-      ctx.fillRect(0, 0, W, H);
+      // Pink watercolor background
+      drawWatercolorBg();
 
-      // Polaroid Card Backdrop
-      const cardX = 80;
-      const cardY = 80;
-      const cardW = W - 160; // 920
-      const cardH = H - 160; // 1190
+      // Logo (centered)
+      if (logoImageRef.current) {
+        const logoW = 350;
+        const logoH = (logoW * logoImageRef.current.height) / logoImageRef.current.width;
+        ctx.drawImage(logoImageRef.current, W / 2 - logoW / 2, 25, logoW, logoH);
+      }
 
+      // Official Badge Pill
+      // ctx.save();
+      // ctx.fillStyle = "rgba(236, 0, 140, 0.08)";
+      // ctx.strokeStyle = "rgba(236, 0, 140, 0.3)";
+      // ctx.lineWidth = 2;
+      // ctx.beginPath();
+      // ctx.roundRect(W / 2 - 250, 82, 500, 48, 24);
+      // ctx.fill();
+      // ctx.stroke();
+      // ctx.fillStyle = "#D81B60";
+      // ctx.font = "bold 22px 'Outfit', sans-serif";
+      // ctx.textAlign = "center";
+      // ctx.textBaseline = "middle";
+      // ctx.fillText("OFFICIAL AWARENESS WALK 2026", W / 2, 106);
+      // ctx.restore();
+
+      // Headline
       ctx.save();
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "#1A1A1A";
+      ctx.font = "bold 50px 'Montserrat', sans-serif";
+      ctx.fillText("I'M WALKING FOR", W / 2, 174);
+      ctx.fillStyle = "#EC008C";
+      ctx.font = "bold 60px 'Montserrat', sans-serif";
+      ctx.fillText("PINKWALK 2026", W / 2, 244);
+      ctx.restore();
+
+      // Photo Frame
+      const frameX = 90;
+      const frameY = 285;
+      const frameW = W - 180;
+      const frameH = 640;
+      const frameRadius = 36;
+
+      // Frame shadow
+      ctx.save();
+      ctx.shadowColor = "rgba(236, 0, 140, 0.18)";
+      ctx.shadowBlur = 30;
+      ctx.shadowOffsetY = 12;
       ctx.fillStyle = "#FFFFFF";
-      ctx.shadowColor = "rgba(0, 0, 0, 0.25)";
-      ctx.shadowBlur = 35;
-      ctx.shadowOffsetY = 15;
       ctx.beginPath();
-      ctx.roundRect(cardX, cardY, cardW, cardH, 16);
+      ctx.roundRect(frameX, frameY, frameW, frameH, frameRadius);
       ctx.fill();
       ctx.restore();
 
-      // Polaroid Photo Box
-      const photoX = cardX + 50;
-      const photoY = cardY + 60;
-      const photoW = cardW - 100; // 820
-      const photoH = 780;
-
+      // Photo clip
       ctx.save();
       ctx.beginPath();
-      ctx.rect(photoX, photoY, photoW, photoH);
+      ctx.roundRect(frameX, frameY, frameW, frameH, frameRadius);
       ctx.clip();
 
       if (userImage) {
-        const cx = photoX + photoW / 2;
-        const cy = photoY + photoH / 2;
-
+        const cx = frameX + frameW / 2;
+        const cy = frameY + frameH / 2;
         ctx.translate(cx + offsetX, cy + offsetY);
         ctx.rotate((rotation * Math.PI) / 180);
-
         const imgAspect = userImage.width / userImage.height;
-        let drawW = photoW * zoom;
+        let drawW = frameW * zoom;
         let drawH = drawW / imgAspect;
-
-        if (drawH < photoH * zoom) {
-          drawH = photoH * zoom;
+        if (drawH < frameH * zoom) {
+          drawH = frameH * zoom;
           drawW = drawH * imgAspect;
         }
-
         ctx.drawImage(userImage, -drawW / 2, -drawH / 2, drawW, drawH);
       } else {
         ctx.fillStyle = "#FCE4EC";
-        ctx.fillRect(photoX, photoY, photoW, photoH);
-
+        ctx.fillRect(frameX, frameY, frameW, frameH);
         ctx.fillStyle = "#EC008C";
         ctx.font = "600 36px 'Outfit', sans-serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText("Upload Photo Here", photoX + photoW / 2, photoY + photoH / 2);
+        ctx.fillText("Upload Your Photo Here", frameX + frameW / 2, frameY + frameH / 2 - 18);
+        ctx.font = "300 26px 'Outfit', sans-serif";
+        ctx.fillStyle = "#880E4F";
+        ctx.fillText("Show your support for PinkWalk 2026", frameX + frameW / 2, frameY + frameH / 2 + 28);
       }
       ctx.restore();
 
-      // Pink Washi Tape Accent on top left of card
+      // Name pill overlaid at bottom-left of frame
+      const nameText = userName.trim() || "Walk Participant";
       ctx.save();
-      ctx.fillStyle = "rgba(236, 0, 140, 0.6)";
-      ctx.translate(cardX + 40, cardY - 15);
-      ctx.rotate((-8 * Math.PI) / 180);
-      ctx.fillRect(0, 0, 180, 45);
+      const nameBoxY = frameY + frameH - 95;
+      const namePillW = Math.min(frameW - 170, Math.max(420, nameText.length * 26 + 75));
+      ctx.fillStyle = "rgba(49, 0, 110, 0.92)";
+      ctx.beginPath();
+      ctx.roundRect(frameX + 28, nameBoxY, namePillW, 72, 18);
+      ctx.fill();
+      // Left accent stripe
+      ctx.beginPath();
+      ctx.roundRect(frameX + 28, nameBoxY, namePillW, 72, 18);
+      ctx.clip();
+      ctx.fillStyle = "#EC008C";
+      ctx.fillRect(frameX + 28, nameBoxY, 7, 72);
       ctx.restore();
 
-      // Ribbon Stamp top right
+      ctx.save();
+      ctx.fillStyle = "#FFFFFF";
+      ctx.font = "bold 34px 'Montserrat', sans-serif";
+      ctx.textAlign = "left";
+      ctx.textBaseline = "middle";
+      ctx.fillText(nameText, frameX + 56, nameBoxY + 36);
+      ctx.restore();
+
+      // Ribbon at bottom-right of frame
       if (ribbonImageRef.current) {
-        ctx.save();
-        ctx.drawImage(
-          ribbonImageRef.current,
-          photoX + photoW - 120,
-          photoY + photoH - 120,
-          140,
-          140
-        );
-        ctx.restore();
+        ctx.drawImage(ribbonImageRef.current, frameX + frameW - 110, frameY + frameH - 120, 130, 130);
       }
 
-      // Caption Area below Polaroid Photo
-      const nameText = userName.trim()
-        ? userName.trim()
-        : "I'm Walking for Hope!";
+      // Tagline
       ctx.save();
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
+      ctx.fillStyle = "#D81B60";
+      ctx.font = "600 30px 'Outfit', sans-serif";
+      ctx.fillText(`"${activeTagline}"`, W / 2, 965);
+      ctx.restore();
 
-      // Handwritten-style / Script Name
-      ctx.fillStyle = "#31006E";
-      ctx.font = "bold 52px 'Montserrat', sans-serif";
-      ctx.fillText(nameText, W / 2, cardY + photoH + 120);
-
-      // Tagline
+      // Date & Route Box
+      ctx.save();
+      const dateBoxW = 720;
+      const dateBoxH = 120;
+      const dateBoxY = 1025;
+      ctx.fillStyle = "rgba(236, 0, 140, 0.06)";
+      ctx.strokeStyle = "rgba(236, 0, 140, 0.2)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.roundRect(W / 2 - dateBoxW / 2, dateBoxY, dateBoxW, dateBoxH, 22);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = "#2A091A";
+      ctx.font = "bold 30px 'Outfit', sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(`📅 ${thisYearEvent.dateNote}`, W / 2, dateBoxY + 42);
+      ctx.font = "500 24px 'Outfit', sans-serif";
       ctx.fillStyle = "#EC008C";
-      ctx.font = "500 32px 'Outfit', sans-serif";
-      ctx.fillText(activeTagline, W / 2, cardY + photoH + 190);
+      ctx.fillText(`📍 ${thisYearEvent.route.startLabel} → ${thisYearEvent.route.endLabel}`, W / 2, dateBoxY + 88);
+      ctx.restore();
 
-      // Official Event Stamp
-      ctx.fillStyle = "#4A1231";
-      ctx.font = "bold 26px 'Outfit', sans-serif";
-      ctx.fillText(
-        `PINKWALK 2026 · ${thisYearEvent.dateNote}`,
-        W / 2,
-        cardY + photoH + 250
-      );
+      // CTA
+      // ctx.save();
+      // ctx.textAlign = "center";
+      // ctx.fillStyle = "#2A091A";
+      // ctx.font = "bold 32px 'Montserrat', sans-serif";
+      // ctx.fillText("JOIN ME AT THE WALK! 🌸", W / 2, 1197);
+      // ctx.restore();
+
+      // Footer
+      ctx.save();
+      ctx.font = "400 22px 'Outfit', sans-serif";
+      ctx.fillStyle = "rgba(74, 18, 49, 0.55)";
+      ctx.textAlign = "center";
+      ctx.fillText("pinkwalk.github.io · #PinkWalk2026", W / 2, 1250);
       ctx.restore();
     }
 
     // ==========================================
-    // STYLE 4: DEEP PLUM DARK MODE (1080x1080)
+    // STYLE 4: DEEP PLUM PREMIUM (1080×1080)
     // ==========================================
     else if (frameStyle === "plum-dark") {
-      // Dark Plum Background
-      const bgGrad = ctx.createLinearGradient(0, 0, W, H);
-      bgGrad.addColorStop(0, "#2A091A");
-      bgGrad.addColorStop(0.5, "#4A1231");
-      bgGrad.addColorStop(1, "#1D0512");
-      ctx.fillStyle = bgGrad;
-      ctx.fillRect(0, 0, W, H);
+      // Pink watercolor background (slightly more saturated)
+      drawWatercolorBg(true);
 
-      // Neon Pink Circle Ring Backdrop
-      const centerX = W / 2;
-      const centerY = 480;
-      const radius = 300;
+      // Logo (centered)
+      if (logoImageRef.current) {
+        const logoW = 350;
+        const logoH = (logoW * logoImageRef.current.height) / logoImageRef.current.width;
+        ctx.drawImage(logoImageRef.current, W / 2 - logoW / 2, 25, logoW, logoH);
+      }
 
+      // Official Badge Pill
+      // ctx.save();
+      // ctx.fillStyle = "rgba(236, 0, 140, 0.12)";
+      // ctx.strokeStyle = "rgba(236, 0, 140, 0.4)";
+      // ctx.lineWidth = 2;
+      // ctx.beginPath();
+      // ctx.roundRect(W / 2 - 220, 72, 440, 42, 21);
+      // ctx.fill();
+      // ctx.stroke();
+      // ctx.fillStyle = "#D81B60";
+      // ctx.font = "bold 20px 'Outfit', sans-serif";
+      // ctx.textAlign = "center";
+      // ctx.textBaseline = "middle";
+      // ctx.fillText("OFFICIAL AWARENESS WALK 2026", W / 2, 93);
+      // ctx.restore();
+
+      // Headline
       ctx.save();
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "#1A1A1A";
+      ctx.font = "bold 38px 'Montserrat', sans-serif";
+      ctx.fillText("I'M WALKING FOR", W / 2, 154);
+      ctx.fillStyle = "#EC008C";
+      ctx.font = "bold 48px 'Montserrat', sans-serif";
+      ctx.fillText("PINKWALK 2026", W / 2, 210);
+      ctx.restore();
+
+      // Photo Frame with subtle pink border
+      const frameX = 90;
+      const frameY = 240;
+      const frameW = W - 180;
+      const frameH = 490;
+      const frameRadius = 32;
+
+      // Frame border
+      ctx.save();
+      ctx.strokeStyle = "rgba(236, 0, 140, 0.25)";
+      ctx.lineWidth = 3;
+      ctx.shadowColor = "rgba(236, 0, 140, 0.15)";
+      ctx.shadowBlur = 20;
+      ctx.shadowOffsetY = 8;
+      ctx.fillStyle = "#FFFFFF";
       ctx.beginPath();
-      ctx.arc(centerX, centerY, radius + 14, 0, Math.PI * 2);
-      ctx.strokeStyle = "#EC008C";
-      ctx.lineWidth = 8;
-      ctx.shadowColor = "#EC008C";
-      ctx.shadowBlur = 25;
+      ctx.roundRect(frameX, frameY, frameW, frameH, frameRadius);
+      ctx.fill();
       ctx.stroke();
       ctx.restore();
 
-      // Photo Circle Clip
+      // Photo clip
       ctx.save();
       ctx.beginPath();
-      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+      ctx.roundRect(frameX, frameY, frameW, frameH, frameRadius);
       ctx.clip();
 
       if (userImage) {
-        ctx.translate(centerX + offsetX, centerY + offsetY);
+        const cx = frameX + frameW / 2;
+        const cy = frameY + frameH / 2;
+        ctx.translate(cx + offsetX, cy + offsetY);
         ctx.rotate((rotation * Math.PI) / 180);
-
         const imgAspect = userImage.width / userImage.height;
-        let drawW = radius * 2 * zoom;
+        let drawW = frameW * zoom;
         let drawH = drawW / imgAspect;
-
-        if (drawH < radius * 2 * zoom) {
-          drawH = radius * 2 * zoom;
+        if (drawH < frameH * zoom) {
+          drawH = frameH * zoom;
           drawW = drawH * imgAspect;
         }
-
         ctx.drawImage(userImage, -drawW / 2, -drawH / 2, drawW, drawH);
       } else {
-        ctx.fillStyle = "#360C22";
-        ctx.fillRect(
-          centerX - radius,
-          centerY - radius,
-          radius * 2,
-          radius * 2
-        );
-
-        ctx.fillStyle = "#FF6B8B";
-        ctx.font = "600 36px 'Outfit', sans-serif";
+        ctx.fillStyle = "#FCE4EC";
+        ctx.fillRect(frameX, frameY, frameW, frameH);
+        ctx.fillStyle = "#EC008C";
+        ctx.font = "600 32px 'Outfit', sans-serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText("Upload Photo", centerX, centerY);
+        ctx.fillText("Upload Your Photo Here", frameX + frameW / 2, frameY + frameH / 2 - 16);
+        ctx.font = "300 24px 'Outfit', sans-serif";
+        ctx.fillStyle = "#880E4F";
+        ctx.fillText("Show your support for PinkWalk 2026", frameX + frameW / 2, frameY + frameH / 2 + 24);
       }
       ctx.restore();
 
-      // Header Tagline Badge
+      // Name pill overlaid at bottom-left of frame
+      const nameText = userName.trim() || "Walk Participant";
       ctx.save();
+      const nameBoxY = frameY + frameH - 90;
+      const namePillW = Math.min(frameW - 160, Math.max(380, nameText.length * 24 + 70));
+      ctx.fillStyle = "rgba(49, 0, 110, 0.92)";
+      ctx.beginPath();
+      ctx.roundRect(frameX + 24, nameBoxY, namePillW, 66, 16);
+      ctx.fill();
+      // Left accent stripe
+      ctx.beginPath();
+      ctx.roundRect(frameX + 24, nameBoxY, namePillW, 66, 16);
+      ctx.clip();
       ctx.fillStyle = "#EC008C";
-      ctx.font = "bold 28px 'Outfit', sans-serif";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText("I AM GOING TO PINKWALK 2026", W / 2, 110);
+      ctx.fillRect(frameX + 24, nameBoxY, 7, 66);
       ctx.restore();
 
-      // Ribbon Emblem
+      ctx.save();
+      ctx.fillStyle = "#FFFFFF";
+      ctx.font = "bold 30px 'Montserrat', sans-serif";
+      ctx.textAlign = "left";
+      ctx.textBaseline = "middle";
+      ctx.fillText(nameText, frameX + 52, nameBoxY + 33);
+      ctx.restore();
+
+      // Ribbon at bottom-right of frame
       if (ribbonImageRef.current) {
-        ctx.save();
-        ctx.drawImage(
-          ribbonImageRef.current,
-          centerX + radius - 60,
-          centerY - radius - 20,
-          130,
-          130
-        );
-        ctx.restore();
+        ctx.drawImage(ribbonImageRef.current, frameX + frameW - 90, frameY + frameH - 95, 110, 110);
       }
 
-      // Name & Tagline Text
-      const nameText = userName.trim() || "Join Me on October 3rd!";
+      // Tagline
       ctx.save();
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-
-      ctx.fillStyle = "#FFFFFF";
-      ctx.font = "bold 44px 'Montserrat', sans-serif";
-      ctx.fillText(nameText, W / 2, 840);
-
-      ctx.fillStyle = "#FF6B8B";
-      ctx.font = "600 30px 'Outfit', sans-serif";
-      ctx.fillText(activeTagline, W / 2, 900);
-
-      ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
-      ctx.font = "400 24px 'Outfit', sans-serif";
-      ctx.fillText(
-        `📍 ${thisYearEvent.route.startLabel} → ${thisYearEvent.route.endLabel} · ${thisYearEvent.dateNote}`,
-        W / 2,
-        960
-      );
+      ctx.fillStyle = "#D81B60";
+      ctx.font = "600 26px 'Outfit', sans-serif";
+      ctx.fillText(`"${activeTagline}"`, W / 2, 768);
       ctx.restore();
 
-      // Logo Top Left
-      if (logoImageRef.current) {
-        ctx.save();
-        const logoW = 160;
-        const logoH =
-          (logoW * logoImageRef.current.height) / logoImageRef.current.width;
-        ctx.drawImage(logoImageRef.current, 40, 30, logoW, logoH);
-        ctx.restore();
-      }
+      // Date & Route Box
+      ctx.save();
+      const dateBoxW = 720;
+      const dateBoxH = 108;
+      const dateBoxY = 823;
+      ctx.fillStyle = "rgba(236, 0, 140, 0.08)";
+      ctx.strokeStyle = "rgba(236, 0, 140, 0.25)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.roundRect(W / 2 - dateBoxW / 2, dateBoxY, dateBoxW, dateBoxH, 20);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = "#2A091A";
+      ctx.font = "bold 26px 'Outfit', sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(`📅 ${thisYearEvent.dateNote}`, W / 2, dateBoxY + 37);
+      ctx.font = "500 22px 'Outfit', sans-serif";
+      ctx.fillStyle = "#EC008C";
+      ctx.fillText(`📍 ${thisYearEvent.route.startLabel} → ${thisYearEvent.route.endLabel}`, W / 2, dateBoxY + 78);
+      ctx.restore();
+
+      // CTA
+      // ctx.save();
+      // ctx.textAlign = "center";
+      // ctx.fillStyle = "#2A091A";
+      // ctx.font = "bold 28px 'Montserrat', sans-serif";
+      // ctx.fillText("JOIN ME AT THE WALK! 🌸", W / 2, 965);
+      // ctx.restore();
+
+      // Footer
+      ctx.save();
+      ctx.font = "400 20px 'Outfit', sans-serif";
+      ctx.fillStyle = "rgba(74, 18, 49, 0.55)";
+      ctx.textAlign = "center";
+      ctx.fillText("pinkwalk.github.io · #PinkWalk2026", W / 2, 1015);
+      ctx.restore();
     }
   }, [
     brandAssetsLoaded,
@@ -1157,11 +1276,10 @@ function JoinPage() {
                     key={style.id}
                     type="button"
                     onClick={() => setFrameStyle(style.id)}
-                    className={`flex flex-col items-start p-3 rounded-2xl border text-left transition-all ${
-                      frameStyle === style.id
-                        ? "border-primary bg-pink-wash/50 ring-2 ring-primary/20"
-                        : "border-border bg-background hover:bg-accent"
-                    }`}
+                    className={`flex flex-col items-start p-3 rounded-2xl border text-left transition-all ${frameStyle === style.id
+                      ? "border-primary bg-pink-wash/50 ring-2 ring-primary/20"
+                      : "border-border bg-background hover:bg-accent"
+                      }`}
                   >
                     <span className="text-sm font-semibold text-foreground flex items-center gap-1.5">
                       {style.name}
@@ -1209,11 +1327,10 @@ function JoinPage() {
                       setTagline(tag);
                       setCustomTagline("");
                     }}
-                    className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition-all ${
-                      tagline === tag && !customTagline
-                        ? "bg-primary text-primary-foreground shadow-sm"
-                        : "border border-border bg-background text-foreground hover:bg-accent"
-                    }`}
+                    className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition-all ${tagline === tag && !customTagline
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "border border-border bg-background text-foreground hover:bg-accent"
+                      }`}
                   >
                     {tag}
                   </button>
