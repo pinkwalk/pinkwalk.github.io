@@ -10,6 +10,8 @@ import {
   Download,
   Printer,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   Sparkles,
   ExternalLink,
   Mail,
@@ -55,6 +57,8 @@ function PressReleasePage() {
   const [language, setLanguage] = useState<"en" | "ne">("en");
   const [copied, setCopied] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [showAllMainNews, setShowAllMainNews] = useState<boolean>(false);
+  const [showAllSidebarNews, setShowAllSidebarNews] = useState<boolean>(false);
 
   const activeRelease =
     pressReleases.find((r) => r.id === selectedReleaseId) || pressReleases[0];
@@ -431,7 +435,10 @@ function PressReleasePage() {
             </div>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {newsCoverage2026.map((item) => (
+              {(showAllMainNews
+                ? newsCoverage2026
+                : newsCoverage2026.slice(0, 10)
+              ).map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
@@ -445,8 +452,17 @@ function PressReleasePage() {
                         {item.note}
                       </span>
                       <span className="flex items-center gap-1 text-muted-foreground">
-                        <Globe className="h-3 w-3" />
-                        <span>Online News</span>
+                        {item.publish ? (
+                          <>
+                            <Calendar className="h-3 w-3" />
+                            <span>{item.publish}</span>
+                          </>
+                        ) : (
+                          <>
+                            <Globe className="h-3 w-3" />
+                            <span>Online News</span>
+                          </>
+                        )}
                       </span>
                     </div>
                     <h4 className="mt-2.5 font-display text-sm font-semibold leading-snug text-foreground group-hover:text-primary transition-colors">
@@ -460,44 +476,31 @@ function PressReleasePage() {
                 </a>
               ))}
             </div>
+            {newsCoverage2026.length > 10 && (
+              <div className="mt-6 flex justify-center">
+                <button
+                  onClick={() => setShowAllMainNews(!showAllMainNews)}
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-6 py-2.5 text-xs font-semibold text-primary hover:bg-primary hover:text-primary-foreground transition-all shadow-sm"
+                >
+                  <span>
+                    {showAllMainNews
+                      ? "Show Less"
+                      : `Show More (${newsCoverage2026.length - 10} more articles)`}
+                  </span>
+                  {showAllMainNews ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
+                </button>
+              </div>
+            )}
           </section>
         </main>
 
         {/* Right Sidebar: Press Release Navigation & Media Tools */}
         <aside className="space-y-6 print:hidden">
-          {/* News Coverage Quick Links Card */}
-          <div className="rounded-3xl border border-border bg-card p-6 shadow-soft">
-            <div className="flex items-center justify-between mb-3">
-              <h4 className="font-display text-sm font-semibold text-foreground">
-                In The News (2026)
-              </h4>
-              <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary">
-                {newsCoverage2026.length} Articles
-              </span>
-            </div>
-            <ul className="space-y-2.5 text-xs">
-              {newsCoverage2026.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group flex items-start justify-between gap-2 rounded-xl border border-border/50 p-2.5 transition-colors hover:border-primary/30 hover:bg-accent/50"
-                  >
-                    <div>
-                      <span className="block font-semibold text-primary text-[11px]">
-                        {item.note}
-                      </span>
-                      <span className="line-clamp-2 text-foreground/90 font-medium group-hover:text-primary transition-colors">
-                        {item.label}
-                      </span>
-                    </div>
-                    <ExternalLink className="h-3.5 w-3.5 text-muted-foreground shrink-0 mt-1 group-hover:text-primary" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+
 
           {/* Press Release Directory Card */}
           <div className="rounded-3xl border border-border bg-card p-6 shadow-soft">
@@ -587,7 +590,66 @@ function PressReleasePage() {
               <span>Explore Brand Kit</span>
             </Link>
           </div>
-
+          {/* News Coverage Quick Links Card */}
+          <div className="rounded-3xl border border-border bg-card p-6 shadow-soft">
+            <div className="flex items-center justify-between mb-3">
+              <h4 className="font-display text-sm font-semibold text-foreground">
+                In The News (2026)
+              </h4>
+              <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary">
+                {newsCoverage2026.length} Articles
+              </span>
+            </div>
+            <ul className="space-y-2.5 text-xs">
+              {(showAllSidebarNews
+                ? newsCoverage2026
+                : newsCoverage2026.slice(0, 10)
+              ).map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex items-start justify-between gap-2 rounded-xl border border-border/50 p-2.5 transition-colors hover:border-primary/30 hover:bg-accent/50"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between gap-2 mb-1">
+                        <span className="block font-semibold text-primary text-[11px] truncate">
+                          {item.note}
+                        </span>
+                        {item.publish && (
+                          <span className="text-[10px] text-muted-foreground shrink-0 font-medium">
+                            {item.publish}
+                          </span>
+                        )}
+                      </div>
+                      <span className="line-clamp-2 text-foreground/90 font-medium group-hover:text-primary transition-colors">
+                        {item.label}
+                      </span>
+                    </div>
+                    <ExternalLink className="h-3.5 w-3.5 text-muted-foreground shrink-0 mt-1 group-hover:text-primary" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+            {newsCoverage2026.length > 5 && (
+              <button
+                onClick={() => setShowAllSidebarNews(!showAllSidebarNews)}
+                className="mt-3.5 flex w-full items-center justify-center gap-1.5 rounded-xl border border-border/70 bg-muted/30 py-2.5 text-xs font-semibold text-primary hover:bg-primary/10 hover:border-primary/30 transition-colors"
+              >
+                <span>
+                  {showAllSidebarNews
+                    ? "Show Less"
+                    : `Show More (${newsCoverage2026.length - 10} more)`}
+                </span>
+                {showAllSidebarNews ? (
+                  <ChevronUp className="h-3.5 w-3.5" />
+                ) : (
+                  <ChevronDown className="h-3.5 w-3.5" />
+                )}
+              </button>
+            )}
+          </div>
           {/* Contact Box */}
           <div className="rounded-3xl border border-border bg-card p-6 shadow-soft">
             <h4 className="font-display text-sm font-semibold text-foreground mb-2">

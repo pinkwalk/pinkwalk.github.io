@@ -276,6 +276,11 @@ function Coverage() {
                     · {n.note}
                   </span>
                 )}
+                {n.publish && (
+                  <span className="ml-2 text-sm text-muted-foreground">
+                    · {n.publish}
+                  </span>
+                )}
               </span>
               <span className="text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary">
                 ↗

@@ -42,6 +42,116 @@ export type PressRelease = {
 
 export const pressReleases: PressRelease[] = [
   {
+    id: "pinkwalk-2026-registration-open",
+    title: "Registration Opens for PinkWalk 2026",
+    subtitle:
+      "Participants can now register online via eSewa or by visiting the official registration portal for the upcoming breast cancer awareness walkathon on October 3, 2026.",
+    date: "September 30, 2026",
+    isoDate: "2026-09-30",
+    location: "Kathmandu, Nepal",
+    author: "Infinite Cares & PinkWalk 2026 Committee",
+    category: "Announcement",
+    summary:
+      "Registration has officially opened for PinkWalk 2026. Participants can register via eSewa app or through the online registration portal for the walkathon from Basantapur to Patan Durbar Square on October 3, 2026.",
+    content: {
+      lead: "KATHMANDU — September 30, 2026 — Registration has officially opened for PinkWalk 2026, a public awareness initiative aimed at raising awareness about breast cancer and highlighting the importance of early detection.",
+      sections: [
+        {
+          heading: "Event Details and Route",
+          paragraphs: [
+            "The walk is scheduled for Saturday, October 3, 2026 (Ashoj 17), starting at 6:00 AM from Kathmandu Durbar Square in Basantapur and concluding at Patan Durbar Square in Mangal Bazar, Lalitpur.",
+            "Individuals, community members, organizations, and institutions interested in participating can register online through eSewa, according to the organizers.",
+          ],
+        },
+        {
+          heading: "How to Register",
+          paragraphs: [
+            "Participants can visit https://pinkwalk.github.io/register and scan the QR code displayed on the registration page to complete the registration process.",
+            "Alternatively, participants can register directly through the eSewa App by opening eSewa, navigating to 'Voting & Events', and selecting 'Pink Walk'.",
+          ],
+        },
+        {
+          heading: "Objective and Expected Participation",
+          paragraphs: [
+            "PinkWalk 2026 aims to promote awareness about early detection, regular health checkups, timely treatment, and the importance of standing in solidarity with people affected by breast cancer and their families.",
+            "Healthcare professionals, cancer survivors, affected families, representatives from various organizations, media professionals, and members of the general public are expected to participate in the walk.",
+          ],
+        },
+        {
+          heading: "Organizers and Supporting Partners",
+          paragraphs: [
+            "PinkWalk 2026 is being organized by Infinite Cares in collaboration with Cancer Care Nepal. The event is supported by Kathmandu Metropolitan City, Lalitpur Metropolitan City, and the Nepal Cancer Survivors Society, among others.",
+            "The campaign has also brought together partners from various sectors, including National Cancer Hospital, The Max Foundation, Novala Biotech, CAMS (Center for American Medical Specialists), Le Monal, Snow drops H₂O, NETTV, Uno, Happy Minds, WOW (World of Women), Jeevee, Burst Neembu fizz, Himalayan Java, Smritipatra, Jhigu newa bajah khala, Taal nritya bhumi, Pathao, QFX, eSewa, Bajra nasaa khala, ISS, onepasal, Crayons Corp., and The Kathmandu Post.",
+            "The organizers have encouraged individuals, organizations, and communities to participate in PinkWalk 2026 and join the collective effort to raise awareness about breast cancer and show solidarity with those affected by the disease.",
+          ],
+        },
+      ],
+      highlights: [
+        "Registration Methods: Online (pinkwalk.github.io/register) or via eSewa App (Voting & Events → Pink Walk)",
+        "Event Date: Saturday, October 3, 2026 (Ashoj 17, 2083)",
+        "Start Time & Route: 6:00 AM, Kathmandu Durbar Square (Basantapur) → Patan Durbar Square (Mangal Bazar)",
+        "Organizers: Infinite Cares in collaboration with Cancer Care Nepal",
+        "Official Registration Link: https://pinkwalk.github.io/register",
+      ],
+    },
+    nepaliContent: {
+      title: "पिंकवाक २०२६ मा सहभागी हुन दर्ता खुला",
+      subtitle:
+        "आगामी असोज १७ गते शनिवार हुने पदयात्रामा सहभागी हुन ईसेवा एप वा अनलाइन पोर्टल मार्फत दर्ता गर्न सकिने",
+      date: "१४ असोज २०८३",
+      location: "काठमाडौं, नेपाल",
+      author: "इन्फिनिट केयर्स तथा पिंकवाक २०२६ समिति",
+      summary:
+        "स्तन क्यान्सरसम्बन्धी जनचेतना अभिवृद्धि गर्ने उद्देश्यले आयोजना हुन लागेको ‘पिंकवाक २०२६’ मा सहभागी हुनका लागि दर्ता खुला गरिएको छ। ईसेवा वा आधिकारिक अनलाइन फारममार्फत दर्ता गर्न सकिनेछ।",
+      content: {
+        lead: "काठमाडौं, १४ असोज २०८३ — स्तन क्यान्सरसम्बन्धी जनचेतना अभिवृद्धि गर्ने उद्देश्यले आयोजना हुन लागेको ‘पिंकवाक २०२६’ मा सहभागी हुनका लागि दर्ता खुला गरिएको छ।",
+        sections: [
+          {
+            heading: "कार्यक्रम विवरण र पदयात्रा मार्ग",
+            paragraphs: [
+              "आगामी असोज १७ गते शनिबार बिहान ६ बजे काठमाडौंको बसन्तपुरस्थित काठमाडौं दरबार स्क्वायरदेखि ललितपुरको मंगलबजारस्थित पाटन दरबार स्क्वायरसम्म आयोजना हुने पदयात्रामा सहभागी हुन इच्छुक व्यक्ति, संघसंस्था तथा समुदायका सदस्यले ईसेवामार्फत अनलाइन फारम भरी दर्ता गर्न सक्नेछन्।",
+              "पिंकवाकमा सहभागी हुन दुई माध्यमबाट दर्ता गर्न सकिने आयोजकले जनाएको छ।",
+            ],
+          },
+          {
+            heading: "दर्ता प्रक्रिया",
+            paragraphs: [
+              "सहभागीले https://pinkwalk.github.io/register मा गई पृष्ठमा उपलब्ध QR कोड स्क्यान गरी आवश्यक विवरण भरेर दर्ता गर्न सक्नेछन्।",
+              "वा सोझै ईसेवा एपबाटै: ईसेवा एप खोलेर Voting & Events मा गई Pink Walk छनोट गरी दर्ता गर्न सकिनेछ।",
+            ],
+          },
+          {
+            heading: "उद्देश्य तथा सहभागिता",
+            paragraphs: [
+              "स्तन क्यान्सरको प्रारम्भिक पहिचान, नियमित स्वास्थ्य परीक्षण, समयमै उपचार तथा क्यान्सर प्रभावित व्यक्ति र परिवारप्रति ऐक्यबद्धताको सन्देश फैलाउने उद्देश्यले आयोजना हुने पिंकवाकमा स्वास्थ्यकर्मी, क्यान्सरबाट निको भएका व्यक्ति, प्रभावित परिवार, विभिन्न संघसंस्था, सञ्चारकर्मी तथा सर्वसाधारणको सहभागिता रहने अपेक्षा गरिएको छ।",
+            ],
+          },
+          {
+            heading: "आयोजक, संरक्षक तथा साझेदार संस्थाहरू",
+            paragraphs: [
+              "पिंकवाक २०२६ इन्फिनिट केयर्सले क्यान्सर केयर नेपालसँगको सहकार्यमा आयोजना गर्दैछ। कार्यक्रममा काठमाडौं महानगरपालिका, ललितपुर महानगरपालिका तथा नेपाल क्यान्सर सर्भाइभर्स सोसाइटीलगायत संस्थाको सहयोग रहेको छ।",
+              "कार्यक्रमलाई नेशनल क्यान्सर अस्पताल, म्याक्स फाउन्डेसन, नोभाला बायोटेक, क्याम्स (Center for American Medical Specialists), ले मोनाल (Le Monal), स्‍नो ड्रप्स (Snow drops H₂O), नेट टिभी, उनो (Uno), ह्याप्पी माइन्डस्, वाउ (WOW – World of Women), जीभी (Jeevee), बर्स्ट निम्बू फिज्ज, हिमालयन जाभा, स्मृतिपत्र, झिगु नेवाः बाजं खलः, पठाओ, क्यू एफ एक्स (QFX), इसेवा, बज्र नासः खलः, ताल नृत्य भूमि, आइ एस एस (ISS), वानपसल (onepasal), क्रेयन्स् कोर्प (Crayons Corp.) तथा काठमाडौँ पोस्ट लगायत विभिन्न संस्था तथा व्यवसायले साझेदारी गरेका छन्।",
+              "आयोजकले स्तन क्यान्सरविरुद्धको सचेतना अभियानमा सामूहिक सहभागिता र ऐक्यबद्धता जनाउन सबैलाई पिंकवाक २०२६ मा सहभागी हुन आग्रह गरेको छ।",
+            ],
+          },
+        ],
+        highlights: [
+          "दर्ता प्रक्रिया: अनलाइन (pinkwalk.github.io/register) वा ईसेवा एप (Voting & Events → Pink Walk)",
+          "कार्यक्रम मिति: असोज १७, २०८३ शनिवार (अक्टोबर ३, २०२६)",
+          "समय र मार्ग: बिहान ६:०० बजे, बसन्तपुर (काठमाडौं दरबार स्क्वायर) → मंगलबजार (पाटन दरबार स्क्वायर)",
+          "आयोजक: इन्फिनिट केयर्स (क्यान्सर केयर नेपालसँगको सहकार्यमा)",
+          "दर्ता लिङ्क: https://pinkwalk.github.io/register",
+        ],
+      },
+    },
+    mediaContact: {
+      name: "Organizing Committee",
+      organization: "PinkWalk Media Desk",
+      email: "pinkwalknepal@gmail.com",
+      location: "Kathmandu, Nepal",
+    },
+  },
+  {
     id: "pinkwalk-2026-official-announcement",
     title:
       "PinkWalk 2026 to Bring the Community Together for Breast Cancer Awareness and Support",
