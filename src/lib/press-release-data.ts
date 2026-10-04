@@ -42,6 +42,119 @@ export type PressRelease = {
 
 export const pressReleases: PressRelease[] = [
   {
+    id: "pinkwalk-2026-concludes-over-thousand-participants",
+    title:
+      "PinkWalk 2026 Concludes with Participation of Over a Thousand Participants",
+    subtitle:
+      "The walkathon from Basantapur to Patan Durbar Square brought together over 1,000 participants, distinguished guests, health experts, and survivors to spread breast cancer awareness and support patients.",
+    date: "October 3, 2026",
+    isoDate: "2026-10-03",
+    location: "Kathmandu & Lalitpur, Nepal",
+    author: "Infinite Cares & PinkWalk 2026 Committee",
+    category: "Event Report",
+    summary:
+      "PinkWalk 2026 successfully concluded on October 3, 2026, with over 1,000 participants walking from Kathmandu Durbar Square to Patan Durbar Square. Registration proceeds were handed over to Cancer Care Nepal to support cancer patient treatment.",
+    content: {
+      lead: "KATHMANDU / LALITPUR — October 3, 2026 — PinkWalk 2026 successfully concluded today with over one thousand participants joining the walkathon from Kathmandu Durbar Square (Basantapur) to Patan Durbar Square (Mangal Bazar, Lalitpur) to promote breast cancer awareness and support patients.",
+      sections: [
+        {
+          heading: "Walkathon Route & Turnout",
+          paragraphs: [
+            "The walk started as scheduled at 6:00 AM on Saturday, October 3, 2026 (Ashoj 17, 2083) from Kathmandu Durbar Square in Basantapur and concluded at Patan Durbar Square in Mangal Bazar, Lalitpur.",
+            "Over one thousand participants came together led by traditional Dhime baja and carrying placards spreading awareness about breast cancer. Healthcare professionals, cancer survivors, affected families, representatives from various organizations, media professionals, and members of the general public participated in the walk.",
+          ],
+        },
+        {
+          heading: "Distinguished Guests, Health Sessions & Survivor Insights",
+          paragraphs: [
+            "Distinguished guests among the participants included Anuradha Koirala, Hon. Dr. Ojashwi Sherchan, Acting Mayor of Kathmandu Metropolitan City Sunita Dangol, former Minister Sumana Shrestha, musical artist Kali Prasad Baskota, President of Health Insurance Board Dr. Subash Pyakurel, Miss Nepal Dipmala Dahal, and Miss Nepal Cosmo Kasish Subba, who delivered welcome speeches.",
+            "Meanwhile, Dr. Madan Piya, Dr. Sandhya, and Dr. Rashmi from Cancer Care provided valuable information on how to detect cancer, bodily changes to watch for, and available treatments. The program was hosted by former Miss Nepal Sugarika KC.",
+            "At the closing ceremony held at Patan Durbar Square, cancer survivors shared their inspiring personal journeys, delivering a powerful message that although cancer is a serious illness, full recovery and living a normal life are possible with early detection and timely treatment.",
+          ],
+        },
+        {
+          heading: "Handover of Proceeds to Cancer Care Nepal",
+          paragraphs: [
+            "All proceeds collected from participant registrations during PinkWalk 2026 have been officially handed over by the organizers to Cancer Care Nepal to support the treatment and care of cancer patients in need.",
+          ],
+        },
+        {
+          heading: "Event Objectives & Collaborative Impact",
+          paragraphs: [
+            "PinkWalk 2026 aims to promote awareness about early detection, regular health checkups, timely treatment, and the importance of standing in solidarity with people affected by breast cancer and their families.",
+            "PinkWalk 2026 was organized by Infinite Cares in collaboration with Cancer Care Nepal, with support from Kathmandu Metropolitan City, Lalitpur Metropolitan City, and the Nepal Cancer Survivors Society.",
+            "The campaign brought together partners from various sectors, including National Cancer Hospital, The Max Foundation, Novala Biotech, CAMS (Center for American Medical Specialists), Le Monal, Snow drops H₂O, NETTV, Uno, Happy Minds, WOW (World of Women), Jeevee, Burst Neembu fizz, Himalayan Java, Smritipatra, Jhigu newa bajah khala, Taal nritya bhumi, Pathao, QFX, eSewa, Bajra nasaa khala, ISS, onepasal, Crayons Corp., and The Kathmandu Post.",
+            "The organizing committee expressed heartfelt gratitude to all individuals, partner organizations, media, and communities who joined PinkWalk 2026 and contributed to the collective effort to raise awareness and show solidarity with those affected by breast cancer.",
+          ],
+        },
+      ],
+      highlights: [
+        "Participants: Over 1,000 walkathon participants",
+        "Route: Kathmandu Durbar Square (Basantapur) → Patan Durbar Square (Mangal Bazar)",
+        "Fund Handover: Registration proceeds transferred to Cancer Care Nepal for patient support",
+        "Distinguished Guests: Anuradha Koirala, KMC Acting Mayor Sunita Dangol, Sumana Shrestha, Kali Prasad Baskota, Dr. Subash Pyakurel, Miss Nepal Dipmala Dahal, Kasish Subba",
+        "Organizers: Infinite Cares in collaboration with Cancer Care Nepal",
+      ],
+    },
+    nepaliContent: {
+      title: "पिंकवाक २०२६ एक हजारभन्दा बढीको सहभागितामा भव्य रुपमा सम्पन्न",
+      subtitle:
+        "बसन्तपुर देखि पाटन दरबार स्क्वायरसम्मको पदयात्रामा विशिष्ट अतिथि, स्वास्थ्यकर्मी तथा क्यान्सर जितेका व्यक्तिहरूको उपस्थितिमा स्तन क्यान्सर सचेतना तथा ऐक्यबद्धता व्यक्त",
+      date: "१७ असोज २०८३",
+      location: "काठमाडौं र ललितपुर, नेपाल",
+      author: "इन्फिनिट केयर्स तथा पिंकवाक २०२६ समिति",
+      summary:
+        "स्तन क्यान्सरसम्बन्धी जनचेतना अभिवृद्धि गर्ने उद्देश्यले आयोजना गरिएको ‘पिंकवाक २०२६’ १,००० भन्दा बढीको सहभागितामा असोज १७ गते भव्य रुपमा सम्पन्न भएको छ। संकलित रकम क्यान्सर केयर नेपाललाई हस्तान्तरण गरिएको छ।",
+      content: {
+        lead: "काठमाडौं — १७ असोज २०८३ — स्तन क्यान्सरसम्बन्धी जनचेतना अभिवृद्धि गर्ने उद्देश्यले आयोजना गरिएको ‘पिंकवाक २०२६’ एक हजारभन्दा बढीको सहभागितामा भव्य रुपमा सम्पन्न भएको छ। सहभागीहरूले आज असोज १७ गते शनिबार बिहान ६ बजे काठमाडौंको बसन्तपुरस्थित काठमाडौं दरबार स्क्वायरमा भेला भई ललितपुरको मंगलबजारस्थित पाटन दरबार स्क्वायरसम्म पदयात्रा गर्नुभयो।",
+        sections: [
+          {
+            heading: "पदयात्रा तथा जनसहभागिता",
+            paragraphs: [
+              "पदयात्रीहरूले क्यान्सरसम्बन्धी सचेतनामूलक प्लेकार्डहरू बोकेर धिमेबाजासहित उत्साहजनक रूपमा पदयात्रा गर्नुभएको थियो। पदयात्रामा स्वास्थ्यकर्मी, क्यान्सरबाट निको भएका व्यक्ति, प्रभावित परिवार, विभिन्न संघसंस्था, सञ्चारकर्मी तथा सर्वसाधारणको उल्लेख्य सहभागिता रहेको थियो।",
+            ],
+          },
+          {
+            heading: "विशिष्ट अतिथि, स्वास्थ्य परामर्श तथा प्रेरणादायी सन्देश",
+            paragraphs: [
+              "सहभागीहरूमा विशिष्ट अतिथिहरू अनुराधा कोइराला, मा. डा. ओजश्वी शेरचन, काठमाडौं महानगर का. वा. प्रमुख सुनिता डंगोल, पूर्वमन्त्री सुमना श्रेष्ठ, संगीतकर्मी काली प्रसाद बास्कोटा, स्वास्थ्य बीमा बोर्डका अध्यक्ष डा सुवास प्याकुरेल तथा मिस नेपाल दिपमाला दाहाल र मिस नेपाल कस्मो कसिस सुब्बाले स्वागत मन्तव्य दिनुभएको थियो।",
+              "त्यसका बीच क्यान्सर केयरका डा. मदन पिया, डा. सन्ध्या, डा. रश्मीले क्यान्सरको पहिचान कसरी गर्ने, शरीरमा आउने परिवर्तनहरू र उपचारसम्बन्धी महत्वपूर्ण जानकारी दिनुभएको थियो। कार्यक्रमको सञ्चालन पूर्वमिस नेपाल सुगारिका केसीले गर्नुभएको थियो।",
+              "पाटन दरबार क्षेत्रमा भएको समापन समारोहमा क्यान्सर जितेका व्यक्तिहरूले आफ्नो अनुभव सुनाउँदै क्यान्सर जटिल रोग भए पनि समयमै उपचार गरे निको भई सामान्यरुपमा जीवनयापन सम्भव रहेको प्रेरणादायी सन्देश दिनुभयो।",
+            ],
+          },
+          {
+            heading: "क्यान्सर पीडितका लागि रकम हस्तान्तरण",
+            paragraphs: [
+              "यस कार्यक्रममा दर्ता शुल्क तथा सहयोगमार्फत संकलित सम्पूर्ण रकम आयोजकले क्यान्सर केयर नेपाललाई क्यान्सरपीडितहरूको उपचार तथा सहयोगका लागि हस्तान्तरण गरेका छन्।",
+            ],
+          },
+          {
+            heading: "आयोजक, संरक्षक तथा साझेदार संस्थाहरू",
+            paragraphs: [
+              "स्तन क्यान्सरको प्रारम्भिक पहिचान, नियमित स्वास्थ्य परीक्षण, समयमै उपचार तथा क्यान्सर प्रभावित व्यक्ति र परिवारप्रति ऐक्यबद्धताको सन्देश फैलाउने उद्देश्यले आयोजना भएको पिंकवाक २०२६ इन्फिनिट केयर्सले क्यान्सर केयर नेपालसँगको सहकार्यमा आयोजना गरेको हो।",
+              "कार्यक्रममा काठमाडौं महानगरपालिका, ललितपुर महानगरपालिका तथा नेपाल क्यान्सर सर्भाइभर्स सोसाइटीलगायत संस्थाको सहयोग रहेको छ।",
+              "कार्यक्रमलाई नेशनल क्यान्सर अस्पताल, म्याक्स फाउन्डेसन, नोभाला बायोटेक, क्याम्स (Center for American Medical Specialists), ले मोनाल (Le Monal), स्‍नो ड्रप्स (Snow drops H₂O), नेट टिभी, उनो (Uno), ह्याप्पी माइन्डस्, वाउ (WOW – World of Women), जीभी (Jeevee), बर्स्ट निम्बू फिज्ज, हिमालयन जाभा, स्मृतिपत्र, झिगु नेवाः बाजं खलः, पठाओ, क्यू एफ एक्स (QFX), इसेवा, बज्र नासः खलः, ताल नृत्य भूमि, आइ एस एस (ISS), वानपसल (onepasal), क्रेयन्स् कोर्प (Crayons Corp.) तथा काठमाडौँ पोस्ट लगायत विभिन्न संस्था तथा व्यवसायले साझेदारी गरेका छन्।",
+              "स्तन क्यान्सरविरुद्धको सचेतना अभियानमा सामूहिक सहभागिता र ऐक्यबद्धता जनाउने सबैलाई पिंकवाक २०२६ आयोजक समितिले हार्दिक धन्यवाद व्यक्त गरेको छ।",
+            ],
+          },
+        ],
+        highlights: [
+          "सहभागिता: १,००० भन्दा बढी पदयात्रीहरूको सहभागिता",
+          "पदयात्रा मार्ग: बसन्तपुर (काठमाडौं दरबार स्क्वायर) → मंगलबजार (पाटन दरबार स्क्वायर)",
+          "सहयोग हस्तान्तरण: संकलित रकम क्यान्सर केयर नेपाललाई हस्तान्तरण",
+          "विशिष्ट अतिथिहरू: अनुराधा कोइराला, सुनिता डंगोल, सुमना श्रेष्ठ, काली प्रसाद बास्कोटा, डा सुवास प्याकुरेल, दिपमाला दाहाल, कसिस सुब्बा",
+          "आयोजक: इन्फिनिट केयर्स (क्यान्सर केयर नेपालसँगको सहकार्यमा)",
+        ],
+      },
+    },
+    mediaContact: {
+      name: "Organizing Committee",
+      organization: "PinkWalk Media Desk",
+      email: "pinkwalknepal@gmail.com",
+      location: "Kathmandu, Nepal",
+    },
+  },
+  {
     id: "pinkwalk-2026-registration-open",
     title: "Registration Opens for PinkWalk 2026",
     subtitle:
