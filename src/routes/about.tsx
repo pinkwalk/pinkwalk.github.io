@@ -118,7 +118,7 @@ function AboutPage() {
         </div>
         <div>
           <p className="font-display text-3xl sm:text-4xl font-bold text-primary">
-            2,500+
+            1,500+
           </p>
           <p className="mt-1 text-xs sm:text-sm text-muted-foreground">
             Expected Participants
@@ -129,7 +129,7 @@ function AboutPage() {
             2 Cities
           </p>
           <p className="mt-1 text-xs sm:text-sm text-muted-foreground">
-            Basantapur → Mangal Bazar
+            Kathmandu → Lalitpur
           </p>
         </div>
       </section>
