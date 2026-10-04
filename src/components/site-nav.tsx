@@ -13,14 +13,13 @@ import {
 
 const navLinks = [
   { label: "This Year", to: "/" as const, hash: "this-year" as const },
-  // { label: "Invite Friends", to: "/invite" as const },
+  { label: "Press Room", to: "/press-release" as const },
   { label: "BSE Guide", to: "/awareness" as const },
   { label: "About Us", to: "/about" as const },
   { label: "The Cause", to: "/" as const, hash: "cause" as const },
   { label: "Route", to: "/" as const, hash: "route" as const },
   { label: "Partner", to: "/partner" as const },
-  { label: "Past Event", to: "/past-event" as const },
-  { label: "Contact", to: "/" as const, hash: "contact" as const },
+  { label: "Past Events", to: "/past-event" as const },
 ];
 
 export function SiteNav() {
@@ -53,10 +52,10 @@ export function SiteNav() {
 
         <div className="flex items-center gap-2 sm:gap-3">
           <Link
-            to="/register"
+            to="/press-release"
             className="inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-pink transition-transform hover:-translate-y-0.5"
           >
-            Register
+            Press Release
           </Link>
 
           {/* Mobile Navigation Trigger & Drawer */}
@@ -99,11 +98,11 @@ export function SiteNav() {
 
               <div className="border-t border-border/60 pt-4">
                 <Link
-                  to="/register"
+                  to="/press-release"
                   onClick={() => setOpen(false)}
                   className="flex w-full items-center justify-center rounded-full bg-primary px-4 py-3 text-base font-semibold text-primary-foreground shadow-pink transition-transform hover:opacity-95"
                 >
-                  Register Now
+                  View Press Release
                 </Link>
               </div>
             </SheetContent>

@@ -76,6 +76,10 @@ export const thisYearEvent = {
   time: "6:00 AM (Assembly) / 6:15 AM (Flag-Off)",
   title: "PinkWalk 2026",
   tagline: "Basantapur → Mangal Bazar",
+  isCompleted: true,
+  participantsCount: "1,000+",
+  statusText: "Successfully Concluded",
+  proceedsNote: "All registration proceeds handed over to Cancer Care Nepal for patient treatment",
   route: {
     startLabel: "Basantapur",
     startFull: "Basantapur (Kathmandu Durbar Square)",
@@ -95,10 +99,10 @@ export const thisYearEvent = {
   distance: "≈ 4.3 km",
   startTime: "6:00 AM",
   highlights: [
-    "A heritage walk through the heart of the Kathmandu Valley",
-    "From Kathmandu Durbar Square to Lalitpur Durbar Square",
-    "Walk together for about an hour in solidarity",
-    "Pink for breast cancer awareness",
+    "Over 1,000 participants walked together in pink solidarity across Kathmandu & Lalitpur",
+    "Historic heritage route connecting Kathmandu Durbar Square to Patan Durbar Square",
+    "Addresses & insights by Anuradha Koirala, Sunita Dangol, Sumana Shrestha, Kali Prasad Baskota, & oncologists",
+    "All registration proceeds handed over to Cancer Care Nepal to support patient treatment",
   ],
   organizers: ["Infinite Cares"],
   contactPersons: ["Dijup Tuladhar", "Lijala Shrestha"],
@@ -107,7 +111,7 @@ export const thisYearEvent = {
 export const getInviteMessage = (friendName?: string, currentUrl?: string) => {
   const friend = friendName?.trim() || "Friend";
   const url = currentUrl || "https://pinkwalk.github.io";
-  return `Hi ${friend}! 🌸\n\nI want to invite you to walk with me at PinkWalk 2026, a community breast cancer awareness walk in Kathmandu!\n\n📅 Date: ${thisYearEvent.dateNote} (${thisYearEvent.date})\n⏰ Time: ${thisYearEvent.time}\n📍 Route: ${thisYearEvent.route.startLabel} to ${thisYearEvent.route.endLabel} (${thisYearEvent.distance})\n\nLet's support breast cancer survivors and raise awareness together! 💕\n\nYour support helps us spread hope kindly share this invitation on your story and tag @PinkWalkNepal to help bring our community together.\n\nLearn more & register: ${url}`;
+  return `Hi ${friend}! 🌸\n\nPinkWalk 2026 successfully concluded on ${thisYearEvent.dateNote} (${thisYearEvent.date}) with over 1,000 participants walking for breast cancer awareness!\n\n📍 Route: ${thisYearEvent.route.startLabel} to ${thisYearEvent.route.endLabel} (${thisYearEvent.distance})\n\nThank you for supporting breast cancer survivors and spreading awareness! 💕\n\nRead the press release & event summary: ${url}/press-release`;
 };
 
 export type GuestItem = {

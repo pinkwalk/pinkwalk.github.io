@@ -49,8 +49,8 @@ export const Route = createFileRoute("/join")({
 
 // Preset Tagline Options
 const TAGLINE_OPTIONS = [
-  "I'm Going to PinkWalk 2026! 💕",
-  "Join Me at PinkWalk! 🌸",
+  "I Walked in PinkWalk 2026! 💕",
+  "Proud Participant of PinkWalk 2026! 🌸",
   "Walking for Breast Cancer Awareness 🎗️",
   "Walking for Hope & Healing ✨",
   "Pink Ambassador 2026 💖",
@@ -1112,10 +1112,10 @@ function JoinPage() {
         </div>
 
         <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-foreground sm:text-5xl">
-          I Am Going to <span className="text-gradient-pink">PinkWalk 2026!</span>
+          I Walked in <span className="text-gradient-pink">PinkWalk 2026!</span>
         </h1>
         <p className="mx-auto mt-3 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Upload your photo, personalize your PinkWalk 2026 badge, and share it on Instagram, WhatsApp, or Facebook to let your friends know you're walking for breast cancer awareness!
+          Upload your photo, personalize your PinkWalk 2026 badge, and share it on social media to spread breast cancer awareness and show your solidarity!
         </p>
       </section>
 

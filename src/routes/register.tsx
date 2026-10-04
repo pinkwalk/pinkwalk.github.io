@@ -41,19 +41,42 @@ export const Route = createFileRoute("/register")({
 function RegisterPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      {/* Event Concluded Notice Banner */}
+      <div className="mt-8 rounded-3xl border border-emerald-500/30 bg-emerald-500/10 p-6 text-center shadow-soft">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 px-3.5 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-wider mb-2">
+          <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+          PinkWalk 2026 Concluded 🎉
+        </span>
+        <h2 className="font-display text-2xl font-bold text-foreground sm:text-3xl">
+          Thank You to Over 1,000 Walkers!
+        </h2>
+        <p className="mx-auto mt-2 max-w-2xl text-sm text-muted-foreground leading-relaxed">
+          PinkWalk 2026 successfully took place on Saturday, October 3, 2026. All proceeds collected from participant registrations have been officially handed over to <strong className="text-foreground">Cancer Care Nepal</strong> to support cancer patient treatment and care.
+        </p>
+        <div className="mt-4">
+          <Link
+            to="/press-release"
+            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2 text-xs font-semibold text-primary-foreground shadow-pink transition-transform hover:-translate-y-0.5"
+          >
+            <span>Read Conclusion Press Release</span>
+            <Sparkles className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+      </div>
+
       {/* Hero Header */}
-      <section className="py-10 text-center sm:py-14">
+      <section className="py-10 text-center sm:py-12">
         <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-pink-wash px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
           <Sparkles className="h-3.5 w-3.5" />
-          <span>Registration Open · {thisYearEvent.year}</span>
+          <span>Registration Archives · {thisYearEvent.year}</span>
         </div>
 
         <h1 className="mt-4 text-balance font-display text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
-          Register for <span className="text-gradient-pink">PinkWalk 2026</span>
+          PinkWalk 2026 <span className="text-gradient-pink">Registration</span>
         </h1>
 
         <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Scan our official eSewa QR code—a direct deeplink that takes you straight to the registration form inside eSewa. Join us on{" "}
+          Official registration details for PinkWalk 2026 on{" "}
           <strong className="font-semibold text-foreground">
             {thisYearEvent.date} ({thisYearEvent.dateNote})
           </strong>{" "}

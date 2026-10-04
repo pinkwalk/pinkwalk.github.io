@@ -79,127 +79,77 @@ function Hero() {
 
       <div className="mx-auto flex min-h-[78vh] max-w-6xl flex-col justify-center px-4 py-24 text-center sm:px-6">
         <span className="mx-auto inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm ring-1 ring-white/25 shadow-sm">
-          <span className="h-2 w-2 rounded-full bg-primary" />
-          {thisYearEvent.date} · Kathmandu Valley
+          <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+          PinkWalk 2026 Concluded · {thisYearEvent.date}
         </span>
 
         <h1 className="mt-6 text-balance font-display text-5xl font-semibold leading-[1.05] text-white [text-shadow:_0_3px_16px_rgba(0,0,0,0.7)] sm:text-6xl md:text-7xl">
-          Walk together.
+          Over 1,000 Walked.
           <br />
           <span className="bg-gradient-to-r from-pink-200 via-rose-200 to-pink-300 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(190,24,93,0.9)]">
-            Raise awareness.
+            Hope & Awareness Unified.
           </span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-white/95 [text-shadow:_0_1px_8px_rgba(0,0,0,0.6)]">
-          PinkWalk is a community breast cancer awareness walk. This year we
-          walk from{" "}
-          <strong className="font-semibold text-white">Basantapur</strong>{" "}
-          (Kathmandu Durbar Square) to{" "}
-          <strong className="font-semibold text-white">Mangal Bazar</strong>{" "}
-          (Lalitpur Durbar Square) — about an hour through the heart of the
-          valley.
+          PinkWalk 2026 successfully concluded on Saturday, October 3, bringing together over <strong className="font-semibold text-white">1,000 participants</strong> from{" "}
+          <strong className="font-semibold text-white">Basantapur</strong> (Kathmandu Durbar Square) to{" "}
+          <strong className="font-semibold text-white">Mangal Bazar</strong> (Lalitpur Durbar Square). All registration proceeds were handed over to Cancer Care Nepal.
         </p>
 
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
-            to="/register"
+            to="/press-release"
             className="inline-flex items-center rounded-full bg-primary px-7 py-3 text-base font-semibold text-primary-foreground shadow-pink transition-transform hover:-translate-y-0.5"
           >
-            Register for the Walk
+            Read Event Press Release
           </Link>
           <Link
             to="/past-event"
             className="inline-flex items-center rounded-full bg-white/12 px-7 py-3 text-base font-semibold text-white ring-1 ring-white/30 backdrop-blur-sm transition-colors hover:bg-white/20"
           >
-            See the 2023 walk →
+            See 2023 & 2026 Walks →
           </Link>
         </div>
 
-        <CountdownTimer />
+        <EventSummaryBanner />
       </div>
     </section>
   );
 }
 
-function CountdownTimer() {
-  const targetDate = new Date("2026-10-03T06:00:00+05:45").getTime();
-  const [mounted, setMounted] = useState(false);
-
-  const [timeLeft, setTimeLeft] = useState<{
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-    isFinished: boolean;
-  }>({ days: 0, hours: 0, minutes: 0, seconds: 0, isFinished: false });
-
-  useEffect(() => {
-    setMounted(true);
-    const calculateTime = () => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference <= 0) {
-        setTimeLeft({
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
-          isFinished: true,
-        });
-        return;
-      }
-
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((difference / 1000 / 60) % 60);
-      const seconds = Math.floor((difference / 1000) % 60);
-
-      setTimeLeft({ days, hours, minutes, seconds, isFinished: false });
-    };
-
-    calculateTime();
-    const timer = setInterval(calculateTime, 1000);
-    return () => clearInterval(timer);
-  }, [targetDate]);
-
-  if (timeLeft.isFinished) {
-    return (
-      <div className="mt-10 mx-auto max-w-xl rounded-2xl bg-white/15 px-6 py-4 text-center text-white backdrop-blur-md ring-1 ring-white/25">
-        <p className="font-display text-xl font-bold">
-          PinkWalk 2026 is Here! 🎉
-        </p>
-      </div>
-    );
-  }
-
-  const units = [
-    { label: "Days", value: mounted ? timeLeft.days : 0 },
-    { label: "Hours", value: mounted ? timeLeft.hours : 0 },
-    { label: "Minutes", value: mounted ? timeLeft.minutes : 0 },
-    { label: "Seconds", value: mounted ? timeLeft.seconds : 0 },
+function EventSummaryBanner() {
+  const highlights = [
+    { label: "Participants", value: "1,000+", desc: "Walkers in pink" },
+    { label: "Heritage Route", value: "4.3 km", desc: "Basantapur → Patan" },
+    { label: "Proceeds Handover", value: "100%", desc: "To Cancer Care Nepal" },
+    { label: "Distinguished Guests", value: "8+", desc: "Leaders & advocates" },
   ];
 
   return (
-    <div className="mt-12 mx-auto w-full max-w-xl">
-      <p className="text-xs font-semibold uppercase tracking-widest text-white/80 mb-3.5 text-center">
-        Countdown to October 3rd · 6:00 AM
-      </p>
-      <div className="grid grid-cols-4 gap-2.5 sm:gap-4">
-        {units.map((u) => (
-          <div
-            key={u.label}
-            className="flex flex-col items-center justify-center rounded-2xl bg-white/10 px-3 py-3.5 sm:py-4 backdrop-blur-md ring-1 ring-white/20 shadow-soft transition-transform hover:scale-[1.02]"
-          >
-            <span className="font-display text-2xl font-bold tracking-tight text-white sm:text-4xl">
-              {String(u.value).padStart(2, "0")}
-            </span>
-            <span className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-white/75 sm:text-xs">
-              {u.label}
-            </span>
-          </div>
-        ))}
+    <div className="mt-12 mx-auto w-full max-w-3xl">
+      <div className="rounded-3xl bg-white/12 p-6 backdrop-blur-md ring-1 ring-white/25 shadow-soft">
+        <p className="text-xs font-semibold uppercase tracking-widest text-pink-200 mb-4 text-center">
+          🎉 PinkWalk 2026 Impact Summary
+        </p>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {highlights.map((h) => (
+            <div
+              key={h.label}
+              className="flex flex-col items-center justify-center rounded-2xl bg-white/10 px-3 py-3.5 backdrop-blur-sm ring-1 ring-white/15"
+            >
+              <span className="font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                {h.value}
+              </span>
+              <span className="mt-1 text-xs font-semibold text-white/90">
+                {h.label}
+              </span>
+              <span className="text-[10px] text-white/70">
+                {h.desc}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -377,17 +327,15 @@ function RouteSection() {
         </ol>
 
         <div className="rounded-3xl bg-pink-gradient p-8 text-primary-foreground shadow-pink">
-          <p className="font-display text-2xl font-semibold">Walk with us</p>
+          <p className="font-display text-2xl font-semibold">Thank You for Walking With Us!</p>
           <p className="mt-3 text-pretty leading-relaxed text-white/90">
-            Put on something pink and join the line. Whether you walk in memory,
-            in support, or simply in solidarity — every step spreads awareness
-            and helps fund care for those who need it most.
+            Over 1,000 participants put on pink and walked in solidarity from Basantapur to Mangal Bazar. Every step raised awareness and helped fund cancer care for patients in need.
           </p>
           <Link
-            to="/register"
+            to="/press-release"
             className="mt-6 inline-flex items-center rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-primary transition-transform hover:-translate-y-0.5"
           >
-            Register now
+            Read Conclusion Press Release →
           </Link>
         </div>
       </div>

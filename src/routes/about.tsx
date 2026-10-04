@@ -118,10 +118,10 @@ function AboutPage() {
         </div>
         <div>
           <p className="font-display text-3xl sm:text-4xl font-bold text-primary">
-            1,500+
+            1,000+
           </p>
           <p className="mt-1 text-xs sm:text-sm text-muted-foreground">
-            Expected Participants
+            2026 Participants
           </p>
         </div>
         <div>
@@ -167,13 +167,13 @@ function AboutPage() {
               <li className="flex items-center gap-2.5">
                 <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
                 <span>
-                  <strong>Proven Track Record:</strong> Inaugural 2023 edition mobilized 600+ participants from Narayanchaur to Swayambhu.
+                  <strong>Proven Impact:</strong> 2026 edition brought together 1,000+ participants, with all registration proceeds handed over to Cancer Care Nepal.
                 </span>
               </li>
               <li className="flex items-center gap-2.5">
                 <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
                 <span>
-                  <strong>Community Solidarity:</strong> Uniting doctors, survivors, students, press, and civic leaders.
+                  <strong>Community Solidarity:</strong> Uniting doctors, survivors, students, press, and civic leaders across Kathmandu Valley.
                 </span>
               </li>
             </ul>
@@ -190,12 +190,12 @@ function AboutPage() {
               </p>
             </div>
             <div className="mt-8 pt-6 border-t border-primary/20 flex flex-wrap items-center justify-between gap-3 text-xs font-semibold">
-              <Link to="/register" className="text-primary hover:underline flex items-center gap-1">
-                <span>Register for PinkWalk 2026</span>
+              <Link to="/press-release" className="text-primary hover:underline flex items-center gap-1">
+                <span>Read PinkWalk 2026 Press Release</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link to="/past-event" className="text-muted-foreground hover:text-foreground">
-                View 2023 Walkathon →
+                View Past Walkathons →
               </Link>
             </div>
           </div>
@@ -385,23 +385,23 @@ function AboutPage() {
       <section className="pb-20 text-center">
         <div className="rounded-3xl border border-border bg-card p-8 sm:p-12 shadow-soft">
           <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">
-            Join Us in the Walk for Breast Cancer Awareness
+            Thank You for Supporting Breast Cancer Awareness
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Whether you walk with us on October 3, 2026, join as an official partner, or spread the message across Nepal, your support makes a vital difference.
+            PinkWalk 2026 brought over 1,000 participants together. Read the full press release, explore media coverage, or join us as an official partner for future initiatives.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
             <Link
-              to="/register"
+              to="/press-release"
               className="rounded-full bg-primary px-6 py-3 text-primary-foreground shadow-pink transition-transform hover:-translate-y-0.5"
             >
-              Register for PinkWalk 2026
+              Read 2026 Press Release
             </Link>
             <Link
               to="/partner"
               className="rounded-full border border-input bg-background px-6 py-3 text-foreground hover:bg-accent"
             >
-              Become an Official Partner
+              Partner with PinkWalk
             </Link>
           </div>
         </div>
