@@ -881,6 +881,84 @@ export const newsCoverage2026: LinkItem[] = [
     note: "Sarokar Online",
     publish: "9/31/2026",
   },
+  {
+    label: "एक हजारभन्दा बढीको सहभागितामा सम्पन्न भयो ‘पिंकवाक २०२६’",
+    href: "https://corporatekhabar.com/pinkwalk-2026/",
+    note: "Corporate Khabar",
+    publish: "10/3/2026",
+  },
+  {
+    label: "पिंकवाक २०२६ मा एक हजारभन्दा बढीले गरे सहभागिता",
+    href: "https://www.lokpath.com/story/908357/",
+    note: "Lokpath",
+    publish: "10/3/2026",
+  },
+  {
+    label: "पिंकवाक २०२६ भव्य रुपमा सम्पन्न",
+    href: "https://sanchardabali.com/posts/33956",
+    note: "Sanchar Dabali",
+    publish: "10/3/2026",
+  },
+  {
+    label: "पिंकवाक २०२६ भव्य रुपमा सम्पन्न",
+    href: "https://www.arthaplus.com/posts/13239",
+    note: "Arthaplus",
+    publish: "10/3/2026",
+  },
+  {
+    label: "पिंकवाक २०२६ भव्य रुपमा सम्पन्न",
+    href: "https://www.ajakoartha.com/story/145725",
+    note: "Ajako Artha",
+    publish: "10/3/2026",
+  },
+  {
+    label: "PinkWalk 2026 concludes with participation of over a thousand participants",
+    href: "https://arthapranali.com/2026/10/36279/",
+    note: "Arthapranali",
+    publish: "10/3/2026",
+  },
+  {
+    label: "पिंकवाक २०२६ भव्य रुपमा सम्पन्न",
+    href: "https://www.arthikpati.com/content/2026/10/04/148208",
+    note: "ArthikPati",
+    publish: "10/3/2026",
+  },
+  {
+    label: "एक हजारभन्दा बढीको सहभागितामा सम्पन्न भयो ‘पिंकवाक २०२६’",
+    href: "https://equitynepal.com/2026/10/04/104158/",
+    note: "Equity Nepal",
+    publish: "10/4/2026",
+  },
+  {
+    label: "एक हजारभन्दा बढीको सहभागितामा ‘पिंकवाक २०२६’ सम्पन्न",
+    href: "https://dainiki.com/423018/",
+    note: "Dainiki",
+    publish: "10/4/2026",
+  },
+  {
+    label: "पिंकवाक २०२६ भव्य रुपमा सम्पन्न, एक हजारभन्दा बढी सहभागी",
+    href: "https://himalayapost.com/archives/749",
+    note: "Himalaya Post",
+    publish: "10/4/2026",
+  },
+  {
+    label: "एक हजारभन्दा बढीको सहभागितामा सम्पन्न भयो ‘पिंकवाक २०२६’",
+    href: "https://nepalraibar.com/posts/299614",
+    note: "Nepal Raibar",
+    publish: "10/4/2026",
+  },
+  {
+    label: "एक हजारभन्दा बढीको सहभागितामा सम्पन्न भयो ‘पिंकवाक २०२६’",
+    href: "https://www.sarokaronline.com/?p=134913",
+    note: "Sarokar Online",
+    publish: "10/4/2026",
+  },
+  {
+    label: "‘पिंकवाक २०२६’ : एक हजारभन्दा बढी सहभागी, क्यान्सर राेगीले सामान्य जीवनयापन गर्न सम्भव !",
+    href: "https://www.arthadabali.com/2026/10/04/94558",
+    note: "Artha Dabali",
+    publish: "10/4/2026",
+  },
 ];
 
 export const newsCoverage2023: LinkItem[] = [
