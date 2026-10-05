@@ -98,7 +98,7 @@ export const thisYearGuests: GuestItem[] = [
   {
     name: "Sunita Dangol",
     role: "Acting Mayor, Kathmandu Metropolitan City",
-    bio: "Sunita Dangol, Deputy Mayor of Kathmandu Metropolitan City, joined PinkWalk 2026 in support of breast cancer awareness and the importance of women’s health. As a public representative and advocate for inclusive community initiatives, her presence helped amplify the message of early awareness, prevention, and standing together with women and families affected by breast cancer. Her participation reflects the spirit of bringing communities together for a healthier and more supportive society.",
+    bio: "Sunita Dangol, Deputy Mayor of Kathmandu Metropolitan City, is actively involved in initiatives focused on women’s empowerment, health, education, and inclusive community development. She joined PinkWalk 2026 in support of breast cancer awareness and women’s health, helping amplify the message of early detection, prevention, and community solidarity.",
     image: sunitaImg,
   },
   {
@@ -132,9 +132,9 @@ export const thisYearGuests: GuestItem[] = [
     image: sunitagImg,
   },
   {
-    name: "Dipmala Dahal",
-    role: "Miss Nepal Earth 2026",
-    bio: "Dipmala Dahal, Miss Nepal 2025, joined PinkWalk 2026 in support of breast cancer awareness and women’s health. As a young public figure and advocate for positive social change, her presence helped bring greater visibility to the importance of awareness, early detection, and supporting women affected by breast cancer. Her participation reflects the power of young voices in inspiring communities to come together for a healthier future.",
+    name: "Deepmala Dahal",
+    role: "Miss Nepal World 2026",
+    bio: "Deppmala Dahal, Miss Nepal 2026, joined PinkWalk 2026 in support of breast cancer awareness and women’s health. As a young public figure and advocate for positive social change, her presence helped bring greater visibility to the importance of awareness, early detection, and supporting women affected by breast cancer. Her participation reflects the power of young voices in inspiring communities to come together for a healthier future.",
     image: dipmalaImg,
   },
   {
