@@ -35,6 +35,13 @@ import anuradhaImg from "@/assets/guests/anuradha-koirala.jpg";
 import manishaImg from "@/assets/guests/manisha-koirala.jpg";
 import sumanaImg from "@/assets/guests/sumana-shrestha.jpg";
 import sugarikaImg from "@/assets/guests/sugarika-kc.jpg";
+import sunitaImg from "@/assets/guests/sunita-dangol.jpg";
+import kaliImg from "@/assets/guests/kali-prasad-baskota.jpg";
+import dipmalaImg from "@/assets/guests/deepmala-dhakal.jpg";
+import kasishImg from "@/assets/guests/kasish-subba.jpg";
+import ojashwiImg from "@/assets/guests/ojaswee-sherchan.jpg";
+import subashImg from "@/assets/guests/subash-pyakurel.jpg";
+import sunitagImg from "@/assets/guests/sunita-ghimire-gautam.jpg";
 
 export type LinkItem = {
   label: string;
@@ -66,6 +73,76 @@ export const tshirtSizeChart: TshirtSizeInfo[] = [
   { name: "XX-Large (2XL)", size: "2XL", chestInches: 44, lengthInches: 30 },
   { name: "XXXL-Large (3XL)", size: "3XL", chestInches: 46, lengthInches: 31 },
   { name: "XXXXL-Large (4XL)", size: "4XL", chestInches: 48, lengthInches: 31 },
+];
+
+export type GuestItem = {
+  name: string;
+  role?: string;
+  bio: string;
+  image?: string;
+};
+
+export const thisYearGuests: GuestItem[] = [
+  {
+    name: "Anuradha Koirala",
+    role: "Founder & Director, Maiti Nepal / CNN Hero",
+    bio: "Anuradha Koirala is a renowned social activist and the Founder and Chairperson of Maiti Nepal, an organization dedicated to combating human trafficking and supporting women and children. Named CNN Hero of the Year in 2010, she has dedicated decades to protecting vulnerable communities and advocating for a society free from trafficking and exploitation. She has been a valued part of PinkWalk since 2023, continuing to lend her presence and support to the cause.",
+    image: anuradhaImg,
+  },
+  {
+    name: "Hon. Dr. Ojashwi Sherchan",
+    role: "Chairperson, Education, Health & Information Technology Committee, Federal Parliament of Nepal",
+    bio: "Hon. Dr. Ojashwi Sherchan is a physician and Member of Parliament of Nepal, currently serving as Chairperson of the Education, Health and Information Technology Committee of the Federal Parliament. With her medical background and commitment to public health, she continues to advocate for stronger health awareness and accessible healthcare in Nepal.",
+    image: ojashwiImg,
+  },
+  {
+    name: "Sunita Dangol",
+    role: "Acting Mayor, Kathmandu Metropolitan City",
+    bio: "Sunita Dangol, Deputy Mayor of Kathmandu Metropolitan City, joined PinkWalk 2026 in support of breast cancer awareness and the importance of women’s health. As a public representative and advocate for inclusive community initiatives, her presence helped amplify the message of early awareness, prevention, and standing together with women and families affected by breast cancer. Her participation reflects the spirit of bringing communities together for a healthier and more supportive society.",
+    image: sunitaImg,
+  },
+  {
+    name: "Sumana Shrestha",
+    role: "Former Education Minister",
+    bio: "Sumana Shrestha is a former Member of Parliament and former Minister of Education, Science and Technology of Nepal. With a background in management, entrepreneurship, technology, and social initiatives, she has been actively engaged in advancing education, innovation, and meaningful social change. She has been a valued part of PinkWalk since 2023, continuing to support the event's mission of raising awareness and standing together against breast cancer.",
+    image: sumanaImg,
+  },
+  {
+    name: "Kali Prasad Baskota",
+    role: "Musician & Singer-Songwriter",
+    bio: "Kali Prasad Baskota is a celebrated Nepali singer, composer, lyricist, and musician, known for popular songs including Jaalma, Saili, Laija Re, and Thamel Bazaar. With a career spanning music, film, and talent development, he has made a lasting contribution to Nepal’s contemporary music scene. His presence at PinkWalk 2026 brought together the power of music and community in support of breast cancer awareness and women’s health.",
+    image: kaliImg,
+  },
+  {
+    name: "Sugarika KC",
+    role: "Miss Nepal 2005 (Event Host)",
+    bio: "Sugarika KC has been a dedicated part of the PinkWalk journey since 2023, lending her voice, energy, and presence to the cause of breast cancer awareness and women’s health. As the host of PinkWalk, she has helped bring the event to life, connecting with participants and helping amplify the message of awareness, early detection, and support for those affected by breast cancer. Her continued involvement reflects a genuine commitment to standing together for women’s health and a stronger, more supportive community.",
+    image: sugarikaImg,
+  },
+  {
+    name: "Dr. Subash Pyakurel",
+    role: "President, Health Insurance Board",
+    bio: "Dr. Subash Pyakurel is a physician and healthcare professional with extensive experience in public health, healthcare innovation, and community service. He is the Founder of Health Concern and currently serves as the Chairperson of Nepal’s Health Insurance Board. His commitment to strengthening healthcare and improving access to health services makes his presence at PinkWalk 2026 especially meaningful as we come together to raise awareness about breast cancer and the importance of accessible, timely healthcare.",
+    image: subashImg,
+  },
+  {
+    name: "Dr. Sunita Ghimire",
+    role: "Scientist & Molecular Biologist",
+    bio: "Dr. Sunita Ghimire is a molecular biologist, researcher, and biotechnology leader working to advance healthcare through science and innovation. She serves as a Principal Investigator at RIBB and Chairperson & CTO of Novala Biotech. Her work in biotechnology and healthcare innovation makes her a meaningful voice for health awareness and women’s health at PinkWalk 2026.",
+    image: sunitagImg,
+  },
+  {
+    name: "Dipmala Dahal",
+    role: "Miss Nepal Earth 2026",
+    bio: "Dipmala Dahal, Miss Nepal 2025, joined PinkWalk 2026 in support of breast cancer awareness and women’s health. As a young public figure and advocate for positive social change, her presence helped bring greater visibility to the importance of awareness, early detection, and supporting women affected by breast cancer. Her participation reflects the power of young voices in inspiring communities to come together for a healthier future.",
+    image: dipmalaImg,
+  },
+  {
+    name: "Kasish Subba",
+    role: "Miss Nepal Cosmo 2026",
+    bio: "Kashis Subba, Miss Nepal Cosmo 2026, is a fashion model and stylist with a Diploma in Fashion Design. With four years of experience in Nepal’s fashion industry, she has earned titles including Face of Nepal 2023 and Model of the Year 2025. Her journey reflects confidence, resilience, and the courage to embrace new challenges. As a young voice representing Nepal internationally, her presence at PinkWalk 2026 adds to the message of empowering women and inspiring communities to come together for greater awareness of breast cancer and women’s health.",
+    image: kasishImg,
+  },
 ];
 
 export const thisYearEvent = {
@@ -104,6 +181,7 @@ export const thisYearEvent = {
     "Addresses & insights by Anuradha Koirala, Sunita Dangol, Sumana Shrestha, Kali Prasad Baskota, & oncologists",
     "All registration proceeds handed over to Cancer Care Nepal to support patient treatment",
   ],
+  guests: thisYearGuests,
   organizers: ["Infinite Cares"],
   contactPersons: ["Dijup Tuladhar", "Lijala Shrestha"],
 };
@@ -112,13 +190,6 @@ export const getInviteMessage = (friendName?: string, currentUrl?: string) => {
   const friend = friendName?.trim() || "Friend";
   const url = currentUrl || "https://pinkwalk.github.io";
   return `Hi ${friend}! 🌸\n\nPinkWalk 2026 successfully concluded on ${thisYearEvent.dateNote} (${thisYearEvent.date}) with over 1,000 participants walking for breast cancer awareness!\n\n📍 Route: ${thisYearEvent.route.startLabel} to ${thisYearEvent.route.endLabel} (${thisYearEvent.distance})\n\nThank you for supporting breast cancer survivors and spreading awareness! 💕\n\nRead the press release & event summary: ${url}/press-release`;
-};
-
-export type GuestItem = {
-  name: string;
-  role?: string;
-  bio: string;
-  image?: string;
 };
 
 export const lastEventGuests: GuestItem[] = [

@@ -123,6 +123,25 @@ function PressReleasePage() {
     window.print();
   };
 
+  const parseDate = (publish?: string) => {
+    if (!publish) return 0;
+    const parts = publish.split("/");
+    if (parts.length === 3) {
+      const m = parseInt(parts[0], 10);
+      const d = parseInt(parts[1], 10);
+      const y = parseInt(parts[2], 10);
+      if (!isNaN(m) && !isNaN(d) && !isNaN(y)) {
+        return new Date(y, m - 1, d).getTime();
+      }
+    }
+    const t = new Date(publish).getTime();
+    return isNaN(t) ? 0 : t;
+  };
+
+  const sortedNewsCoverage2026 = [...newsCoverage2026].sort(
+    (a, b) => parseDate(b.publish) - parseDate(a.publish)
+  );
+
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 print:p-0 print:m-0 print:max-w-none">
       {/* Hero Section */}
@@ -430,14 +449,14 @@ function PressReleasePage() {
                 </h3>
               </div>
               <p className="text-xs text-muted-foreground">
-                Recent press & online news coverage of PinkWalk 2026
+                Recent press & online news coverage of PinkWalk 2026 (Sorted by date ↓)
               </p>
             </div>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {(showAllMainNews
-                ? newsCoverage2026
-                : newsCoverage2026.slice(0, 10)
+                ? sortedNewsCoverage2026
+                : sortedNewsCoverage2026.slice(0, 10)
               ).map((item) => (
                 <a
                   key={item.href}
@@ -476,7 +495,7 @@ function PressReleasePage() {
                 </a>
               ))}
             </div>
-            {newsCoverage2026.length > 10 && (
+            {sortedNewsCoverage2026.length > 10 && (
               <div className="mt-6 flex justify-center">
                 <button
                   onClick={() => setShowAllMainNews(!showAllMainNews)}
@@ -485,7 +504,7 @@ function PressReleasePage() {
                   <span>
                     {showAllMainNews
                       ? "Show Less"
-                      : `Show More (${newsCoverage2026.length - 10} more articles)`}
+                      : `Show More (${sortedNewsCoverage2026.length - 10} more articles)`}
                   </span>
                   {showAllMainNews ? (
                     <ChevronUp className="h-4 w-4" />
@@ -597,13 +616,13 @@ function PressReleasePage() {
                 In The News (2026)
               </h4>
               <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary">
-                {newsCoverage2026.length} Articles
+                {sortedNewsCoverage2026.length} Articles
               </span>
             </div>
             <ul className="space-y-2.5 text-xs">
               {(showAllSidebarNews
-                ? newsCoverage2026
-                : newsCoverage2026.slice(0, 10)
+                ? sortedNewsCoverage2026
+                : sortedNewsCoverage2026.slice(0, 10)
               ).map((item) => (
                 <li key={item.href}>
                   <a
@@ -632,7 +651,7 @@ function PressReleasePage() {
                 </li>
               ))}
             </ul>
-            {newsCoverage2026.length > 5 && (
+            {sortedNewsCoverage2026.length > 5 && (
               <button
                 onClick={() => setShowAllSidebarNews(!showAllSidebarNews)}
                 className="mt-3.5 flex w-full items-center justify-center gap-1.5 rounded-xl border border-border/70 bg-muted/30 py-2.5 text-xs font-semibold text-primary hover:bg-primary/10 hover:border-primary/30 transition-colors"
@@ -640,7 +659,7 @@ function PressReleasePage() {
                 <span>
                   {showAllSidebarNews
                     ? "Show Less"
-                    : `Show More (${newsCoverage2026.length - 10} more)`}
+                    : `Show More (${sortedNewsCoverage2026.length - 10} more)`}
                 </span>
                 {showAllSidebarNews ? (
                   <ChevronUp className="h-3.5 w-3.5" />

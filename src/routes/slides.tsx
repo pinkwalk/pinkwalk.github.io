@@ -27,6 +27,7 @@ import cancerCareLogo from "@/assets/cancercare-logo.jpg";
 import infiniteCaresLogo from "@/assets/infinitecares-logo.svg";
 import {
   thisYearEvent,
+  thisYearGuests,
   lastEvent,
   partners,
   supporters,
@@ -393,29 +394,29 @@ function SlidesPage() {
     </div>,
 
     // Slide 7: Guests of Honor
-    <div key="slide-7" className="flex flex-col justify-center space-y-6 h-full px-4 sm:px-12">
+    <div key="slide-7" className="flex flex-col justify-center space-y-4 h-full px-4 sm:px-12">
       <div>
         <span className="text-xs font-semibold uppercase tracking-wider text-primary">Dignitaries & Champions</span>
-        <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-1">
-          2023 Honored Guests & Social Advocates
+        <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mt-0.5">
+          2026 Honored Guests & Social Advocates
         </h2>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        {lastEvent.guests.map((g, idx) => (
-          <div key={idx} className="rounded-2xl border border-border bg-card p-4 shadow-xs flex flex-col justify-between text-center space-y-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3">
+        {thisYearGuests.slice(0, 5).map((g, idx) => (
+          <div key={idx} className="rounded-2xl border border-border bg-card p-3 shadow-xs flex flex-col justify-between text-center space-y-2">
             <div>
               {g.image ? (
-                <img src={g.image} alt={g.name} className="h-20 w-20 rounded-full object-cover mx-auto ring-2 ring-primary/30" />
+                <img src={g.image} alt={g.name} className="h-16 w-16 rounded-full object-cover mx-auto ring-2 ring-primary/30" />
               ) : (
-                <div className="h-20 w-20 rounded-full bg-pink-wash flex items-center justify-center mx-auto text-primary font-bold text-xl">
+                <div className="h-16 w-16 rounded-full bg-pink-wash flex items-center justify-center mx-auto text-primary font-bold text-base">
                   {g.name[0]}
                 </div>
               )}
-              <h3 className="font-display font-bold text-sm text-foreground mt-3">{g.name}</h3>
-              <p className="text-[11px] font-semibold text-primary">{g.role}</p>
+              <h3 className="font-display font-bold text-xs text-foreground mt-2 line-clamp-1">{g.name}</h3>
+              <p className="text-[10px] font-semibold text-primary line-clamp-2">{g.role}</p>
             </div>
-            <p className="text-[11px] text-muted-foreground line-clamp-3 leading-relaxed">{g.bio}</p>
+            <p className="text-[10px] text-muted-foreground line-clamp-2 leading-tight">{g.bio}</p>
           </div>
         ))}
       </div>

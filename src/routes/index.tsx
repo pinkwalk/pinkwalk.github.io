@@ -6,6 +6,7 @@ import heroImg3 from "@/assets/hero-walk3.jpg";
 import heroImg4 from "@/assets/hero-walk4.jpg";
 import { thisYearEvent, organizersList, partners, supporters, newsCoverage2026 } from "@/lib/event-data";
 import { PartnerCallout } from "@/components/PartnerCallout";
+import { GuestProfileSection } from "@/components/GuestProfileSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,6 +40,7 @@ function Index() {
       <ThisYear />
       <Cause />
       <RouteSection />
+      <GuestProfileSection />
       <NewsCoverageSection />
       <PastEventTeaser />
       <Partners />
