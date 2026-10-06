@@ -181,6 +181,7 @@ export const thisYearEvent = {
     "Addresses & insights by Anuradha Koirala, Sunita Dangol, Sumana Shrestha, Kali Prasad Baskota, & oncologists",
     "All registration proceeds handed over to Cancer Care Nepal to support patient treatment",
   ],
+  photosUrl: "https://smritipatra.com/share/LRnVdDggP3m_Ypv7uq-jPqjeJUsMR9_4",
   guests: thisYearGuests,
   organizers: ["Infinite Cares"],
   contactPersons: ["Dijup Tuladhar", "Lijala Shrestha"],
@@ -1071,6 +1072,14 @@ export const newsCoverage2023: LinkItem[] = [
 ];
 
 export const newsCoverage: LinkItem[] = newsCoverage2026;
+
+export const photos2026: LinkItem[] = [
+  {
+    label: "PinkWalk 2026 Official Event Album",
+    note: "Smriti Patra",
+    href: "https://smritipatra.com/share/LRnVdDggP3m_Ypv7uq-jPqjeJUsMR9_4",
+  },
+];
 
 export const photos: LinkItem[] = [
   {

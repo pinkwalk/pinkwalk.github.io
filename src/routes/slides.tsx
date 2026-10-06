@@ -394,7 +394,7 @@ function SlidesPage() {
     </div>,
 
     // Slide 7: Guests of Honor
-    <div key="slide-7" className="flex flex-col justify-center space-y-4 h-full px-4 sm:px-12">
+    <div key="slide-7" className="flex flex-col justify-center space-y-3 sm:space-y-4 h-full px-2 sm:px-6">
       <div>
         <span className="text-xs font-semibold uppercase tracking-wider text-primary">Dignitaries & Champions</span>
         <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mt-0.5">
@@ -402,21 +402,20 @@ function SlidesPage() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3">
-        {thisYearGuests.slice(0, 5).map((g, idx) => (
-          <div key={idx} className="rounded-2xl border border-border bg-card p-3 shadow-xs flex flex-col justify-between text-center space-y-2">
-            <div>
-              {g.image ? (
-                <img src={g.image} alt={g.name} className="h-16 w-16 rounded-full object-cover mx-auto ring-2 ring-primary/30" />
-              ) : (
-                <div className="h-16 w-16 rounded-full bg-pink-wash flex items-center justify-center mx-auto text-primary font-bold text-base">
-                  {g.name[0]}
-                </div>
-              )}
-              <h3 className="font-display font-bold text-xs text-foreground mt-2 line-clamp-1">{g.name}</h3>
-              <p className="text-[10px] font-semibold text-primary line-clamp-2">{g.role}</p>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 sm:gap-3">
+        {thisYearGuests.map((g, idx) => (
+          <div key={idx} className="rounded-2xl border border-border bg-card p-2.5 sm:p-3 shadow-xs flex flex-col items-center text-center space-y-1.5 transition-colors hover:border-primary/40">
+            {g.image ? (
+              <img src={g.image} alt={g.name} className="h-12 w-12 sm:h-14 sm:w-14 rounded-full object-cover ring-2 ring-primary/30 shrink-0" />
+            ) : (
+              <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-full bg-pink-wash flex items-center justify-center text-primary font-bold text-sm sm:text-base ring-2 ring-primary/30 shrink-0">
+                {g.name[0]}
+              </div>
+            )}
+            <div className="min-w-0 w-full">
+              <h3 className="font-display font-bold text-xs text-foreground line-clamp-1">{g.name}</h3>
+              {g.role && <p className="text-[10px] sm:text-[11px] font-semibold text-primary line-clamp-2 mt-0.5 leading-tight">{g.role}</p>}
             </div>
-            <p className="text-[10px] text-muted-foreground line-clamp-2 leading-tight">{g.bio}</p>
           </div>
         ))}
       </div>

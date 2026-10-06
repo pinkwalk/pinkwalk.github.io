@@ -1,10 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  thisYearEvent,
   lastEvent,
   lastEventGuests,
   lastEventSiteUrl,
   newsCoverage2023,
   photos,
+  photos2026,
 } from "@/lib/event-data";
 import { GuestProfileSection } from "@/components/GuestProfileSection";
 
@@ -234,26 +236,62 @@ function Coverage() {
 
 function Gallery() {
   return (
-    <section className="py-16">
-      <h2 className="font-display text-2xl font-semibold text-foreground sm:text-3xl">
-        Photos from the walk
-      </h2>
-      <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {photos.map((p) => (
+    <section className="py-16 space-y-8">
+      <div>
+        <span className="text-xs font-semibold uppercase tracking-wider text-primary">Official Photo Archives</span>
+        <h2 className="font-display text-2xl font-semibold text-foreground sm:text-3xl mt-1">
+          Event Photography & Albums
+        </h2>
+      </div>
+
+      {/* 2026 Featured Album */}
+      <div className="rounded-3xl border border-primary/30 bg-pink-wash/70 p-6 sm:p-8 shadow-soft">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-0.5 text-xs font-bold text-primary-foreground">
+              NEW · {thisYearEvent.year} Event Photos
+            </span>
+            <h3 className="font-display text-xl font-bold text-foreground">
+              PinkWalk 2026 Official Event Gallery
+            </h3>
+            <p className="text-xs text-muted-foreground max-w-xl">
+              Browse high-resolution photographs from the Basantapur to Mangal Bazar walkathon hosted on Smriti Patra.
+            </p>
+          </div>
+
           <a
-            key={p.label}
-            href={p.href}
+            href={thisYearEvent.photosUrl}
             target="_blank"
             rel="noreferrer"
-            className="group rounded-2xl border border-border bg-pink-wash p-5 transition-colors hover:border-primary"
+            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-3 text-xs font-semibold text-primary-foreground shadow-pink transition-transform hover:-translate-y-0.5 shrink-0"
           >
-            <p className="text-2xl">📷</p>
-            <p className="mt-2 text-sm font-medium text-foreground group-hover:text-primary">
-              {p.label}
-            </p>
-            <p className="mt-1 text-xs text-muted-foreground">View album ↗</p>
+            <span>📷 View 2026 Photo Album (Smriti Patra) ↗</span>
           </a>
-        ))}
+        </div>
+      </div>
+
+      {/* 2023 Past Albums */}
+      <div>
+        <h3 className="font-display text-lg font-semibold text-foreground mb-4">
+          2023 Event Photo Albums
+        </h3>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {photos.map((p) => (
+            <a
+              key={p.label}
+              href={p.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary"
+            >
+              <p className="text-2xl">📷</p>
+              <p className="mt-2 text-sm font-medium text-foreground group-hover:text-primary">
+                {p.label}
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">View album ↗</p>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -99,12 +99,20 @@ function Hero() {
           <strong className="font-semibold text-white">Mangal Bazar</strong> (Lalitpur Durbar Square). All registration proceeds were handed over to Cancer Care Nepal.
         </p>
 
-        <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-9 flex flex-wrap items-center justify-center gap-3 sm:flex-row">
+          <a
+            href={thisYearEvent.photosUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-base font-semibold text-primary-foreground shadow-pink transition-transform hover:-translate-y-0.5"
+          >
+            <span>📷 View 2026 Event Photos</span>
+          </a>
           <Link
             to="/press-release"
-            className="inline-flex items-center rounded-full bg-primary px-7 py-3 text-base font-semibold text-primary-foreground shadow-pink transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center rounded-full bg-white/12 px-7 py-3 text-base font-semibold text-white ring-1 ring-white/30 backdrop-blur-sm transition-colors hover:bg-white/20"
           >
-            Read Event Press Release
+            Read Press Release
           </Link>
           <Link
             to="/past-event"
