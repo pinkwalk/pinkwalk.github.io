@@ -178,7 +178,7 @@ export const thisYearEvent = {
   highlights: [
     "Over 1,000 participants walked together in pink solidarity across Kathmandu & Lalitpur",
     "Historic heritage route connecting Kathmandu Durbar Square to Patan Durbar Square",
-    "Addresses & insights by Anuradha Koirala, Sunita Dangol, Sumana Shrestha, Kali Prasad Baskota, & oncologists",
+    "Addresses & insights by Anuradha Koirala, Hon. Dr. Ojashwi Sherchan, Sunita Dangol, Sumana Shrestha, Kali Prasad Baskota, & oncologists",
     "All registration proceeds handed over to Cancer Care Nepal to support patient treatment",
   ],
   photosUrl: "https://smritipatra.com/share/LRnVdDggP3m_Ypv7uq-jPqjeJUsMR9_4",

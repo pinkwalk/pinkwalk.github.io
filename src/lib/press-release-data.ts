@@ -92,7 +92,7 @@ export const pressReleases: PressRelease[] = [
         "Participants: Over 1,000 walkathon participants",
         "Route: Kathmandu Durbar Square (Basantapur) → Patan Durbar Square (Mangal Bazar)",
         "Fund Handover: Registration proceeds transferred to Cancer Care Nepal for patient support",
-        "Distinguished Guests: Anuradha Koirala, KMC Acting Mayor Sunita Dangol, Sumana Shrestha, Kali Prasad Baskota, Dr. Subash Pyakurel, Miss Nepal Dipmala Dahal, Kasish Subba",
+        "Distinguished Guests: Anuradha Koirala, Hon. Dr. Ojashwi Sherchan, KMC Acting Mayor Sunita Dangol, Sumana Shrestha, Kali Prasad Baskota, Dr. Subash Pyakurel, Miss Nepal Dipmala Dahal, Kasish Subba",
         "Organizers: Infinite Cares in collaboration with Cancer Care Nepal",
       ],
     },
